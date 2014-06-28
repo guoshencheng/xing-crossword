@@ -49,7 +49,7 @@
           currentSprite = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:1.0] size:CGSizeMake(20, 20)];
         }
         [currentSprite setName:[NSString stringWithFormat:@"%d,%d",j,i]];
-        currentSprite.position = CGPointMake( 30 + 20 * j, 20 * i + 30);
+        currentSprite.position = CGPointMake( 30 + 20 * j, 390 - 20 * i );
         SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
         label.fontSize = 8;
         label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
@@ -70,33 +70,33 @@
     CGPoint mytouch = [self getCellPostionWithTouchX:location.x AndY:location.y];
     NSLog(@"%f",mytouch.x);
     NSLog(@"%f",mytouch.y);
-    if ([self isTextFieldCellWithPostion:mytouch] ) {
-      if ([self isTextFieldCellWithPostion:mytouch] && [self haveHorTextField:mytouch] && ![self haveVerTextField:mytouch] ) {
-        self.hor = YES;
-      }
-      if ([self isTextFieldCellWithPostion:mytouch] && ![self haveHorTextField:mytouch] && [self  haveVerTextField:mytouch]) {
-        self.hor = NO;
-      }
-      if ([self isTextFieldCellWithPostion:mytouch] && [self haveHorTextField:mytouch] && [self haveVerTextField:mytouch]) {
-        self.hor = !self.hor;
-      }
+    if (mytouch.x >= 0 && mytouch.y >= 0 && mytouch.x < 14 && mytouch.y < 19) {
+      if ([self isTextFieldCellWithPostion:mytouch] ) {
+        if ([self isTextFieldCellWithPostion:mytouch] && [self haveHorTextField:mytouch] && ![self haveVerTextField:mytouch] ) {
+          self.hor = YES;
+        }
+        if ([self isTextFieldCellWithPostion:mytouch] && ![self haveHorTextField:mytouch] && [self  haveVerTextField:mytouch]) {
+          self.hor = NO;
+        }
+        if ([self isTextFieldCellWithPostion:mytouch] && [self haveHorTextField:mytouch] && [self haveVerTextField:mytouch]) {
+          self.hor = !self.hor;
+        }
       
-      if (self.hor) {
-        [self resetColor];
-        [self fillingLeft:mytouch];
-        [self fillingRight:mytouch];
-        int problemNumber = [self findProblemInHorProblemWithCGPoint:mytouch];
-        NSLog(@"%d",problemNumber);
-      }else {
-        [self resetColor];
-        [self fillingUp:mytouch];
-        [self fillingDown:mytouch];
-        int problemNumber = [self findProblemInVerProblemWithCGPoint:mytouch];
-        NSLog(@"%d",problemNumber);
+        if (self.hor) {
+          [self resetColor];
+          [self fillingLeft:mytouch];
+          [self fillingRight:mytouch];
+          int problemNumber = [self findProblemInHorProblemWithCGPoint:mytouch];
+          NSLog(@"%d",problemNumber);
+        }else {
+          [self resetColor];
+          [self fillingUp:mytouch];
+          [self fillingDown:mytouch];
+          int problemNumber = [self findProblemInVerProblemWithCGPoint:mytouch];
+          NSLog(@"%d",problemNumber);
+        }
       }
-      
     }
-    
   }
 }
 
@@ -105,7 +105,7 @@
 }
 
 - (CGPoint) getCellPostionWithTouchX:(float)x AndY:(float)y {
-  int hor = [self approximatelyEqualForDividend:(y - 30) andDivisor:20];
+  int hor = [self approximatelyEqualForDividend:(390 - y) andDivisor:20];
   int ver = [self approximatelyEqualForDividend:(x - 30) andDivisor:20];
   return CGPointMake(ver, hor);
 }
@@ -121,16 +121,16 @@
   }
 }
 
-- (Boolean)haveHorTextField:(CGPoint)point {
+- (BOOL)haveHorTextField:(CGPoint)point {
   return [self haveLeftTextFieldCellWithPostion:point] || [self haveRightTextFieldCellWithPostion:point];
 }
 
-- (Boolean)haveVerTextField:(CGPoint)point {
+- (BOOL)haveVerTextField:(CGPoint)point {
   return [self haveUpTextFieldCellWithPostion:point] || [self haveDownTextFieldCellWithPostion:point];
 }
 
-- (Boolean)haveLeftTextFieldCellWithPostion:(CGPoint)point {
-  Boolean haveTextField = false;
+- (BOOL)haveLeftTextFieldCellWithPostion:(CGPoint)point {
+  BOOL haveTextField = false;
   if (point.x > 0){
     NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:(point.x-1)];
     if ([currentLeftString isEqualToString:@"1"]) {
@@ -140,8 +140,8 @@
   return haveTextField;
 }
 
-- (Boolean)haveRightTextFieldCellWithPostion:(CGPoint)point {
-  Boolean haveTextField = false;
+- (BOOL)haveRightTextFieldCellWithPostion:(CGPoint)point {
+  BOOL haveTextField = false;
   if (point.x < 13) {
     NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:(point.x+1)];
     if ([currentLeftString isEqualToString:@"1"]) {
@@ -151,8 +151,8 @@
   return haveTextField;
 }
 
-- (Boolean)haveUpTextFieldCellWithPostion:(CGPoint)point {
-  Boolean haveTextField = false;
+- (BOOL)haveUpTextFieldCellWithPostion:(CGPoint)point {
+  BOOL haveTextField = false;
   if (point.y < 18) {
     NSString *currentLeftString= [[self.wordArray objectAtIndex:(point.y+1)] objectAtIndex:point.x];
     if ([currentLeftString isEqualToString:@"1"]) {
@@ -162,8 +162,8 @@
   return haveTextField;
 }
 
-- (Boolean)haveDownTextFieldCellWithPostion:(CGPoint)point {
-  Boolean haveTextField = false;
+- (BOOL)haveDownTextFieldCellWithPostion:(CGPoint)point {
+  BOOL haveTextField = false;
   if (point.y > 0) {
     NSString *currentLeftString= [[self.wordArray objectAtIndex:(point.y-1)] objectAtIndex:point.x];
     if ([currentLeftString isEqualToString:@"1"]) {
@@ -173,8 +173,8 @@
   return haveTextField;
 }
 
-- (Boolean)isTextFieldCellWithPostion:(CGPoint)point {
-  Boolean isTextField = false;
+- (BOOL)isTextFieldCellWithPostion:(CGPoint)point {
+  BOOL isTextField = false;
   NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:point.x];
   if ([currentLeftString isEqualToString:@"1"]) {
     isTextField = true;
