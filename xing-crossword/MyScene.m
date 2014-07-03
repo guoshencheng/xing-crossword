@@ -50,11 +50,24 @@
         }
         [currentSprite setName:[NSString stringWithFormat:@"%d,%d",j,i]];
         currentSprite.position = CGPointMake( 30 + 20 * j, 390 - 20 * i );
-        SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
-        label.fontSize = 16;
-        label.position = CGPointMake(160, 480);
-        [label setName:@"problem"];
-        [self addChild:label];
+        
+        SKSpriteNode *answerBackgroundNode = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0] size:CGSizeMake(160, 20)];
+        [answerBackgroundNode setName:@"answerbackground"];
+        answerBackgroundNode.position = CGPointMake(160, 455);
+        [self addChild:answerBackgroundNode];
+        
+        self.labelNode = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
+        self.labelNode.fontSize = 16;
+        self.labelNode.position = CGPointMake(160, 480);
+        [self.labelNode setName:@"problem"];
+        [self addChild:self.labelNode];
+        
+        self.answerLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
+        self.answerLabelNode.fontSize = 16;
+        self.answerLabelNode.position = CGPointMake(160, 450);
+        self.answerLabelNode.fontColor  = [UIColor blackColor];
+        [self.answerLabelNode setName:@"answer"];
+        [self addChild:self.answerLabelNode];
         [self addChild:currentSprite];
       }
     }
@@ -66,6 +79,26 @@
   for (UITouch *touch in touches) {
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
+    NSLog(@"%@",node.name);
+    if ([node.name isEqual:@"problem"]) {
+      [self.field resignFirstResponder];
+      continue;
+    }
+    if ([node.name isEqual:@"answer"]) {
+      continue;
+    }
+    if ([node.name isEqual:@"answerbackground"]) {
+      if (self.field == nil){
+          self.field = [[UITextField alloc]initWithFrame:CGRectMake(10, 10, 100, 30)];
+          self.field.delegate = self;
+          self.field.hidden = true;
+          [self.view addSubview:self.field];
+        }
+      self.field.text = self.answerLabelNode.text;
+      [self.field becomeFirstResponder];
+      continue;
+    }
+    [self.field resignFirstResponder];
     CGPoint mytouch = [self getCellPostionWithNodeName:node.name];
     if (mytouch.x >= 0 && mytouch.y >= 0 && mytouch.x < 14 && mytouch.y < 19) {
       if ([self isTextFieldCellWithPostion:mytouch] ) {
@@ -84,17 +117,15 @@
           [self fillingLeft:mytouch];
           [self fillingRight:mytouch];
           int problemNumber = [self findProblemInHorProblemWithCGPoint:mytouch];
-          SKLabelNode *label = [self childNodeWithName:@"problem"];
-          label.text = [NSString stringWithFormat:@"%@,%d",@"横向问题",problemNumber];
-          NSLog(@"%d",problemNumber);
+          [self.labelNode setText:[NSString stringWithFormat:@"%@:%d",@"横向问题",problemNumber]];
+  
         }else {
           [self resetColor];
           [self fillingUp:mytouch];
           [self fillingDown:mytouch];
           int problemNumber = [self findProblemInVerProblemWithCGPoint:mytouch];
-          SKLabelNode *label = [self childNodeWithName:@"problem"];
-          label.text = [NSString stringWithFormat:@"%@,%d",@"纵向问题",problemNumber];
-          NSLog(@"%d",problemNumber);
+          [self.labelNode setText:[NSString stringWithFormat:@"%@:%d",@"纵向问题",problemNumber]];
+
         }
       }
     }
@@ -286,6 +317,19 @@
     }
   }
   return  numberOfProble;
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+  NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+  self.answerLabelNode.text = newString;
+  return  YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [textField resignFirstResponder];
+  return  YES;
 }
 
 @end

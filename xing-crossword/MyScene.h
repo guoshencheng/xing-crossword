@@ -1,7 +1,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface MyScene : SKScene
+@interface MyScene : SKScene <UITextFieldDelegate>
 
 @property Boolean hor;
 @property CGPoint touchPoint;
@@ -10,5 +10,6 @@
 @property NSMutableArray *verProblemArray;
 @property UITextField *field;
 @property SKLabelNode *labelNode;
+@property SKLabelNode *answerLabelNode;
 
 @end
