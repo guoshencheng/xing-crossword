@@ -4,7 +4,7 @@
 @implementation MyScene
 
 -(id)initWithSize:(CGSize)size {
-  
+  self.currentProblemNumber = 0;
   self.hor = YES;
   self.touchPoint = CGPointMake(-1, -1);
   self.horProblemArray = [[NSMutableArray alloc] init];
@@ -51,25 +51,33 @@
         [currentSprite setName:[NSString stringWithFormat:@"%d,%d",j,i]];
         currentSprite.position = CGPointMake( 30 + 20 * j, 390 - 20 * i );
         
-        SKSpriteNode *answerBackgroundNode = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0] size:CGSizeMake(160, 20)];
-        [answerBackgroundNode setName:@"answerbackground"];
-        answerBackgroundNode.position = CGPointMake(160, 455);
-        [self addChild:answerBackgroundNode];
-        
-        self.labelNode = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
-        self.labelNode.fontSize = 16;
-        self.labelNode.position = CGPointMake(160, 480);
-        [self.labelNode setName:@"problem"];
-        [self addChild:self.labelNode];
-        
-        self.answerLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
-        self.answerLabelNode.fontSize = 16;
-        self.answerLabelNode.position = CGPointMake(160, 450);
-        self.answerLabelNode.fontColor  = [UIColor blackColor];
-        [self.answerLabelNode setName:@"answer"];
-        [self addChild:self.answerLabelNode];
+        SKLabelNode *currentLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
+        currentLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+        currentLabelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+        currentLabelNode.fontSize = 12;
+        currentLabelNode.fontColor = [UIColor blackColor];
+        [currentLabelNode setName:@"text"];
+        [currentLabelNode setUserInteractionEnabled:NO];
+        [currentSprite addChild:currentLabelNode];
         [self addChild:currentSprite];
       }
+      SKSpriteNode *answerBackgroundNode = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0] size:CGSizeMake(160, 20)];
+      [answerBackgroundNode setName:@"answerbackground"];
+      answerBackgroundNode.position = CGPointMake(160, 455);
+      [self addChild:answerBackgroundNode];
+      
+      self.labelNode = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
+      self.labelNode.fontSize = 16;
+      self.labelNode.position = CGPointMake(160, 480);
+      [self.labelNode setName:@"problem"];
+      [self addChild:self.labelNode];
+      
+      self.answerLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
+      self.answerLabelNode.fontSize = 16;
+      self.answerLabelNode.position = CGPointMake(160, 450);
+      self.answerLabelNode.fontColor  = [UIColor blackColor];
+      [self.answerLabelNode setName:@"answer"];
+      [self addChild:self.answerLabelNode];
     }
   }
   return self;
@@ -80,7 +88,7 @@
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     NSLog(@"%@",node.name);
-    if ([node.name isEqual:@"problem"]) {
+    if ([node.name isEqual:@"problem"] || [node.name isEqual:@"text"]) {
       [self.field resignFirstResponder];
       continue;
     }
@@ -118,14 +126,14 @@
           [self fillingRight:mytouch];
           int problemNumber = [self findProblemInHorProblemWithCGPoint:mytouch];
           [self.labelNode setText:[NSString stringWithFormat:@"%@:%d",@"横向问题",problemNumber]];
-  
+          self.currentProblemNumber = problemNumber;
         }else {
           [self resetColor];
           [self fillingUp:mytouch];
           [self fillingDown:mytouch];
           int problemNumber = [self findProblemInVerProblemWithCGPoint:mytouch];
           [self.labelNode setText:[NSString stringWithFormat:@"%@:%d",@"纵向问题",problemNumber]];
-
+          self.currentProblemNumber = problemNumber;
         }
       }
     }
@@ -218,6 +226,10 @@
     isTextField = true;
   }
   return isTextField;
+}
+
+- (SKSpriteNode*)getNodeWithPoint:(CGPoint)point {
+  return (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
 }
 
 - (void)fillingUp:(CGPoint)point {
@@ -319,6 +331,28 @@
   return  numberOfProble;
 }
 
+- (void)setAnswerStringToCrossWithString:(NSString*)answerString {
+  if (self.hor) {
+    CGPoint currentPoint = [[self.horProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
+    for (int i = 0; i < answerString.length; i ++) {
+      char currentChar = [answerString characterAtIndex:i];
+      SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x+i, currentPoint.y)];
+      SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
+      label.text = [NSString stringWithFormat:@"%c",currentChar];
+    }
+  }else {
+    CGPoint currentPoint = [[self.verProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
+    for (int i = 0; i < answerString.length; i ++) {
+      char currentChar = [answerString characterAtIndex:i];
+      SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x, currentPoint.y + i)];
+      SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
+      label.text = [NSString stringWithFormat:@"%c",currentChar];
+    }
+  }
+  
+  
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -328,6 +362,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [self setAnswerStringToCrossWithString:self.field.text];
   [textField resignFirstResponder];
   return  YES;
 }

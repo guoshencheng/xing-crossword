@@ -11,5 +11,6 @@
 @property UITextField *field;
 @property SKLabelNode *labelNode;
 @property SKLabelNode *answerLabelNode;
+@property int currentProblemNumber;
 
 @end
