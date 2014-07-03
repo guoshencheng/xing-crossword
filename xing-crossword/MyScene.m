@@ -51,10 +51,10 @@
         [currentSprite setName:[NSString stringWithFormat:@"%d,%d",j,i]];
         currentSprite.position = CGPointMake( 30 + 20 * j, 390 - 20 * i );
         SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
-        label.fontSize = 8;
-        label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
-        label.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-        [currentSprite addChild:label];
+        label.fontSize = 16;
+        label.position = CGPointMake(160, 480);
+        [label setName:@"problem"];
+        [self addChild:label];
         [self addChild:currentSprite];
       }
     }
@@ -63,13 +63,10 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  /* Called when a touch begins */
-  
   for (UITouch *touch in touches) {
     CGPoint location = [touch locationInNode:self];
-    CGPoint mytouch = [self getCellPostionWithTouchX:location.x AndY:location.y];
-    NSLog(@"%f",mytouch.x);
-    NSLog(@"%f",mytouch.y);
+    SKNode *node = [self nodeAtPoint:location];
+    CGPoint mytouch = [self getCellPostionWithNodeName:node.name];
     if (mytouch.x >= 0 && mytouch.y >= 0 && mytouch.x < 14 && mytouch.y < 19) {
       if ([self isTextFieldCellWithPostion:mytouch] ) {
         if ([self isTextFieldCellWithPostion:mytouch] && [self haveHorTextField:mytouch] && ![self haveVerTextField:mytouch] ) {
@@ -87,12 +84,16 @@
           [self fillingLeft:mytouch];
           [self fillingRight:mytouch];
           int problemNumber = [self findProblemInHorProblemWithCGPoint:mytouch];
+          SKLabelNode *label = [self childNodeWithName:@"problem"];
+          label.text = [NSString stringWithFormat:@"%@,%d",@"横向问题",problemNumber];
           NSLog(@"%d",problemNumber);
         }else {
           [self resetColor];
           [self fillingUp:mytouch];
           [self fillingDown:mytouch];
           int problemNumber = [self findProblemInVerProblemWithCGPoint:mytouch];
+          SKLabelNode *label = [self childNodeWithName:@"problem"];
+          label.text = [NSString stringWithFormat:@"%@,%d",@"纵向问题",problemNumber];
           NSLog(@"%d",problemNumber);
         }
       }
@@ -110,6 +111,12 @@
   return CGPointMake(ver, hor);
 }
 
+- (CGPoint) getCellPostionWithNodeName:(NSString*)nodeName {
+  NSArray *strings = [nodeName componentsSeparatedByString:@","];
+  float xValue = [[strings objectAtIndex:0]floatValue];
+  float yValue = [[strings objectAtIndex:1]floatValue];
+  return CGPointMake(xValue, yValue);
+}
 - (int) approximatelyEqualForDividend:(float)dividend  andDivisor:(float)divisor {
   float AccurateResult = dividend / divisor ;
   int quotient = dividend / divisor;

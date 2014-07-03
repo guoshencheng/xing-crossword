@@ -8,5 +8,7 @@
 @property NSArray *wordArray;
 @property NSMutableArray *horProblemArray;
 @property NSMutableArray *verProblemArray;
+@property UITextField *field;
+@property SKLabelNode *labelNode;
 
 @end
