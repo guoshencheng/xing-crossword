@@ -110,7 +110,7 @@
         if ([self isTextFieldCellWithPostion:mytouch] && [self haveHorTextField:mytouch] && [self haveVerTextField:mytouch]) {
           self.hor = !self.hor;
         }
-      
+        
         if (self.hor) {
           [self resetColor];
           [self fillingLeft:mytouch];
@@ -330,7 +330,15 @@
       SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x+i, currentPoint.y)];
       SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
       label.text = [NSString stringWithFormat:@"%c",currentChar];
+      if (![self haveRightTextFieldCellWithPostion:CGPointMake(currentPoint.x + i, currentPoint.y)]){
+        break;
+      }
     }
+    CGPoint lastStringNodePoint = CGPointMake(currentPoint.x + answerString.length - 1, currentPoint.y);
+    if ([self haveRightTextFieldCellWithPostion:lastStringNodePoint]) {
+      
+    }
+    
   }else {
     CGPoint currentPoint = [[self.verProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
     for (int i = 0; i < answerString.length; i ++) {
@@ -338,6 +346,9 @@
       SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x, currentPoint.y + i)];
       SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
       label.text = [NSString stringWithFormat:@"%c",currentChar];
+      if (![self haveDownTextFieldCellWithPostion:CGPointMake(currentPoint.x, currentPoint.y + i)]) {
+        break;
+      }
     }
   }
   
