@@ -242,12 +242,38 @@
   }
 }
 
+- (void)fillingUpWithEmpty:(CGPoint)point {
+  if ([self haveUpTextFieldCellWithPostion:point]) {
+    SKSpriteNode *currentNode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+    SKLabelNode *currenttext = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
+    [currenttext setText:@""];
+    [self fillingUpWithEmpty:CGPointMake(point.x , point.y + 1)];
+  } else {
+    SKSpriteNode *currentNode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+    SKLabelNode *currenttext = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
+    [currenttext setText:@""];
+  }
+}
+
 - (void)fillingLeft:(CGPoint)point {
   if ([self haveLeftTextFieldCellWithPostion:point]) {
     [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
     [self fillingLeft:CGPointMake(point.x - 1, point.y)];
   } else {
     [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
+  }
+}
+
+- (void)fillingRightWithEmpty:(CGPoint)point {
+  if ([self haveRightTextFieldCellWithPostion:point]) {
+    SKSpriteNode *currentNode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+    SKLabelNode *currenttext = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
+    [currenttext setText:@""];
+    [self fillingRightWithEmpty:CGPointMake(point.x + 1, point.y)];
+  } else {
+    SKSpriteNode *currentNode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+    SKLabelNode *currenttext = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
+    [currenttext setText:@""];
   }
 }
 
@@ -336,7 +362,7 @@
     }
     CGPoint lastStringNodePoint = CGPointMake(currentPoint.x + answerString.length - 1, currentPoint.y);
     if ([self haveRightTextFieldCellWithPostion:lastStringNodePoint]) {
-      
+      [self fillingRightWithEmpty:CGPointMake(currentPoint.x + answerString.length, currentPoint.y)];
     }
     
   }else {
@@ -346,9 +372,13 @@
       SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x, currentPoint.y + i)];
       SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
       label.text = [NSString stringWithFormat:@"%c",currentChar];
-      if (![self haveDownTextFieldCellWithPostion:CGPointMake(currentPoint.x, currentPoint.y + i)]) {
+      if (![self haveUpTextFieldCellWithPostion:CGPointMake(currentPoint.x, currentPoint.y + i)]) {
         break;
       }
+    }
+    CGPoint lastStringNodePoint = CGPointMake(currentPoint.x, currentPoint.y + answerString.length - 1);
+    if ([self haveUpTextFieldCellWithPostion:lastStringNodePoint]) {
+      [self fillingUpWithEmpty:CGPointMake(currentPoint.x, currentPoint.y + answerString.length)];
     }
   }
   
