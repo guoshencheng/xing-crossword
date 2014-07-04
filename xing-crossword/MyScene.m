@@ -3,6 +3,20 @@
 
 @implementation MyScene
 
+- (void)didMoveToView:(SKView *)view {
+  self.textField = [[UITextField alloc] initWithFrame:CGRectMake(self.size.width / 4, self.size.height * 1 / 8 + 20, 160, 40)];
+  self.textField.borderStyle = UITextBorderStyleRoundedRect;
+  self.textField.textColor = [UIColor blackColor];
+  self.textField.font = [UIFont systemFontOfSize:17.0];
+  self.textField.placeholder = @"Enter your answer here";
+  self.textField.backgroundColor = [UIColor whiteColor];
+  self.textField.autocorrectionType = UITextAutocorrectionTypeYes;
+  self.textField.keyboardType = UIKeyboardTypeDefault;
+  self.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+  self.textField.delegate = self;
+  [self.view addSubview:self.textField];
+}
+
 -(id)initWithSize:(CGSize)size {
   self.currentProblemNumber = 0;
   self.hor = YES;
@@ -28,7 +42,8 @@
                      @[@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"0",@"1",@"0",@"0",@"1",@"0",@"1"],
                      @[@"0",@"1",@"0",@"1",@"0",@"1",@"0",@"0",@"1",@"0",@"1",@"1",@"1",@"1"],
                      @[@"0",@"1",@"0",@"1",@"0",@"1",@"0",@"1",@"1",@"1",@"1",@"0",@"0",@"1"],
-                     @[@"1",@"1",@"1",@"0",@"1",@"1",@"1",@"1",@"0",@"0",@"1",@"1",@"0",@"1"]];
+                     @[@"1",@"1",@"1",@"0",@"1",@"1",@"1",@"1",@"0",@"0",@"1",@"1",@"0",@"1"]
+                     ];
   
   
   
@@ -61,23 +76,12 @@
         [currentSprite addChild:currentLabelNode];
         [self addChild:currentSprite];
       }
-      SKSpriteNode *answerBackgroundNode = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0] size:CGSizeMake(160, 20)];
-      [answerBackgroundNode setName:@"answerbackground"];
-      answerBackgroundNode.position = CGPointMake(160, 455);
-      [self addChild:answerBackgroundNode];
       
       self.labelNode = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
       self.labelNode.fontSize = 16;
       self.labelNode.position = CGPointMake(160, 480);
       [self.labelNode setName:@"problem"];
       [self addChild:self.labelNode];
-      
-      self.answerLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
-      self.answerLabelNode.fontSize = 16;
-      self.answerLabelNode.position = CGPointMake(160, 450);
-      self.answerLabelNode.fontColor  = [UIColor blackColor];
-      [self.answerLabelNode setName:@"answer"];
-      [self addChild:self.answerLabelNode];
     }
   }
   return self;
@@ -88,25 +92,12 @@
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     NSLog(@"%@",node.name);
-    if ([node.name isEqual:@"problem"] || [node.name isEqual:@"text"]) {
-      [self.field resignFirstResponder];
+    if ([node.name isEqual:@"text"]) {
+      node = [node parent];
+    }
+    if ([node.name isEqual:@"problem"]) {
       continue;
     }
-    if ([node.name isEqual:@"answer"]) {
-      continue;
-    }
-    if ([node.name isEqual:@"answerbackground"]) {
-      if (self.field == nil){
-          self.field = [[UITextField alloc]initWithFrame:CGRectMake(10, 10, 100, 30)];
-          self.field.delegate = self;
-          self.field.hidden = true;
-          [self.view addSubview:self.field];
-        }
-      self.field.text = self.answerLabelNode.text;
-      [self.field becomeFirstResponder];
-      continue;
-    }
-    [self.field resignFirstResponder];
     CGPoint mytouch = [self getCellPostionWithNodeName:node.name];
     if (mytouch.x >= 0 && mytouch.y >= 0 && mytouch.x < 14 && mytouch.y < 19) {
       if ([self isTextFieldCellWithPostion:mytouch] ) {
@@ -356,13 +347,11 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-  NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-  self.answerLabelNode.text = newString;
   return  YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [self setAnswerStringToCrossWithString:self.field.text];
+  [self setAnswerStringToCrossWithString:self.textField.text];
   [textField resignFirstResponder];
   return  YES;
 }

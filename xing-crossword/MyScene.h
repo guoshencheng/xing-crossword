@@ -8,9 +8,8 @@
 @property NSArray *wordArray;
 @property NSMutableArray *horProblemArray;
 @property NSMutableArray *verProblemArray;
-@property UITextField *field;
+@property UITextField *textField;
 @property SKLabelNode *labelNode;
-@property SKLabelNode *answerLabelNode;
 @property int currentProblemNumber;
 
 @end
