@@ -351,38 +351,43 @@
 - (void)setAnswerStringToCrossWithString:(NSString*)answerString {
   if (self.hor) {
     CGPoint currentPoint = [[self.horProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
-    for (int i = 0; i < answerString.length; i ++) {
-      char currentChar = [answerString characterAtIndex:i];
-      SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x+i, currentPoint.y)];
-      SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-      label.text = [NSString stringWithFormat:@"%c",currentChar];
-      if (![self haveRightTextFieldCellWithPostion:CGPointMake(currentPoint.x + i, currentPoint.y)]){
-        break;
+    if ( answerString.length < 1) {
+      [self fillingRightWithEmpty:currentPoint];
+    }else {
+      for (int i = 0; i < answerString.length; i ++) {
+        char currentChar = [answerString characterAtIndex:i];
+        SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x+i, currentPoint.y)];
+        SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
+        label.text = [NSString stringWithFormat:@"%c",currentChar];
+        if (![self haveRightTextFieldCellWithPostion:CGPointMake(currentPoint.x + i, currentPoint.y)]){
+          break;
+        }
+      }
+      CGPoint lastStringNodePoint = CGPointMake(currentPoint.x + answerString.length - 1, currentPoint.y);
+      if ([self haveRightTextFieldCellWithPostion:lastStringNodePoint]) {
+        [self fillingRightWithEmpty:CGPointMake(currentPoint.x + answerString.length, currentPoint.y)];
       }
     }
-    CGPoint lastStringNodePoint = CGPointMake(currentPoint.x + answerString.length - 1, currentPoint.y);
-    if ([self haveRightTextFieldCellWithPostion:lastStringNodePoint]) {
-      [self fillingRightWithEmpty:CGPointMake(currentPoint.x + answerString.length, currentPoint.y)];
-    }
-    
   }else {
-    CGPoint currentPoint = [[self.verProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
-    for (int i = 0; i < answerString.length; i ++) {
-      char currentChar = [answerString characterAtIndex:i];
-      SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x, currentPoint.y + i)];
-      SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-      label.text = [NSString stringWithFormat:@"%c",currentChar];
-      if (![self haveUpTextFieldCellWithPostion:CGPointMake(currentPoint.x, currentPoint.y + i)]) {
+    CGPoint currentPoint = [[self.horProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
+    if (answerString.length < 1) {
+      [self fillingRightWithEmpty:currentPoint];
+    } else {
+        for (int i = 0; i < answerString.length; i ++) {
+        char currentChar = [answerString characterAtIndex:i];
+        SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x, currentPoint.y + i)];
+        SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
+        label.text = [NSString stringWithFormat:@"%c",currentChar];
+        if (![self haveUpTextFieldCellWithPostion:CGPointMake(currentPoint.x, currentPoint.y + i)]) {
         break;
+        }
       }
-    }
-    CGPoint lastStringNodePoint = CGPointMake(currentPoint.x, currentPoint.y + answerString.length - 1);
-    if ([self haveUpTextFieldCellWithPostion:lastStringNodePoint]) {
-      [self fillingUpWithEmpty:CGPointMake(currentPoint.x, currentPoint.y + answerString.length)];
+      CGPoint lastStringNodePoint = CGPointMake(currentPoint.x, currentPoint.y + answerString.length - 1);
+      if ([self haveUpTextFieldCellWithPostion:lastStringNodePoint]) {
+        [self fillingUpWithEmpty:CGPointMake(currentPoint.x, currentPoint.y + answerString.length)];
+      }
     }
   }
-  
-  
 }
 
 #pragma mark - UITextFieldDelegate
