@@ -17,12 +17,7 @@
   [self.view addSubview:self.textField];
 }
 
--(id)initWithSize:(CGSize)size {
-  self.currentProblemNumber = 0;
-  self.hor = YES;
-  self.touchPoint = CGPointMake(-1, -1);
-  self.horProblemArray = [[NSMutableArray alloc] init];
-  self.verProblemArray = [[NSMutableArray alloc] init];
+- (void)initWordArray {
   self.wordArray = @[
                      @[@"1",@"1",@"1",@"1",@"1",@"1",@"0",@"0",@"1",@"1",@"1",@"0",@"0",@"1"],
                      @[@"1",@"0",@"1",@"0",@"0",@"1",@"1",@"1",@"1",@"0",@"1",@"1",@"1",@"1"],
@@ -44,12 +39,16 @@
                      @[@"0",@"1",@"0",@"1",@"0",@"1",@"0",@"1",@"1",@"1",@"1",@"0",@"0",@"1"],
                      @[@"1",@"1",@"1",@"0",@"1",@"1",@"1",@"1",@"0",@"0",@"1",@"1",@"0",@"1"]
                      ];
-  
-  
-  
+}
+
+-(id)initWithSize:(CGSize)size {
+  self.currentProblemNumber = 0;
+  self.hor = YES;
+  self.touchPoint = CGPointMake(-1, -1);
+  self.horProblemArray = [[NSMutableArray alloc] init];
+  self.verProblemArray = [[NSMutableArray alloc] init];
+  [self initWordArray];
   if (self = [super initWithSize:size]) {
-    /* Setup your scene here */
-    
     self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
     [self initHorProblem];
     [self initVerProblem];
@@ -65,7 +64,6 @@
         }
         [currentSprite setName:[NSString stringWithFormat:@"%d,%d",j,i]];
         currentSprite.position = CGPointMake( 30 + 20 * j, 390 - 20 * i );
-        
         SKLabelNode *currentLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
         currentLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
         currentLabelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
@@ -76,7 +74,6 @@
         [currentSprite addChild:currentLabelNode];
         [self addChild:currentSprite];
       }
-      
       self.labelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
       self.labelNode.fontSize = 16;
       self.labelNode.position = CGPointMake(160, 480);
@@ -128,6 +125,7 @@
         }
       }
     }
+    [self.textField setText:[self getStringFromCrossWordWithStringBefore:@""]];
   }
 }
 
@@ -390,15 +388,57 @@
   }
 }
 
+- (NSString*)getStringFromCrossWordWithStringBefore:(NSString*)string {
+  if (self.hor) {
+    CGPoint currentPoint = [[self.horProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
+    return [self getStringFromHorCrossWordWithPoint:currentPoint andStringBefore:string];
+  } else {
+    CGPoint currentPoint = [[self.verProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
+    return  [self getStringFromVerCrossWordWithPoint:currentPoint andStringBefore:string];
+  }
+}
+
+- (NSString*)getStringFromHorCrossWordWithPoint:(CGPoint)point andStringBefore:(NSString*)string {
+  if ([self haveRightTextFieldCellWithPostion:point]) {
+    SKSpriteNode *currentNode = [self getNodeWithPoint:point];
+    SKLabelNode *currentlabel = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
+    return [self getStringFromHorCrossWordWithPoint:CGPointMake(point.x+1, point.y) andStringBefore:[NSString stringWithFormat:@"%@%@",string,currentlabel.text]];
+  } else {
+    SKSpriteNode *currentNode = [self getNodeWithPoint:point];
+    SKLabelNode *currentlabel = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
+    return [NSString stringWithFormat:@"%@%@",string,currentlabel.text];
+  }
+}
+
+- (NSString*)getStringFromVerCrossWordWithPoint:(CGPoint)point andStringBefore:(NSString*)string {
+  if ([self haveUpTextFieldCellWithPostion:point]) {
+    SKSpriteNode *currentNode = [self getNodeWithPoint:point];
+    SKLabelNode *currentlabel = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
+    return [self getStringFromVerCrossWordWithPoint:CGPointMake(point.x, point.y+1) andStringBefore:[NSString stringWithFormat:@"%@%@",string,currentlabel.text]];
+  } else {
+    SKSpriteNode *currentNode = [self getNodeWithPoint:point];
+    SKLabelNode *currentlabel = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
+    return [NSString stringWithFormat:@"%@%@",string,currentlabel.text];
+  }
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
   return  YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+  if (self.currentProblemNumber > 0) {
+    [self.textField setText:[self getStringFromCrossWordWithStringBefore:@""]];
+  }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [self setAnswerStringToCrossWithString:self.textField.text];
-  [textField resignFirstResponder];
+  if (self.currentProblemNumber > 0) {
+    [self setAnswerStringToCrossWithString:self.textField.text];
+  }
+  [self.textField resignFirstResponder];
   return  YES;
 }
 
