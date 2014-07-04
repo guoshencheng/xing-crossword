@@ -66,7 +66,7 @@
         [currentSprite setName:[NSString stringWithFormat:@"%d,%d",j,i]];
         currentSprite.position = CGPointMake( 30 + 20 * j, 390 - 20 * i );
         
-        SKLabelNode *currentLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
+        SKLabelNode *currentLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
         currentLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
         currentLabelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
         currentLabelNode.fontSize = 12;
@@ -77,7 +77,7 @@
         [self addChild:currentSprite];
       }
       
-      self.labelNode = [SKLabelNode labelNodeWithFontNamed:@"Geogia"];
+      self.labelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
       self.labelNode.fontSize = 16;
       self.labelNode.position = CGPointMake(160, 480);
       [self.labelNode setName:@"problem"];
@@ -355,10 +355,10 @@
       [self fillingRightWithEmpty:currentPoint];
     }else {
       for (int i = 0; i < answerString.length; i ++) {
-        char currentChar = [answerString characterAtIndex:i];
+         NSString *currentChar = [answerString substringWithRange:NSMakeRange(i, 1)];
         SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x+i, currentPoint.y)];
         SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-        label.text = [NSString stringWithFormat:@"%c",currentChar];
+        label.text = currentChar;
         if (![self haveRightTextFieldCellWithPostion:CGPointMake(currentPoint.x + i, currentPoint.y)]){
           break;
         }
@@ -369,15 +369,15 @@
       }
     }
   }else {
-    CGPoint currentPoint = [[self.horProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
+    CGPoint currentPoint = [[self.verProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
     if (answerString.length < 1) {
       [self fillingRightWithEmpty:currentPoint];
     } else {
         for (int i = 0; i < answerString.length; i ++) {
-        char currentChar = [answerString characterAtIndex:i];
+        NSString *currentChar = [answerString substringWithRange:NSMakeRange(i, 1)];
         SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x, currentPoint.y + i)];
         SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-        label.text = [NSString stringWithFormat:@"%c",currentChar];
+        label.text = currentChar;
         if (![self haveUpTextFieldCellWithPostion:CGPointMake(currentPoint.x, currentPoint.y + i)]) {
         break;
         }
