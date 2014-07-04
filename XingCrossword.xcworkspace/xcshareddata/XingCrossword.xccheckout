@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0577DAFF-8531-46B7-AEAB-4CA1DB1605A5</string>
+	<string>BAC90E53-DCCB-4A81-863E-A4B401603699</string>
 	<key>IDESourceControlProjectName</key>
-	<string>xing-crossword</string>
+	<string>XingCrossword</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>FDE509C5-B4AB-4957-82E4-1552B1A726B4</key>
 		<string>ssh://github.com/Originate/xing-crossword.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>xing-crossword.xcworkspace</string>
+	<string>XingCrossword.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>FDE509C5-B4AB-4957-82E4-1552B1A726B4</key>
