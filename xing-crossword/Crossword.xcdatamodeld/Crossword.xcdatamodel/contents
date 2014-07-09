@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Item" representedClassName="Item" syncable="YES">
+        <attribute name="direction" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="hint" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="input" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="puzzle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Puzzle" inverseName="items" inverseEntity="Puzzle" syncable="YES"/>
+    </entity>
+    <entity name="Puzzle" representedClassName="Puzzle" syncable="YES">
+        <attribute name="map" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="puzzleId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Item" inverseName="puzzle" inverseEntity="Item" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Puzzle" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Item" positionX="-36" positionY="36" width="128" height="133"/>
+    </elements>
+</model>
