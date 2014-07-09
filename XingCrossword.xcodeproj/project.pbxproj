@@ -11,6 +11,8 @@
 		1611C12C196CFC780060A5BA /* Crossword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1611C12A196CFC780060A5BA /* Crossword.xcdatamodeld */; };
 		1611C130196D0E470060A5BA /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C12F196D0E470060A5BA /* Item.m */; };
 		1611C133196D0E480060A5BA /* Puzzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C132196D0E480060A5BA /* Puzzle.m */; };
+		1611C137196D493F0060A5BA /* PuzzleGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C136196D493F0060A5BA /* PuzzleGame.m */; };
+		1611C13A196D4ACB0060A5BA /* PuzzleGameSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C139196D4ACB0060A5BA /* PuzzleGameSpec.m */; };
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
 		92984248195E9BD900136AB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92984247195E9BD900136AB0 /* Foundation.framework */; };
@@ -29,7 +31,6 @@
 		9298426F195E9BD900136AB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92984247195E9BD900136AB0 /* Foundation.framework */; };
 		92984270195E9BD900136AB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9298424B195E9BD900136AB0 /* UIKit.framework */; };
 		92984278195E9BD900136AB0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92984276195E9BD900136AB0 /* InfoPlist.strings */; };
-		9298427A195E9BD900136AB0 /* xing_crosswordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92984279195E9BD900136AB0 /* xing_crosswordTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,9 @@
 		1611C12F196D0E470060A5BA /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		1611C131196D0E480060A5BA /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Puzzle.h; sourceTree = "<group>"; };
 		1611C132196D0E480060A5BA /* Puzzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Puzzle.m; sourceTree = "<group>"; };
+		1611C135196D493F0060A5BA /* PuzzleGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleGame.h; sourceTree = "<group>"; };
+		1611C136196D493F0060A5BA /* PuzzleGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleGame.m; sourceTree = "<group>"; };
+		1611C139196D4ACB0060A5BA /* PuzzleGameSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleGameSpec.m; sourceTree = "<group>"; };
 		64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.xcconfig"; path = "Pods/Pods-XingCrosswordTests.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +78,6 @@
 		9298426D195E9BD900136AB0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		92984275195E9BD900136AB0 /* XingCrosswordTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XingCrosswordTests-Info.plist"; sourceTree = "<group>"; };
 		92984277195E9BD900136AB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		92984279195E9BD900136AB0 /* xing_crosswordTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xing_crosswordTests.m; sourceTree = "<group>"; };
 		CC5E68F9A46A401BA6B5A828 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +136,23 @@
 			name = "Managed Objects";
 			sourceTree = "<group>";
 		};
+		1611C134196D49050060A5BA /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				1611C135196D493F0060A5BA /* PuzzleGame.h */,
+				1611C136196D493F0060A5BA /* PuzzleGame.m */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		1611C138196D4AA20060A5BA /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				1611C139196D4ACB0060A5BA /* PuzzleGameSpec.m */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
 		9298423B195E9BD900136AB0 = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +201,7 @@
 				92984262195E9BD900136AB0 /* MyScene.m */,
 				92984264195E9BD900136AB0 /* Spaceship.png */,
 				92984266195E9BD900136AB0 /* Images.xcassets */,
+				1611C134196D49050060A5BA /* Game */,
 				1611C129196CFB140060A5BA /* Data Models */,
 				92984250195E9BD900136AB0 /* Supporting Files */,
 			);
@@ -202,7 +223,7 @@
 		92984273195E9BD900136AB0 /* XingCrosswordTests */ = {
 			isa = PBXGroup;
 			children = (
-				92984279195E9BD900136AB0 /* xing_crosswordTests.m */,
+				1611C138196D4AA20060A5BA /* Game */,
 				92984274195E9BD900136AB0 /* Supporting Files */,
 			);
 			name = XingCrosswordTests;
@@ -387,6 +408,7 @@
 				1611C130196D0E470060A5BA /* Item.m in Sources */,
 				1611C133196D0E480060A5BA /* Puzzle.m in Sources */,
 				92984263195E9BD900136AB0 /* MyScene.m in Sources */,
+				1611C137196D493F0060A5BA /* PuzzleGame.m in Sources */,
 				92984260195E9BD900136AB0 /* ViewController.m in Sources */,
 				1611C12C196CFC780060A5BA /* Crossword.xcdatamodeld in Sources */,
 				9298425A195E9BD900136AB0 /* AppDelegate.m in Sources */,
@@ -398,7 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9298427A195E9BD900136AB0 /* xing_crosswordTests.m in Sources */,
+				1611C13A196D4ACB0060A5BA /* PuzzleGameSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
