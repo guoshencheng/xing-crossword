@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1611C128196CF0640060A5BA /* PayloadJSONs.md in Resources */ = {isa = PBXBuildFile; fileRef = 1611C127196CF0640060A5BA /* PayloadJSONs.md */; };
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
 		92984248195E9BD900136AB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92984247195E9BD900136AB0 /* Foundation.framework */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1611C127196CF0640060A5BA /* PayloadJSONs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PayloadJSONs.md; path = Docs/PayloadJSONs.md; sourceTree = "<group>"; };
 		64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.xcconfig"; path = "Pods/Pods-XingCrosswordTests.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,9 +97,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1611C126196CEF960060A5BA /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				1611C127196CF0640060A5BA /* PayloadJSONs.md */,
+			);
+			name = Docs;
+			sourceTree = "<group>";
+		};
 		9298423B195E9BD900136AB0 = {
 			isa = PBXGroup;
 			children = (
+				1611C126196CEF960060A5BA /* Docs */,
 				9298424F195E9BD900136AB0 /* XingCrossword */,
 				92984273195E9BD900136AB0 /* XingCrosswordTests */,
 				92984246195E9BD900136AB0 /* Frameworks */,
@@ -258,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1611C128196CF0640060A5BA /* PayloadJSONs.md in Resources */,
 				92984254195E9BD900136AB0 /* InfoPlist.strings in Resources */,
 				92984267195E9BD900136AB0 /* Images.xcassets in Resources */,
 				92984265195E9BD900136AB0 /* Spaceship.png in Resources */,
