@@ -179,6 +179,14 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		161CCDD9196E473700C8BF34 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				161CCDDA196E483200C8BF34 /* PuzzleUtilitySpec.m */,
+			);
+			name = "Data Models";
+			sourceTree = "<group>";
+		};
 		9286C060196E4C2000DE70FA /* Data Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,14 +196,6 @@
 				9286C068196E4D3200DE70FA /* Puzzle+DataManager.m */,
 			);
 			name = "Data Manager";
-      sourceTree = "<group>";
-    };
-		161CCDD9196E473700C8BF34 /* Data Models */ = {
-			isa = PBXGroup;
-			children = (
-				161CCDDA196E483200C8BF34 /* PuzzleUtilitySpec.m */,
-			);
-			name = "Data Models";
 			sourceTree = "<group>";
 		};
 		9298423B195E9BD900136AB0 = {
@@ -591,6 +591,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XingCrossword/XingCrossword-Prefix.pch";
 				INFOPLIST_FILE = "XingCrossword/XingCrossword-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
@@ -606,6 +607,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XingCrossword/XingCrossword-Prefix.pch";
 				INFOPLIST_FILE = "XingCrossword/XingCrossword-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
