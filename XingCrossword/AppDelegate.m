@@ -7,13 +7,17 @@
 //
 
 #import "AppDelegate.h"
+#import "CoreData+MagicalRecord.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    return YES;
+    //Core Data Setup
+  [MagicalRecord setShouldDeleteStoreOnModelMismatch:YES];
+  [MagicalRecord setupCoreDataStackWithStoreNamed:@"XingCross.sqlite"];
+  
+  return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
