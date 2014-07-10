@@ -20,9 +20,9 @@
 		1611C156196D50AE0060A5BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C153196D50AE0060A5BA /* ViewController.m */; };
 		1611C158196D50E00060A5BA /* PuzzleGameSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C157196D50E00060A5BA /* PuzzleGameSpec.m */; };
 		1611C15A196D50EE0060A5BA /* XingCrosswordTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1611C159196D50EE0060A5BA /* XingCrosswordTests-Info.plist */; };
-		1611C15E196D51190060A5BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1611C15C196D51190060A5BA /* InfoPlist.strings */; };
-		1611C162196D512B0060A5BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1611C160196D512B0060A5BA /* InfoPlist.strings */; };
-		1611C166196D513D0060A5BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1611C164196D513D0060A5BA /* Main.storyboard */; };
+		161CCDCA196E339300C8BF34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161CCDC8196E339300C8BF34 /* Main.storyboard */; };
+		161CCDCD196E33B200C8BF34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 161CCDCB196E33B200C8BF34 /* InfoPlist.strings */; };
+		161CCDD0196E33BD00C8BF34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 161CCDCE196E33BD00C8BF34 /* InfoPlist.strings */; };
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
 		92984248195E9BD900136AB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92984247195E9BD900136AB0 /* Foundation.framework */; };
@@ -65,9 +65,9 @@
 		1611C153196D50AE0060A5BA /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = XingCrossword/ViewController.m; sourceTree = SOURCE_ROOT; };
 		1611C157196D50E00060A5BA /* PuzzleGameSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PuzzleGameSpec.m; path = XingCrosswordTests/PuzzleGameSpec.m; sourceTree = SOURCE_ROOT; };
 		1611C159196D50EE0060A5BA /* XingCrosswordTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "XingCrosswordTests-Info.plist"; path = "XingCrosswordTests/XingCrosswordTests-Info.plist"; sourceTree = SOURCE_ROOT; };
-		1611C15D196D51190060A5BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
-		1611C161196D512B0060A5BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
-		1611C165196D513D0060A5BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		161CCDC9196E339300C8BF34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = XingCrossword/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		161CCDCC196E33B200C8BF34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = XingCrossword/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		161CCDCF196E33BD00C8BF34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = XingCrosswordTests/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.xcconfig"; path = "Pods/Pods-XingCrosswordTests.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,7 +199,7 @@
 				1611C152196D50AE0060A5BA /* ViewController.h */,
 				1611C153196D50AE0060A5BA /* ViewController.m */,
 				1611C14C196D50A00060A5BA /* Images.xcassets */,
-				1611C164196D513D0060A5BA /* Main.storyboard */,
+				161CCDC8196E339300C8BF34 /* Main.storyboard */,
 				1611C134196D49050060A5BA /* Game */,
 				1611C129196CFB140060A5BA /* Data Models */,
 				92984250195E9BD900136AB0 /* Supporting Files */,
@@ -211,7 +211,7 @@
 		92984250195E9BD900136AB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1611C15C196D51190060A5BA /* InfoPlist.strings */,
+				161CCDCB196E33B200C8BF34 /* InfoPlist.strings */,
 				1611C14A196D50950060A5BA /* main.m */,
 				1611C149196D50750060A5BA /* XingCrossword-Prefix.pch */,
 				1611C147196D50590060A5BA /* XingCrossword-Info.plist */,
@@ -232,7 +232,7 @@
 		92984274195E9BD900136AB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1611C160196D512B0060A5BA /* InfoPlist.strings */,
+				161CCDCE196E33BD00C8BF34 /* InfoPlist.strings */,
 				1611C159196D50EE0060A5BA /* XingCrosswordTests-Info.plist */,
 			);
 			name = "Supporting Files";
@@ -318,10 +318,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161CCDCA196E339300C8BF34 /* Main.storyboard in Resources */,
+				161CCDD0196E33BD00C8BF34 /* InfoPlist.strings in Resources */,
+				161CCDCD196E33B200C8BF34 /* InfoPlist.strings in Resources */,
 				1611C128196CF0640060A5BA /* PayloadJSONs.md in Resources */,
-				1611C162196D512B0060A5BA /* InfoPlist.strings in Resources */,
-				1611C15E196D51190060A5BA /* InfoPlist.strings in Resources */,
-				1611C166196D513D0060A5BA /* Main.storyboard in Resources */,
 				1611C148196D50590060A5BA /* XingCrossword-Info.plist in Resources */,
 				1611C14D196D50A00060A5BA /* Images.xcassets in Resources */,
 				1611C15A196D50EE0060A5BA /* XingCrosswordTests-Info.plist in Resources */,
@@ -435,31 +435,28 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1611C15C196D51190060A5BA /* InfoPlist.strings */ = {
+		161CCDC8196E339300C8BF34 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1611C15D196D51190060A5BA /* en */,
-			);
-			name = InfoPlist.strings;
-			path = ../XingCrossword/en.lproj;
-			sourceTree = "<group>";
-		};
-		1611C160196D512B0060A5BA /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1611C161196D512B0060A5BA /* en */,
-			);
-			name = InfoPlist.strings;
-			path = ../XingCrosswordTests/en.lproj;
-			sourceTree = "<group>";
-		};
-		1611C164196D513D0060A5BA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1611C165196D513D0060A5BA /* Base */,
+				161CCDC9196E339300C8BF34 /* Base */,
 			);
 			name = Main.storyboard;
-			path = ../XingCrossword/Base.lproj;
+			sourceTree = "<group>";
+		};
+		161CCDCB196E33B200C8BF34 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				161CCDCC196E33B200C8BF34 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		161CCDCE196E33BD00C8BF34 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				161CCDCF196E33BD00C8BF34 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
