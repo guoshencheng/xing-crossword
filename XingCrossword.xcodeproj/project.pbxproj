@@ -24,6 +24,7 @@
 		161CCDD4196E3AE800C8BF34 /* Item+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CCDD3196E3AE800C8BF34 /* Item+Utility.m */; };
 		161CCDD5196E3B8600C8BF34 /* Crossword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1611C13E196D503B0060A5BA /* Crossword.xcdatamodeld */; };
 		161CCDD8196E43CF00C8BF34 /* Puzzle+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CCDD7196E43CF00C8BF34 /* Puzzle+Utility.m */; };
+		161CCDDB196E483200C8BF34 /* PuzzleUtilitySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CCDDA196E483200C8BF34 /* PuzzleUtilitySpec.m */; };
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
 		9286C066196E4CC500DE70FA /* Item+DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C065196E4CC500DE70FA /* Item+DataManager.m */; };
@@ -75,6 +76,7 @@
 		161CCDD3196E3AE800C8BF34 /* Item+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Item+Utility.m"; path = "XingCrossword/Item+Utility.m"; sourceTree = SOURCE_ROOT; };
 		161CCDD6196E43CF00C8BF34 /* Puzzle+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Puzzle+Utility.h"; path = "XingCrossword/Puzzle+Utility.h"; sourceTree = SOURCE_ROOT; };
 		161CCDD7196E43CF00C8BF34 /* Puzzle+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Puzzle+Utility.m"; path = "XingCrossword/Puzzle+Utility.m"; sourceTree = SOURCE_ROOT; };
+		161CCDDA196E483200C8BF34 /* PuzzleUtilitySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PuzzleUtilitySpec.m; path = XingCrosswordTests/PuzzleUtilitySpec.m; sourceTree = SOURCE_ROOT; };
 		64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.xcconfig"; path = "Pods/Pods-XingCrosswordTests.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +188,14 @@
 				9286C068196E4D3200DE70FA /* Puzzle+DataManager.m */,
 			);
 			name = "Data Manager";
+      sourceTree = "<group>";
+    };
+		161CCDD9196E473700C8BF34 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				161CCDDA196E483200C8BF34 /* PuzzleUtilitySpec.m */,
+			);
+			name = "Data Models";
 			sourceTree = "<group>";
 		};
 		9298423B195E9BD900136AB0 = {
@@ -258,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				1611C138196D4AA20060A5BA /* Game */,
+				161CCDD9196E473700C8BF34 /* Data Models */,
 				92984274195E9BD900136AB0 /* Supporting Files */,
 			);
 			name = XingCrosswordTests;
@@ -459,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161CCDDB196E483200C8BF34 /* PuzzleUtilitySpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,19 +616,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/xing-crossword.app/xing-crossword";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XingCrossword.app/XingCrossword";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "xing-crossword/xing-crossword-Prefix.pch";
+				GCC_PREFIX_HEADER = "XingCrossword/XingCrossword-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "xing-crosswordTests/XingCrosswordTests-Info.plist";
+				INFOPLIST_FILE = "XingCrosswordTests/XingCrosswordTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -627,15 +639,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/xing-crossword.app/xing-crossword";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XingCrossword.app/XingCrossword";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "xing-crossword/xing-crossword-Prefix.pch";
-				INFOPLIST_FILE = "xing-crosswordTests/XingCrosswordTests-Info.plist";
+				GCC_PREFIX_HEADER = "XingCrossword/XingCrossword-Prefix.pch";
+				INFOPLIST_FILE = "XingCrosswordTests/XingCrosswordTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

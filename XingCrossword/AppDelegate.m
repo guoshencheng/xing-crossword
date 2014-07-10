@@ -17,6 +17,11 @@
   [MagicalRecord setShouldDeleteStoreOnModelMismatch:YES];
   [MagicalRecord setupCoreDataStackWithStoreNamed:@"XingCross.sqlite"];
   
+  if (isRunningTests()) {
+    return YES;
+  }
+  
+  // Override point for customization after application launch.
   return YES;
 }
 							
@@ -45,6 +50,18 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Helper Methods
+
+static BOOL isRunningTests(void) __attribute__((const));
+
+static BOOL isRunningTests(void) {
+  NSDictionary* environment = [[NSProcessInfo processInfo] environment];
+  NSString* injectBundle = environment[@"XCInjectBundle"];
+  NSString* pathExtension = [injectBundle pathExtension];
+  
+  return ([pathExtension isEqualToString:@"octest"] || [pathExtension isEqualToString:@"xctest"]);
 }
 
 @end
