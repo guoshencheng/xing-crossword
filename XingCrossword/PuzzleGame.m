@@ -8,6 +8,7 @@
 
 #import "PuzzleGame.h"
 #import "Puzzle+Utility.h"
+#import "Puzzle+DataManager.h"
 #import "AFHTTPRequestOperationManager.h"
 
 #define DATA_JASON_URL_STRING @"http://crossword.sinaapp.com/api/current_puzzle.json"
@@ -51,9 +52,13 @@
 -  (void) getResponsFromWeb {
   AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
   [manager GET:DATA_JASON_URL_STRING parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    NSLog(@"JSON: %@", responseObject);
+    NSDictionary *response = responseObject;;
+    NSString *puzzleId = [response objectForKey:@"id"];
+    [Puzzle createPuzzleWithResponse:response];
+    NSLog(@"%@", [Puzzle getMapWithPuzzleid:puzzleId]);
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     NSLog(@"Error: %@", error);
-  }];}
+  }];
+}
 
 @end

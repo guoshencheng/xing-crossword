@@ -7,11 +7,16 @@
 //
 
 #import "AppDelegate.h"
+#import "CoreData+MagicalRecord.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Core Data Setup
+  [MagicalRecord setShouldDeleteStoreOnModelMismatch:YES];
+  [MagicalRecord setupCoreDataStackWithStoreNamed:@"XingCross.sqlite"];
+  
   if (isRunningTests()) {
     return YES;
   }
