@@ -1,5 +1,6 @@
 
 #import "MyScene.h"
+#import "PuzzleGame.h"
 
 @implementation MyScene
 
@@ -18,6 +19,7 @@
 }
 
 - (void)initWordArray {
+  PuzzleGame *puzzleGame = [[PuzzleGame alloc] initWithPuzzle:nil size:CGSizeMake(0, 0)];
   self.wordArray = @[
                      @[@"1",@"1",@"1",@"1",@"1",@"1",@"0",@"0",@"1",@"1",@"1",@"0",@"0",@"1"],
                      @[@"1",@"0",@"1",@"0",@"0",@"1",@"1",@"1",@"1",@"0",@"1",@"1",@"1",@"1"],
