@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1611C128196CF0640060A5BA /* PayloadJSONs.md in Resources */ = {isa = PBXBuildFile; fileRef = 1611C127196CF0640060A5BA /* PayloadJSONs.md */; };
 		1611C13D196D502C0060A5BA /* PuzzleGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C13C196D502C0060A5BA /* PuzzleGame.m */; };
-		1611C140196D503C0060A5BA /* Crossword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1611C13E196D503B0060A5BA /* Crossword.xcdatamodeld */; };
 		1611C145196D50480060A5BA /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C142196D50480060A5BA /* Item.m */; };
 		1611C146196D50480060A5BA /* Puzzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C144196D50480060A5BA /* Puzzle.m */; };
 		1611C148196D50590060A5BA /* XingCrossword-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1611C147196D50590060A5BA /* XingCrossword-Info.plist */; };
@@ -18,11 +17,12 @@
 		1611C154196D50AE0060A5BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C14F196D50AE0060A5BA /* AppDelegate.m */; };
 		1611C155196D50AE0060A5BA /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C151196D50AE0060A5BA /* MyScene.m */; };
 		1611C156196D50AE0060A5BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C153196D50AE0060A5BA /* ViewController.m */; };
-		1611C158196D50E00060A5BA /* PuzzleGameSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C157196D50E00060A5BA /* PuzzleGameSpec.m */; };
 		1611C15A196D50EE0060A5BA /* XingCrosswordTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1611C159196D50EE0060A5BA /* XingCrosswordTests-Info.plist */; };
 		161CCDCA196E339300C8BF34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161CCDC8196E339300C8BF34 /* Main.storyboard */; };
 		161CCDCD196E33B200C8BF34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 161CCDCB196E33B200C8BF34 /* InfoPlist.strings */; };
 		161CCDD0196E33BD00C8BF34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 161CCDCE196E33BD00C8BF34 /* InfoPlist.strings */; };
+		161CCDD4196E3AE800C8BF34 /* Item+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CCDD3196E3AE800C8BF34 /* Item+Utility.m */; };
+		161CCDD5196E3B8600C8BF34 /* Crossword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1611C13E196D503B0060A5BA /* Crossword.xcdatamodeld */; };
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
 		92984248195E9BD900136AB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92984247195E9BD900136AB0 /* Foundation.framework */; };
@@ -68,6 +68,8 @@
 		161CCDC9196E339300C8BF34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = XingCrossword/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		161CCDCC196E33B200C8BF34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = XingCrossword/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		161CCDCF196E33BD00C8BF34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = XingCrosswordTests/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		161CCDD2196E3AE800C8BF34 /* Item+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Item+Utility.h"; path = "XingCrossword/Item+Utility.h"; sourceTree = SOURCE_ROOT; };
+		161CCDD3196E3AE800C8BF34 /* Item+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Item+Utility.m"; path = "XingCrossword/Item+Utility.m"; sourceTree = SOURCE_ROOT; };
 		64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.xcconfig"; path = "Pods/Pods-XingCrosswordTests.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +123,7 @@
 			children = (
 				1611C13E196D503B0060A5BA /* Crossword.xcdatamodeld */,
 				1611C12D196D0E210060A5BA /* Managed Objects */,
+				161CCDD1196E3AB600C8BF34 /* Utilities */,
 			);
 			name = "Data Models";
 			sourceTree = "<group>";
@@ -151,6 +154,15 @@
 				1611C157196D50E00060A5BA /* PuzzleGameSpec.m */,
 			);
 			name = Game;
+			sourceTree = "<group>";
+		};
+		161CCDD1196E3AB600C8BF34 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				161CCDD2196E3AE800C8BF34 /* Item+Utility.h */,
+				161CCDD3196E3AE800C8BF34 /* Item+Utility.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		9298423B195E9BD900136AB0 = {
@@ -405,14 +417,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161CCDD5196E3B8600C8BF34 /* Crossword.xcdatamodeld in Sources */,
 				1611C154196D50AE0060A5BA /* AppDelegate.m in Sources */,
-				1611C140196D503C0060A5BA /* Crossword.xcdatamodeld in Sources */,
+				161CCDD4196E3AE800C8BF34 /* Item+Utility.m in Sources */,
 				1611C156196D50AE0060A5BA /* ViewController.m in Sources */,
 				1611C146196D50480060A5BA /* Puzzle.m in Sources */,
 				1611C155196D50AE0060A5BA /* MyScene.m in Sources */,
 				1611C145196D50480060A5BA /* Item.m in Sources */,
 				1611C14B196D50950060A5BA /* main.m in Sources */,
-				1611C158196D50E00060A5BA /* PuzzleGameSpec.m in Sources */,
 				1611C13D196D502C0060A5BA /* PuzzleGame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,8 +551,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "xing-crossword/XingCrossword-Prefix.pch";
-				INFOPLIST_FILE = "xing-crossword/XingCrossword-Info.plist";
+				GCC_PREFIX_HEADER = "XingCrossword/XingCrossword-Prefix.pch";
+				INFOPLIST_FILE = "XingCrossword/XingCrossword-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
@@ -554,8 +566,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "xing-crossword/XingCrossword-Prefix.pch";
-				INFOPLIST_FILE = "xing-crossword/XingCrossword-Info.plist";
+				GCC_PREFIX_HEADER = "XingCrossword/XingCrossword-Prefix.pch";
+				INFOPLIST_FILE = "XingCrossword/XingCrossword-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
