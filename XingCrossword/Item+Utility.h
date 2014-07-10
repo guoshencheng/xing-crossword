@@ -8,6 +8,14 @@
 
 #import "Item.h"
 
+typedef enum {
+  ItemDirectionAcross = 0,
+  ItemDirectionDown = 1,
+} PuzzleItemDirection;
+
 @interface Item (Utility)
+
+- (BOOL)isAcrossItem;
+- (BOOL)isDownItem;
 
 @end

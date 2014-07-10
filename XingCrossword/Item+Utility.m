@@ -10,4 +10,12 @@
 
 @implementation Item (Utility)
 
+- (BOOL)isAcrossItem {
+  return ItemDirectionAcross == [self.direction intValue];
+}
+
+- (BOOL)isDownItem {
+  return ItemDirectionDown == [self.direction intValue];
+}
+
 @end
