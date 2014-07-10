@@ -13,4 +13,6 @@
 - (NSArray *)orderedDownItems;
 - (NSArray *)orderedAcrossItems;
 
+- (NSArray *)mapGrid;
+
 @end

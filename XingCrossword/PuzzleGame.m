@@ -7,7 +7,9 @@
 //
 
 #import "PuzzleGame.h"
+#import "Puzzle+Utility.h"
 #import "AFHTTPRequestOperationManager.h"
+
 #define DATA_JASON_URL_STRING @"http://crossword.sinaapp.com/api/current_puzzle.json"
 
 @interface PuzzleGame ()
@@ -25,11 +27,22 @@
   self = [super init];
   if (self) {
     [self getResponsFromWeb];
+    self.downItems = [puzzle orderedDownItems];
+    self.acrossItems = [puzzle orderedAcrossItems];
+    self.cellSize = CGSizeMake(0.f, 0.f);
   }
   return self;
 }
 
 #pragma mark - Public Methods
+
+- (NSUInteger)rowsCount {
+  return 0;
+}
+
+- (NSUInteger)columnsCount {
+  return 0;
+}
 
 - (SKSpriteNode *)cellAtRow:(NSUInteger)rowIndex column:(NSUInteger)columnIndex {
   return nil;

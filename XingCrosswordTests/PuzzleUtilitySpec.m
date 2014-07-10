@@ -79,4 +79,15 @@
   XCTAssertEqual(acrossItems[2], acrossItem2, @"Item 2 goes third");
 }
 
+- (void)testGetMapGrid {
+  Puzzle *puzzle = [Puzzle MR_createEntity];
+  puzzle.map = @"0101010101,1010101010,1010110101,1101000101,1000101010";
+  NSArray *grid = [puzzle mapGrid];
+  XCTAssertEqual(5, [grid count], @"Grid should has right row count");
+  XCTAssertEqual(10, [grid[0] count], @"Grid should has right column count");
+  XCTAssertEqualObjects(@"1010101010", [grid[1] componentsJoinedByString:@""], @"Grid should has correct vlaues");
+  XCTAssertEqualObjects(@"0", grid[4][3], @"Cell should has correct vlaue");
+  
+}
+
 @end

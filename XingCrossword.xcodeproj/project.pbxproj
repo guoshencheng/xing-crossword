@@ -25,6 +25,9 @@
 		161CCDD5196E3B8600C8BF34 /* Crossword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1611C13E196D503B0060A5BA /* Crossword.xcdatamodeld */; };
 		161CCDD8196E43CF00C8BF34 /* Puzzle+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CCDD7196E43CF00C8BF34 /* Puzzle+Utility.m */; };
 		161CCDDB196E483200C8BF34 /* PuzzleUtilitySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CCDDA196E483200C8BF34 /* PuzzleUtilitySpec.m */; };
+		161CCDDC196E7EF700C8BF34 /* PuzzleGameSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C157196D50E00060A5BA /* PuzzleGameSpec.m */; };
+		161CCDDF196E8C8F00C8BF34 /* StringUtilitySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CCDDE196E8C8F00C8BF34 /* StringUtilitySpec.m */; };
+		161CCDE3196E8FB000C8BF34 /* NSString+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CCDE2196E8FB000C8BF34 /* NSString+Utility.m */; };
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
 		92984248195E9BD900136AB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92984247195E9BD900136AB0 /* Foundation.framework */; };
@@ -75,6 +78,9 @@
 		161CCDD6196E43CF00C8BF34 /* Puzzle+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Puzzle+Utility.h"; path = "XingCrossword/Puzzle+Utility.h"; sourceTree = SOURCE_ROOT; };
 		161CCDD7196E43CF00C8BF34 /* Puzzle+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Puzzle+Utility.m"; path = "XingCrossword/Puzzle+Utility.m"; sourceTree = SOURCE_ROOT; };
 		161CCDDA196E483200C8BF34 /* PuzzleUtilitySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PuzzleUtilitySpec.m; path = XingCrosswordTests/PuzzleUtilitySpec.m; sourceTree = SOURCE_ROOT; };
+		161CCDDE196E8C8F00C8BF34 /* StringUtilitySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringUtilitySpec.m; path = XingCrosswordTests/StringUtilitySpec.m; sourceTree = SOURCE_ROOT; };
+		161CCDE1196E8FB000C8BF34 /* NSString+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Utility.h"; path = "XingCrossword/NSString+Utility.h"; sourceTree = SOURCE_ROOT; };
+		161CCDE2196E8FB000C8BF34 /* NSString+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Utility.m"; path = "XingCrossword/NSString+Utility.m"; sourceTree = SOURCE_ROOT; };
 		64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.xcconfig"; path = "Pods/Pods-XingCrosswordTests.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +186,23 @@
 			name = "Data Models";
 			sourceTree = "<group>";
 		};
+		161CCDDD196E8C6A00C8BF34 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				161CCDDE196E8C8F00C8BF34 /* StringUtilitySpec.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		161CCDE0196E8F9600C8BF34 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				161CCDE1196E8FB000C8BF34 /* NSString+Utility.h */,
+				161CCDE2196E8FB000C8BF34 /* NSString+Utility.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		9298423B195E9BD900136AB0 = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +252,7 @@
 				161CCDC8196E339300C8BF34 /* Main.storyboard */,
 				1611C134196D49050060A5BA /* Game */,
 				1611C129196CFB140060A5BA /* Data Models */,
+				161CCDE0196E8F9600C8BF34 /* Utilities */,
 				92984250195E9BD900136AB0 /* Supporting Files */,
 			);
 			name = XingCrossword;
@@ -251,6 +275,7 @@
 			children = (
 				1611C138196D4AA20060A5BA /* Game */,
 				161CCDD9196E473700C8BF34 /* Data Models */,
+				161CCDDD196E8C6A00C8BF34 /* Utilities */,
 				92984274195E9BD900136AB0 /* Supporting Files */,
 			);
 			name = XingCrosswordTests;
@@ -436,6 +461,7 @@
 				161CCDD5196E3B8600C8BF34 /* Crossword.xcdatamodeld in Sources */,
 				1611C154196D50AE0060A5BA /* AppDelegate.m in Sources */,
 				161CCDD8196E43CF00C8BF34 /* Puzzle+Utility.m in Sources */,
+				161CCDE3196E8FB000C8BF34 /* NSString+Utility.m in Sources */,
 				161CCDD4196E3AE800C8BF34 /* Item+Utility.m in Sources */,
 				1611C156196D50AE0060A5BA /* ViewController.m in Sources */,
 				1611C146196D50480060A5BA /* Puzzle.m in Sources */,
@@ -450,6 +476,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161CCDDC196E7EF700C8BF34 /* PuzzleGameSpec.m in Sources */,
+				161CCDDF196E8C8F00C8BF34 /* StringUtilitySpec.m in Sources */,
 				161CCDDB196E483200C8BF34 /* PuzzleUtilitySpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

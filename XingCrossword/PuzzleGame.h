@@ -13,6 +13,9 @@
 
 - (instancetype)initWithPuzzle:(Puzzle *)puzzle size:(CGSize)size;
 
+- (NSUInteger)rowsCount;
+- (NSUInteger)columnsCount;
+
 - (SKSpriteNode *)cellAtRow:(NSUInteger)rowIndex column:(NSUInteger)columnIndex;
 
 @end

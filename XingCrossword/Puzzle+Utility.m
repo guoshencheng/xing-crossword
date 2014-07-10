@@ -8,6 +8,7 @@
 
 #import "Puzzle+Utility.h"
 #import "Item+Utility.h"
+#import "NSString+Utility.h"
 
 @implementation Puzzle (Utility)
 
@@ -23,6 +24,15 @@
   return [self orderedItemsWithFilter:^BOOL(Item *item) {
     return [item isAcrossItem];
   }];
+}
+
+- (NSArray *)mapGrid {
+  NSArray *rows = [self.map componentsSeparatedByString:@","];
+  NSMutableArray *grid = [NSMutableArray arrayWithCapacity:[rows count]];
+  for (NSString *row in rows) {
+    [grid addObject:[row letterArray]];
+  }
+  return grid;
 }
 
 #pragma mark - Private Methods
