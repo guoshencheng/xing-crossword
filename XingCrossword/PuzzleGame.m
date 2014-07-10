@@ -8,6 +8,15 @@
 
 #import "PuzzleGame.h"
 
+@interface PuzzleGame ()
+
+@property (nonatomic, assign) CGSize cellSize;
+@property (nonatomic, strong) NSArray *downItems;
+@property (nonatomic, strong) NSArray *acrossItems;
+
+@end
+
+
 @implementation PuzzleGame
 
 - (instancetype)initWithPuzzle:(Puzzle *)puzzle size:(CGSize)size {
