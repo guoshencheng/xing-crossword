@@ -22,7 +22,6 @@
 		161CCDCD196E33B200C8BF34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 161CCDCB196E33B200C8BF34 /* InfoPlist.strings */; };
 		161CCDD0196E33BD00C8BF34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 161CCDCE196E33BD00C8BF34 /* InfoPlist.strings */; };
 		161CCDD4196E3AE800C8BF34 /* Item+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CCDD3196E3AE800C8BF34 /* Item+Utility.m */; };
-		161CCDD5196E3B8600C8BF34 /* Crossword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1611C13E196D503B0060A5BA /* Crossword.xcdatamodeld */; };
 		161CCDD8196E43CF00C8BF34 /* Puzzle+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CCDD7196E43CF00C8BF34 /* Puzzle+Utility.m */; };
 		161CCDDB196E483200C8BF34 /* PuzzleUtilitySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CCDDA196E483200C8BF34 /* PuzzleUtilitySpec.m */; };
 		161CCDDC196E7EF700C8BF34 /* PuzzleGameSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1611C157196D50E00060A5BA /* PuzzleGameSpec.m */; };
@@ -30,6 +29,7 @@
 		161CCDE3196E8FB000C8BF34 /* NSString+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CCDE2196E8FB000C8BF34 /* NSString+Utility.m */; };
 		16427F2C196FCA5C00C9153E /* ColorThemeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 16427F2B196FCA5C00C9153E /* ColorThemeSpec.m */; };
 		16427F2F196FCB1F00C9153E /* ColorTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 16427F2E196FCB1F00C9153E /* ColorTheme.m */; };
+		16427F3B196FDE4400C9153E /* Crossword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16427F39196FDE4400C9153E /* Crossword.xcdatamodeld */; };
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
 		9286C066196E4CC500DE70FA /* Item+DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C065196E4CC500DE70FA /* Item+DataManager.m */; };
@@ -57,7 +57,6 @@
 		1611C127196CF0640060A5BA /* PayloadJSONs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PayloadJSONs.md; path = Docs/PayloadJSONs.md; sourceTree = "<group>"; };
 		1611C13B196D502C0060A5BA /* PuzzleGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PuzzleGame.h; path = XingCrossword/PuzzleGame.h; sourceTree = SOURCE_ROOT; };
 		1611C13C196D502C0060A5BA /* PuzzleGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PuzzleGame.m; path = XingCrossword/PuzzleGame.m; sourceTree = SOURCE_ROOT; };
-		1611C13F196D503C0060A5BA /* Crossword.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Crossword.xcdatamodel; sourceTree = "<group>"; };
 		1611C141196D50480060A5BA /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = XingCrossword/Item.h; sourceTree = SOURCE_ROOT; };
 		1611C142196D50480060A5BA /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = XingCrossword/Item.m; sourceTree = SOURCE_ROOT; };
 		1611C143196D50480060A5BA /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Puzzle.h; path = XingCrossword/Puzzle.h; sourceTree = SOURCE_ROOT; };
@@ -88,6 +87,7 @@
 		16427F2B196FCA5C00C9153E /* ColorThemeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorThemeSpec.m; path = XingCrosswordTests/ColorThemeSpec.m; sourceTree = SOURCE_ROOT; };
 		16427F2D196FCB1F00C9153E /* ColorTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorTheme.h; path = XingCrossword/ColorTheme.h; sourceTree = SOURCE_ROOT; };
 		16427F2E196FCB1F00C9153E /* ColorTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorTheme.m; path = XingCrossword/ColorTheme.m; sourceTree = SOURCE_ROOT; };
+		16427F3A196FDE4400C9153E /* Crossword.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Crossword.xcdatamodel; sourceTree = "<group>"; };
 		64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.xcconfig"; path = "Pods/Pods-XingCrosswordTests.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,7 +143,7 @@
 		1611C129196CFB140060A5BA /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
-				1611C13E196D503B0060A5BA /* Crossword.xcdatamodeld */,
+				16427F39196FDE4400C9153E /* Crossword.xcdatamodeld */,
 				9286C060196E4C2000DE70FA /* Data Manager */,
 				1611C12D196D0E210060A5BA /* Managed Objects */,
 				161CCDD1196E3AB600C8BF34 /* Utilities */,
@@ -282,7 +282,6 @@
 				92984250195E9BD900136AB0 /* Supporting Files */,
 			);
 			name = XingCrossword;
-			path = "xing-crossword";
 			sourceTree = "<group>";
 		};
 		92984250195E9BD900136AB0 /* Supporting Files */ = {
@@ -484,7 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				161CCDD5196E3B8600C8BF34 /* Crossword.xcdatamodeld in Sources */,
+				16427F3B196FDE4400C9153E /* Crossword.xcdatamodeld in Sources */,
 				9286C069196E4D3200DE70FA /* Puzzle+DataManager.m in Sources */,
 				1611C154196D50AE0060A5BA /* AppDelegate.m in Sources */,
 				161CCDD8196E43CF00C8BF34 /* Puzzle+Utility.m in Sources */,
@@ -727,14 +726,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		1611C13E196D503B0060A5BA /* Crossword.xcdatamodeld */ = {
+		16427F39196FDE4400C9153E /* Crossword.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				1611C13F196D503C0060A5BA /* Crossword.xcdatamodel */,
+				16427F3A196FDE4400C9153E /* Crossword.xcdatamodel */,
 			);
-			currentVersion = 1611C13F196D503C0060A5BA /* Crossword.xcdatamodel */;
+			currentVersion = 16427F3A196FDE4400C9153E /* Crossword.xcdatamodel */;
 			name = Crossword.xcdatamodeld;
-			path = ../XingCrossword/Crossword.xcdatamodeld;
+			path = XingCrossword/Crossword.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
