@@ -57,8 +57,8 @@
   [manager GET:DATA_JASON_URL_STRING parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     NSDictionary *response = responseObject;;
     NSString *puzzleId = [response objectForKey:@"id"];
-    [Puzzle createPuzzleWithResponse:response];
-    NSLog(@"%@", [Puzzle getMapWithPuzzleid:puzzleId]);
+    [Puzzle createPuzzleWithResponse:response completion:nil];
+    //NSLog(@"%@", [Puzzle getMapWithPuzzleid:puzzleId]);
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     NSLog(@"Error: %@", error);
   }];

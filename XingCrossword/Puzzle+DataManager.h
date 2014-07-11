@@ -10,7 +10,7 @@
 
 @interface Puzzle (DataManager)
 
-+ (void)createPuzzleWithResponse:(NSDictionary*)response;
-+ (NSString*)getMapWithPuzzleid:(NSString*)puzzleId;
++ (void)createPuzzleWithResponse:(NSDictionary*)response completion:(void(^)(BOOL success, NSError *error))completion;
++ (Puzzle*)findByPuzzleid:(NSString*)puzzleId;
 
 @end

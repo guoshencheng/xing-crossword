@@ -41,6 +41,7 @@
 		9298426E195E9BD900136AB0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9298426D195E9BD900136AB0 /* XCTest.framework */; };
 		9298426F195E9BD900136AB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92984247195E9BD900136AB0 /* Foundation.framework */; };
 		92984270195E9BD900136AB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9298424B195E9BD900136AB0 /* UIKit.framework */; };
+		92B05ABF196E9037007171E9 /* PuzzleDataManagerSpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B05ABE196E9037007171E9 /* PuzzleDataManagerSpc.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		9298424D195E9BD900136AB0 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		9298426C195E9BD900136AB0 /* XingCrosswordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XingCrosswordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9298426D195E9BD900136AB0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		92B05ABE196E9037007171E9 /* PuzzleDataManagerSpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PuzzleDataManagerSpc.m; path = XingCrosswordTests/PuzzleDataManagerSpc.m; sourceTree = SOURCE_ROOT; };
 		CC5E68F9A46A401BA6B5A828 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				161CCDDA196E483200C8BF34 /* PuzzleUtilitySpec.m */,
+				92B05ABE196E9037007171E9 /* PuzzleDataManagerSpc.m */,
 			);
 			name = "Data Models";
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				161CCDDC196E7EF700C8BF34 /* PuzzleGameSpec.m in Sources */,
 				161CCDDF196E8C8F00C8BF34 /* StringUtilitySpec.m in Sources */,
 				161CCDDB196E483200C8BF34 /* PuzzleUtilitySpec.m in Sources */,
+				92B05ABF196E9037007171E9 /* PuzzleDataManagerSpc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

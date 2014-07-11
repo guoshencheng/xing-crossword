@@ -11,7 +11,7 @@
 
 @implementation Puzzle (DataManager)
 
-+ (void)createPuzzleWithResponse:(NSDictionary*)response {
++ (void)createPuzzleWithResponse:(NSDictionary*)response completion:(void(^)(BOOL success, NSError *error))completion{
   NSString *puzzleId = [response objectForKey:@"id"];
   [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
     Puzzle *puzzle = [self findOrCreateWithPuzzleid:puzzleId inContext:localContext];
@@ -19,12 +19,11 @@
     NSString *title = [response objectForKey:@"title"];
     puzzle.title = title;
     puzzle.map = map;
-  } completion:nil];
+  } completion:completion];
 }
 
-+ (NSString*)getMapWithPuzzleid:(NSString*)puzzleId {
-  Puzzle *puzzle = [Puzzle MR_findFirstByAttribute:@"puzzleId" withValue:puzzleId];
-  return puzzle.map;
++ (Puzzle*)findByPuzzleid:(NSString*)puzzleId {
+  return  [Puzzle MR_findFirstByAttribute:@"puzzleId" withValue:puzzleId];
 }
 
 #pragma mark - Private 
