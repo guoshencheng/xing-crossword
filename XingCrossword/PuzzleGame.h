@@ -11,6 +11,9 @@
 
 @interface PuzzleGame : NSObject
 
+@property (readonly, assign) NSUInteger rowsCount;
+@property (readonly, assign) NSUInteger columnsCount;
+
 - (instancetype)initWithPuzzle:(Puzzle *)puzzle size:(CGSize)size;
 
 - (NSUInteger)rowsCount;
