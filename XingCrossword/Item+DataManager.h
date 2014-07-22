@@ -10,9 +10,7 @@
 
 @interface Item (DataManager)
 
-- (void)saveItemWithOrder:(NSNumber*)order andWord:(NSString*)word andHint:(NSString*)hint andInport:(NSString*)input andDirection:(NSNumber*)direction andPuzzle:(NSManagedObject*)puzzle;
-- (void)getItemHintWithOrider:(NSNumber*)order andDirection:(NSNumber*)direction andPuzzle:(NSManagedObject*)puzzle;
-- (void)getItemWordWithOrider:(NSNumber*)order andDirection:(NSNumber*)direction andPuzzle:(NSManagedObject*)puzzle;
-- (void)getItemInputWithOrider:(NSNumber *)order andDirection:(NSNumber *)direction andPuzzle:(NSManagedObject *)puzzle;
+- (void)saveItemWithOrder:(NSDictionary*)response;
+- (void)findByDirection:(NSNumber*)direction andOrder:(NSNumber*)order andPuzzleId:(NSString*)puzzleId;
 
 @end
