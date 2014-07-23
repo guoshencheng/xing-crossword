@@ -10,7 +10,8 @@
 
 @interface Item (DataManager)
 
-- (void)saveItemWithOrder:(NSDictionary*)response;
-- (void)findByDirection:(NSNumber*)direction andOrder:(NSNumber*)order andPuzzleId:(NSString*)puzzleId;
++ (Item*)createAcrossItemWithOrder:(NSDictionary *)response andOrder:(NSNumber *)order completion:(void(^)(BOOL success, NSError *error))completion;
++ (Item*)createDownItemWithOrder:(NSDictionary *)response andOrder:(NSNumber *)order completion:(void(^)(BOOL success, NSError *error))completion;
++ (Item*)findByDirection:(NSNumber*)direction andOrder:(NSNumber*)order andPuzzleId:(NSString*)puzzleId;
 
 @end

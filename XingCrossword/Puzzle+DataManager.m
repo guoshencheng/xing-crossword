@@ -26,7 +26,7 @@
   return  [Puzzle MR_findFirstByAttribute:@"puzzleId" withValue:puzzleId];
 }
 
-#pragma mark - Private 
+#pragma mark - Private Methods
 
 + (id)findOrCreateWithPuzzleid:(NSString*)puzzleId inContext:(NSManagedObjectContext *)context {
   Puzzle *puzzle = [self getPuzzleWithPuzzleid:puzzleId inContext:context];

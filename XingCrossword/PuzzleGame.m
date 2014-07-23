@@ -10,6 +10,7 @@
 #import "Puzzle+Utility.h"
 #import "ColorTheme.h"
 #import "Puzzle+DataManager.h"
+#import "Item+DataManager.h"
 #import "AFHTTPRequestOperationManager.h"
 
 #define DATA_JASON_URL_STRING @"http://crossword.sinaapp.com/api/current_puzzle.json"
@@ -55,10 +56,22 @@
 -  (void) getResponsFromWeb {
   AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
   [manager GET:DATA_JASON_URL_STRING parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    NSDictionary *response = responseObject;;
-    NSString *puzzleId = [response objectForKey:@"id"];
-    [Puzzle createPuzzleWithResponse:response completion:nil];
-    //NSLog(@"%@", [Puzzle getMapWithPuzzleid:puzzleId]);
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    NSDictionary *response = responseObject;
+    NSDictionary *hints = [response objectForKey:@"hints"];
+    NSArray *acrossHints = [hints objectForKey:@"across"];
+    [Puzzle createPuzzleWithResponse:response completion:^(BOOL success, NSError *error) {
+      for (int i= 0; i < acrossHints.count ; i++) {
+        Item *acrossItem;
+        acrossItem = [Item createAcrossItemWithOrder:response andOrder:@(i + 1) completion:^(BOOL success, NSError *error) {
+          [items addObject:acrossItem];
+        }];
+        Item *downItem;
+        downItem = [Item createDownItemWithOrder:response andOrder:@(i + 1) completion:^(BOOL success, NSError *error) {
+          [items addObject:downItem];
+        }];
+      }
+    }];
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     NSLog(@"Error: %@", error);
   }];

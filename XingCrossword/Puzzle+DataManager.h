@@ -12,5 +12,6 @@
 
 + (void)createPuzzleWithResponse:(NSDictionary*)response completion:(void(^)(BOOL success, NSError *error))completion;
 + (Puzzle*)findByPuzzleid:(NSString*)puzzleId;
++ (id)getPuzzleWithPuzzleid:(NSString*)puzzleId inContext:(NSManagedObjectContext *)context;
 
 @end
