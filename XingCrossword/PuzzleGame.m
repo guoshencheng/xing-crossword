@@ -21,7 +21,7 @@
 @property (nonatomic, assign) NSUInteger columnsCount;
 
 @property (nonatomic, assign) CGSize cellSize;
-@property (nonatomic, strong) NSArray *grid;
+@property (nonatomic, strong) NSArray *grids;
 @property (nonatomic, strong) NSArray *downItems;
 @property (nonatomic, strong) NSArray *acrossItems;
 
@@ -34,6 +34,7 @@
   self = [super init];
   if (self) {
     [self getResponsFromWeb];
+    
     self.downItems = [puzzle orderedDownItems];
     self.acrossItems = [puzzle orderedAcrossItems];
 
@@ -43,6 +44,17 @@
     CGFloat cellWidth = size.width / self.rowsCount;
     CGFloat cellHeight = size.height / self.columnsCount;
     self.cellSize = cellWidth < cellHeight ? CGSizeMake(cellWidth, cellWidth) : CGSizeMake(cellHeight, cellHeight);
+    
+    NSMutableArray *grids = [NSMutableArray array];
+    for (NSUInteger rowIndex = 0; rowIndex < self.rowsCount; rowIndex++) {
+      NSMutableArray *row = [NSMutableArray array];
+      [grids addObject:row];
+      for (NSUInteger columnIndex = 0; columnIndex < self.columnsCount; columnIndex++) {
+        BOOL isEntry = [@"1" isEqualToString:mapGrid[rowIndex][columnIndex]];
+        [row addObject:[self createCellAtRow:rowIndex column:columnIndex isEntry:isEntry]];
+      }
+    }
+    self.grids = grids;
   }
   return self;
 }
@@ -50,10 +62,12 @@
 #pragma mark - Public Methods
 
 - (SKSpriteNode *)cellAtRow:(NSUInteger)rowIndex column:(NSUInteger)columnIndex {
-  return nil;
+  NSAssert(rowIndex < self.rowsCount, @"row index should be less than row count");
+  NSAssert(columnIndex < self.columnsCount, @"column index should be less than column count");
+  return self.grids[rowIndex][columnIndex];
 }
 
--  (void) getResponsFromWeb {
+-  (void)getResponsFromWeb {
   AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
   [manager GET:DATA_JASON_URL_STRING parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     NSMutableArray *items = [[NSMutableArray alloc] init];
@@ -79,11 +93,11 @@
 
 #pragma mark - Private Methods
 
-- (SKSpriteNode *)createCellAtRow:(NSUInteger)rowIndex column:(NSUInteger)columnIndex blocked:(BOOL)blocked {
+- (SKSpriteNode *)createCellAtRow:(NSUInteger)rowIndex column:(NSUInteger)columnIndex isEntry:(BOOL)isEntry {
   id<ColorTheme> theme = [ColorThemeFactory defaultTheme];
-  SKSpriteNode *node = [SKSpriteNode spriteNodeWithColor:(blocked ? [theme blockCellColor] : [theme entryCellColor]) size:self.cellSize];
+  SKSpriteNode *node = [SKSpriteNode spriteNodeWithColor:(isEntry ? [theme entryCellColor] : [theme blockCellColor]) size:self.cellSize];
   [node setName:[NSString stringWithFormat:@"%d,%d", rowIndex, columnIndex]];
-//  node.position = CGPointMake( 30 + 20 * j, 390 - 20 * i );
+  node.position = CGPointMake(self.cellSize.width * columnIndex, self.cellSize.height * (self.rowsCount - rowIndex));
   SKLabelNode *currentLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
   currentLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
   currentLabelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
