@@ -221,6 +221,24 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		927CD9F4198F3583007DAA10 /* MainGameViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1611C150196D50AE0060A5BA /* MyScene.h */,
+				1611C151196D50AE0060A5BA /* MyScene.m */,
+				1611C152196D50AE0060A5BA /* ViewController.h */,
+				1611C153196D50AE0060A5BA /* ViewController.m */,
+			);
+			name = MainGameViewController;
+			sourceTree = "<group>";
+		};
+		927CD9F5198F35A8007DAA10 /* StartGameViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = StartGameViewController;
+			sourceTree = "<group>";
+		};
 		9286C060196E4C2000DE70FA /* Data Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,12 +289,10 @@
 		9298424F195E9BD900136AB0 /* XingCrossword */ = {
 			isa = PBXGroup;
 			children = (
+				927CD9F5198F35A8007DAA10 /* StartGameViewController */,
+				927CD9F4198F3583007DAA10 /* MainGameViewController */,
 				1611C14E196D50AE0060A5BA /* AppDelegate.h */,
 				1611C14F196D50AE0060A5BA /* AppDelegate.m */,
-				1611C150196D50AE0060A5BA /* MyScene.h */,
-				1611C151196D50AE0060A5BA /* MyScene.m */,
-				1611C152196D50AE0060A5BA /* ViewController.h */,
-				1611C153196D50AE0060A5BA /* ViewController.m */,
 				1611C14C196D50A00060A5BA /* Images.xcassets */,
 				161CCDC8196E339300C8BF34 /* Main.storyboard */,
 				1611C134196D49050060A5BA /* Game */,
