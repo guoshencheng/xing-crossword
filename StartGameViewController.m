@@ -7,32 +7,23 @@
 //
 
 #import "StartGameViewController.h"
+#import "StartGameViewScene.h"
 #import "MyScene.h"
-
-@interface StartGameViewController ()
-
-@end
 
 @implementation StartGameViewController
 
 + (id)create {
-  return  [[StartGameViewController alloc]initWithNibName:@"StarGameViewController" bundle:nil];
+  return  [[StartGameViewController alloc]initWithNibName:@"StartGameViewController" bundle:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-  
-  // Configure the view.
   SKView * skView = (SKView *)self.view;
   skView.showsFPS = YES;
   skView.showsNodeCount = YES;
-  
-  // Create and configure the scene.
-  SKScene * scene = [MyScene sceneWithSize:skView.bounds.size];
+  SKScene * scene = [StartGameViewScene sceneWithSize:skView.bounds.size];
   scene.scaleMode = SKSceneScaleModeAspectFill;
-  
-  // Present the scene.
   [skView presentScene:scene];
 }
 
@@ -50,6 +41,10 @@
   }
 }
 
-
+- (void)didReceiveMemoryWarning
+{
+  [super didReceiveMemoryWarning];
+  // Release any cached data, images, etc that aren't in use.
+}
 
 @end

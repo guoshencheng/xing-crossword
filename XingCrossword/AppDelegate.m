@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "CoreData+MagicalRecord.h"
 #import "ViewController.h"
+#import "StartGameViewController.h"
 
 @implementation AppDelegate
 
@@ -23,7 +24,7 @@
   }
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.backgroundColor = [UIColor whiteColor];
-  ViewController *starViewController = [ViewController create];
+  StartGameViewController *starViewController = [StartGameViewController create];
   self.navigationController = [[UINavigationController alloc] initWithRootViewController:starViewController];
   self.window.rootViewController = self.navigationController;
   [self.window makeKeyAndVisible];

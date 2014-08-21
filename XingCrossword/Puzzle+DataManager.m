@@ -11,6 +11,10 @@
 
 @implementation Puzzle (DataManager)
 
++ (NSArray*)findAllPuzzle {
+  return [Puzzle MR_findAll];
+}
+
 + (void)createPuzzleWithResponse:(NSDictionary*)response completion:(void(^)(BOOL success, NSError *error))completion{
   NSString *puzzleId = [response objectForKey:@"id"];
   [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
