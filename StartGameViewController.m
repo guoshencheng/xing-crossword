@@ -1,11 +1,22 @@
+//
+//  StartGameViewController.m
+//  XingCrossword
+//
+//  Created by apple on 14-8-4.
+//  Copyright (c) 2014年 apple. All rights reserved.
+//
 
-#import "ViewController.h"
+#import "StartGameViewController.h"
 #import "MyScene.h"
 
-@implementation ViewController
+@interface StartGameViewController ()
+
+@end
+
+@implementation StartGameViewController
 
 + (id)create {
-  return [[ViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+  return  [[StartGameViewController alloc]initWithNibName:@"StarGameViewController" bundle:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -39,10 +50,6 @@
   }
 }
 
-- (void)didReceiveMemoryWarning
-{
-  [super didReceiveMemoryWarning];
-  // Release any cached data, images, etc that aren't in use.
-}
+
 
 @end

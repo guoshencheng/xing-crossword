@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CoreData+MagicalRecord.h"
+#import "ViewController.h"
 
 @implementation AppDelegate
 
@@ -20,7 +21,12 @@
   if (isRunningTests()) {
     return YES;
   }
-  
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  self.window.backgroundColor = [UIColor whiteColor];
+  ViewController *starViewController = [ViewController create];
+  self.navigationController = [[UINavigationController alloc] initWithRootViewController:starViewController];
+  self.window.rootViewController = self.navigationController;
+  [self.window makeKeyAndVisible];
   // Override point for customization after application launch.
   return YES;
 }

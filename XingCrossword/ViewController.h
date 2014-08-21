@@ -11,4 +11,6 @@
 
 @interface ViewController : UIViewController
 
++ (id)create;
+
 @end
