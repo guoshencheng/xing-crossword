@@ -36,6 +36,7 @@
 		927CD9FC198F3BB9007DAA10 /* StartGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927CD9FA198F3BB9007DAA10 /* StartGameViewController.xib */; };
 		9286C066196E4CC500DE70FA /* Item+DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C065196E4CC500DE70FA /* Item+DataManager.m */; };
 		9286C069196E4D3200DE70FA /* Puzzle+DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C068196E4D3200DE70FA /* Puzzle+DataManager.m */; };
+		9288A25819B05D070035C828 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9288A25719B05D070035C828 /* WebService.m */; };
 		92984248195E9BD900136AB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92984247195E9BD900136AB0 /* Foundation.framework */; };
 		9298424A195E9BD900136AB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92984249195E9BD900136AB0 /* CoreGraphics.framework */; };
 		9298424C195E9BD900136AB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9298424B195E9BD900136AB0 /* UIKit.framework */; };
@@ -102,6 +103,8 @@
 		9286C065196E4CC500DE70FA /* Item+DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Item+DataManager.m"; path = "XingCrossword/Item+DataManager.m"; sourceTree = SOURCE_ROOT; };
 		9286C067196E4D3200DE70FA /* Puzzle+DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Puzzle+DataManager.h"; path = "XingCrossword/Puzzle+DataManager.h"; sourceTree = SOURCE_ROOT; };
 		9286C068196E4D3200DE70FA /* Puzzle+DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Puzzle+DataManager.m"; path = "XingCrossword/Puzzle+DataManager.m"; sourceTree = SOURCE_ROOT; };
+		9288A25619B05D070035C828 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebService.h; path = XingCrossword/WebService.h; sourceTree = "<group>"; };
+		9288A25719B05D070035C828 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebService.m; path = XingCrossword/WebService.m; sourceTree = "<group>"; };
 		92984244195E9BD900136AB0 /* XingCrossword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XingCrossword.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92984247195E9BD900136AB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		92984249195E9BD900136AB0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -264,6 +267,15 @@
 			name = "Data Manager";
 			sourceTree = "<group>";
 		};
+		9288A25519B05CC60035C828 /* webService */ = {
+			isa = PBXGroup;
+			children = (
+				9288A25619B05D070035C828 /* WebService.h */,
+				9288A25719B05D070035C828 /* WebService.m */,
+			);
+			name = webService;
+			sourceTree = "<group>";
+		};
 		9298423B195E9BD900136AB0 = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +315,7 @@
 		9298424F195E9BD900136AB0 /* XingCrossword */ = {
 			isa = PBXGroup;
 			children = (
+				9288A25519B05CC60035C828 /* webService */,
 				927CD9F5198F35A8007DAA10 /* StartGameViewController */,
 				927CD9F4198F3583007DAA10 /* MainGameViewController */,
 				1611C14E196D50AE0060A5BA /* AppDelegate.h */,
@@ -524,6 +537,7 @@
 				161CCDE3196E8FB000C8BF34 /* NSString+Utility.m in Sources */,
 				161CCDD4196E3AE800C8BF34 /* Item+Utility.m in Sources */,
 				1611C156196D50AE0060A5BA /* ViewController.m in Sources */,
+				9288A25819B05D070035C828 /* WebService.m in Sources */,
 				1611C146196D50480060A5BA /* Puzzle.m in Sources */,
 				1611C155196D50AE0060A5BA /* MyScene.m in Sources */,
 				927CD9FB198F3BB9007DAA10 /* StartGameViewController.m in Sources */,

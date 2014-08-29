@@ -7,6 +7,7 @@
 //
 
 #import "PuzzleGame.h"
+#import "WebService.h"
 #import "Puzzle+Utility.h"
 #import "ColorTheme.h"
 #import "Puzzle+DataManager.h"
@@ -34,7 +35,6 @@
   self = [super init];
   if (self) {
     [self getResponsFromWeb];
-    
     self.downItems = [puzzle orderedDownItems];
     self.acrossItems = [puzzle orderedAcrossItems];
 

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014年 apple. All rights reserved.
 //
 
+#import "WebService.h"
 #import "StartGameViewScene.h"
 #import "Puzzle+DataManager.h"
 @implementation StartGameViewScene
@@ -15,6 +16,9 @@
 
 -(id)initWithSize:(CGSize)size {
   if (self = [super initWithSize:size]) {
+    self.webService = [[WebService alloc] init];
+    self.webService.delegate = self;
+    [self.webService getAllPuzzleResponse];
     if ([Puzzle findAllPuzzle]) {
       [self initPuzzleTableList];
     } else {

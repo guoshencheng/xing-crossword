@@ -7,11 +7,13 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "WebService.h"
 
 @protocol StartGameViewSceneDelegate;
 
-@interface StartGameViewScene : SKScene
+@interface StartGameViewScene : SKScene <WebServiceDelegate>
 
+@property WebService *webService;
 @property NSArray *puzzleArray;
 @property id<StartGameViewSceneDelegate> delegate;
 
