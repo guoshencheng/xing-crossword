@@ -3,6 +3,7 @@
 
 @interface MyScene : SKScene <UITextFieldDelegate>
 
+@property NSString *puzzleName;
 @property Boolean hor;
 @property CGPoint touchPoint;
 @property NSArray *wordArray;

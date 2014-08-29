@@ -13,7 +13,7 @@
 #import "Item+DataManager.h"
 #import "AFHTTPRequestOperationManager.h"
 
-#define DATA_JASON_URL_STRING @"http://crossword.sinaapp.com/api/current_puzzle.json"
+#define DATA_JASON_URL_STRING @"http://crossword.sinaapp.com/api/puzzles.json"
 
 @interface PuzzleGame ()
 

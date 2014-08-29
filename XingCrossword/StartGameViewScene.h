@@ -8,8 +8,11 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@protocol StartGameViewSceneDelegate;
+
 @interface StartGameViewScene : SKScene
 
 @property NSArray *puzzleArray;
+@property id<StartGameViewSceneDelegate> delegate;
 
 @end

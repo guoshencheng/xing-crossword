@@ -14,8 +14,9 @@
   SKView * skView = (SKView *)self.view;
   skView.showsFPS = YES;
   skView.showsNodeCount = YES;
-  SKScene * scene = [MyScene sceneWithSize:skView.bounds.size];
+  MyScene * scene = [MyScene sceneWithSize:skView.bounds.size];
   scene.scaleMode = SKSceneScaleModeAspectFill;
+  scene.puzzleName = self.puzzleName;
   [skView presentScene:scene];
 }
 

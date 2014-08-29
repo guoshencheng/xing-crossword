@@ -15,33 +15,46 @@
 
 -(id)initWithSize:(CGSize)size {
   if (self = [super initWithSize:size]) {
-    self.puzzleArray = [Puzzle findAllPuzzle];
-    for (int i = 0;i < self.puzzleArray.count;i ++) {
-      SKSpriteNode *currentSpriteNode = [SKSpriteNode spriteNodeWithColor:[SKColor blueColor] size:CGSizeMake(320, 40)];
-      Puzzle *currentPuzzle = [self.puzzleArray objectAtIndex:i];
-      [currentSpriteNode setName:currentPuzzle.title];
-      currentSpriteNode.position = CGPointMake(160, 390 - i * 50);
-      SKLabelNode *currentLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-      currentLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
-      currentLabelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-      currentLabelNode.fontSize = 12;
-      currentLabelNode.fontColor = [UIColor blackColor];
-      [currentLabelNode setName:@"text"];
-      [currentLabelNode setText:currentPuzzle.title];
-      [currentLabelNode setUserInteractionEnabled:NO];
-      [currentSpriteNode addChild:currentLabelNode];
-      [self addChild:currentSpriteNode];
+    if ([Puzzle findAllPuzzle]) {
+      [self initPuzzleTableList];
+    } else {
+      
     }
   }
   return self;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  
+   for (UITouch *touch in touches) {
+     CGPoint location = [touch locationInNode:self];
+     SKNode *node = [self nodeAtPoint:location];
+   }
 }
 
 -(void)update:(CFTimeInterval)currentTime {
   /* Called before each frame is rendered */
+}
+
+#pragma mark - Private Method
+
+- (void)initPuzzleTableList {
+  self.puzzleArray = [Puzzle findAllPuzzle];
+  for (int i = 0;i < self.puzzleArray.count;i ++) {
+    SKSpriteNode *currentSpriteNode = [SKSpriteNode spriteNodeWithColor:[SKColor blueColor] size:CGSizeMake(320, 40)];
+    Puzzle *currentPuzzle = [self.puzzleArray objectAtIndex:i];
+    [currentSpriteNode setName:currentPuzzle.title];
+    currentSpriteNode.position = CGPointMake(160, 390 - i * 50);
+    SKLabelNode *currentLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+    currentLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+    currentLabelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    currentLabelNode.fontSize = 12;
+    currentLabelNode.fontColor = [UIColor blackColor];
+    [currentLabelNode setName:@"text"];
+    [currentLabelNode setText:currentPuzzle.title];
+    [currentLabelNode setUserInteractionEnabled:NO];
+    [currentSpriteNode addChild:currentLabelNode];
+    [self addChild:currentSpriteNode];
+  }
 }
 
 @end
