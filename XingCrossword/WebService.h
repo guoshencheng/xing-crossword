@@ -17,6 +17,7 @@
 @property (nonatomic, weak) id<WebServiceDelegate> delegate;
 
 - (void)getAllPuzzleResponse;
+- (void)savaAllPuzzleResponseWithCompletion:(void (^)(BOOL, NSError *))completion;
 
 @end
 

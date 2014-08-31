@@ -26,6 +26,14 @@
   } completion:completion];
 }
 
++(void)createPuzzleWithPuzzle:(PuzzleTool *)puzzleTool completion:(void (^)(BOOL, NSError *))completion {
+  [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+    Puzzle *puzzle = [self findOrCreateWithPuzzleid:puzzleTool.puzzleId inContext:localContext];
+    puzzle.title = puzzleTool.title;
+    puzzle.map = puzzleTool.map;
+  } completion:completion];
+}
+
 + (Puzzle*)findByPuzzleid:(NSString*)puzzleId {
   return  [Puzzle MR_findFirstByAttribute:@"puzzleId" withValue:puzzleId];
 }

@@ -12,6 +12,18 @@
 
 @implementation Item (DataManager)
 
++ (void)createItemWithItemTool:(ItemTool *)itemtool andPuzzleId:(NSString *)puzzleId completion:(void(^)(BOOL success, NSError *error))completion{
+  Puzzle *puzzle = [Puzzle findByPuzzleid:puzzleId];
+  [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+    Item *item = [self findOrCreateWithDirection:itemtool.direction andOrder:itemtool.order andPuzzleId:puzzleId inContext:localContext];
+    item.direction = itemtool.direction;
+    item.puzzle = puzzle;
+    item.order = itemtool.order;
+    item.hint = itemtool.hint;
+    item.word = itemtool.word;
+  }];
+}
+
 + (Item*)createAcrossItemWithOrder:(NSDictionary *)response andOrder:(NSNumber *)order completion:(void(^)(BOOL success, NSError *error))completion {
   NSDictionary *hints = [response objectForKey:@"hints"];
   NSDictionary *words = [response objectForKey:@"words"];

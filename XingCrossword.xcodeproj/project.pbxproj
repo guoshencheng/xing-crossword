@@ -37,6 +37,8 @@
 		9286C066196E4CC500DE70FA /* Item+DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C065196E4CC500DE70FA /* Item+DataManager.m */; };
 		9286C069196E4D3200DE70FA /* Puzzle+DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9286C068196E4D3200DE70FA /* Puzzle+DataManager.m */; };
 		9288A25819B05D070035C828 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9288A25719B05D070035C828 /* WebService.m */; };
+		9288A25C19B081DB0035C828 /* ItemTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9288A25B19B081DB0035C828 /* ItemTool.m */; };
+		9288A25F19B081F00035C828 /* PuzzleTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9288A25E19B081F00035C828 /* PuzzleTool.m */; };
 		92984248195E9BD900136AB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92984247195E9BD900136AB0 /* Foundation.framework */; };
 		9298424A195E9BD900136AB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92984249195E9BD900136AB0 /* CoreGraphics.framework */; };
 		9298424C195E9BD900136AB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9298424B195E9BD900136AB0 /* UIKit.framework */; };
@@ -105,6 +107,10 @@
 		9286C068196E4D3200DE70FA /* Puzzle+DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Puzzle+DataManager.m"; path = "XingCrossword/Puzzle+DataManager.m"; sourceTree = SOURCE_ROOT; };
 		9288A25619B05D070035C828 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebService.h; path = XingCrossword/WebService.h; sourceTree = "<group>"; };
 		9288A25719B05D070035C828 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebService.m; path = XingCrossword/WebService.m; sourceTree = "<group>"; };
+		9288A25A19B081DB0035C828 /* ItemTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemTool.h; path = XingCrossword/ItemTool.h; sourceTree = "<group>"; };
+		9288A25B19B081DB0035C828 /* ItemTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemTool.m; path = XingCrossword/ItemTool.m; sourceTree = "<group>"; };
+		9288A25D19B081F00035C828 /* PuzzleTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PuzzleTool.h; path = XingCrossword/PuzzleTool.h; sourceTree = "<group>"; };
+		9288A25E19B081F00035C828 /* PuzzleTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PuzzleTool.m; path = XingCrossword/PuzzleTool.m; sourceTree = "<group>"; };
 		92984244195E9BD900136AB0 /* XingCrossword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XingCrossword.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92984247195E9BD900136AB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		92984249195E9BD900136AB0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -276,6 +282,17 @@
 			name = webService;
 			sourceTree = "<group>";
 		};
+		9288A25919B081810035C828 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				9288A25A19B081DB0035C828 /* ItemTool.h */,
+				9288A25B19B081DB0035C828 /* ItemTool.m */,
+				9288A25D19B081F00035C828 /* PuzzleTool.h */,
+				9288A25E19B081F00035C828 /* PuzzleTool.m */,
+			);
+			name = DTO;
+			sourceTree = "<group>";
+		};
 		9298423B195E9BD900136AB0 = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +332,7 @@
 		9298424F195E9BD900136AB0 /* XingCrossword */ = {
 			isa = PBXGroup;
 			children = (
+				9288A25919B081810035C828 /* DTO */,
 				9288A25519B05CC60035C828 /* webService */,
 				927CD9F5198F35A8007DAA10 /* StartGameViewController */,
 				927CD9F4198F3583007DAA10 /* MainGameViewController */,
@@ -539,12 +557,14 @@
 				1611C156196D50AE0060A5BA /* ViewController.m in Sources */,
 				9288A25819B05D070035C828 /* WebService.m in Sources */,
 				1611C146196D50480060A5BA /* Puzzle.m in Sources */,
+				9288A25C19B081DB0035C828 /* ItemTool.m in Sources */,
 				1611C155196D50AE0060A5BA /* MyScene.m in Sources */,
 				927CD9FB198F3BB9007DAA10 /* StartGameViewController.m in Sources */,
 				1611C145196D50480060A5BA /* Item.m in Sources */,
 				1611C14B196D50950060A5BA /* main.m in Sources */,
 				9286C066196E4CC500DE70FA /* Item+DataManager.m in Sources */,
 				1611C13D196D502C0060A5BA /* PuzzleGame.m in Sources */,
+				9288A25F19B081F00035C828 /* PuzzleTool.m in Sources */,
 				16427F2F196FCB1F00C9153E /* ColorTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

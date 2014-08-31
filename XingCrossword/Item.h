@@ -12,6 +12,7 @@
 
 @interface Item : NSManagedObject
 
+//0 for across ,1 for down 
 @property (nonatomic, retain) NSNumber * order;
 @property (nonatomic, retain) NSString * word;
 @property (nonatomic, retain) NSString * hint;

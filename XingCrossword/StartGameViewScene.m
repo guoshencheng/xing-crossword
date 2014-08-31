@@ -61,5 +61,11 @@
   }
 }
 
+#pragma mark - Private Method
+
+- (void)webServiceDidGetAllPuzzleResponse:(WebService *)webService {
+  
+}
+
 @end
 
