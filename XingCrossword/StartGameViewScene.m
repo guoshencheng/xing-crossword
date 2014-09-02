@@ -19,11 +19,6 @@
     self.webService = [[WebService alloc] init];
     self.webService.delegate = self;
     [self.webService getAllPuzzleResponse];
-    if ([Puzzle findAllPuzzle]) {
-      [self initPuzzleTableList];
-    } else {
-      
-    }
   }
   return self;
 }
@@ -32,6 +27,9 @@
    for (UITouch *touch in touches) {
      CGPoint location = [touch locationInNode:self];
      SKNode *node = [self nodeAtPoint:location];
+     if ([self.delegate respondsToSelector:@selector(startGameViewSceneShouldPushMainGameController:withPuzzletitle:)]) {
+       [self.delegate startGameViewSceneShouldPushMainGameController:self withPuzzletitle:node.name];
+     }
    }
 }
 
@@ -64,7 +62,13 @@
 #pragma mark - Private Method
 
 - (void)webServiceDidGetAllPuzzleResponse:(WebService *)webService {
-  
+  [self.webService savaAllPuzzleResponseWithCompletion:^(BOOL success, NSError *error) {
+    if ([Puzzle findAllPuzzle]) {
+      [self initPuzzleTableList];
+    } else {
+      
+    }
+  }];
 }
 
 @end

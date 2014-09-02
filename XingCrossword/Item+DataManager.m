@@ -12,6 +12,32 @@
 
 @implementation Item (DataManager)
 
++(void)createItemWithAcrossHint:(NSArray *)acrossHint acrossWord:(NSArray *)acrossWord downHint:(NSArray *)downHint downWord:(NSArray *)downWord andPuzzleId:(NSString *)puzzleId completion:(void(^)(BOOL success, NSError *error))completion{
+  Puzzle *puzzle = [Puzzle findByPuzzleid:puzzleId];
+  for (int i = 0;i < acrossHint.count;i ++)
+  {
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+      Item *item = [self findOrCreateWithDirection:@(0) andOrder:@(i) andPuzzleId:puzzleId inContext:localContext];
+      item.hint = [acrossHint objectAtIndex:i];
+      item.word = [acrossWord objectAtIndex:i];
+      item.direction = @(0);
+      item.order = @(i);
+      item.puzzle = puzzle;
+    }];
+  }
+     
+  for (int i =0; i < downHint.count; i ++) {
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+      Item *item = [self findOrCreateWithDirection:@(1) andOrder:@(i) andPuzzleId:puzzleId inContext:localContext];
+      item.hint = [downHint objectAtIndex:i];
+      item.word = [downWord objectAtIndex:i];
+      item.direction = @(1);
+      item.order = @(i);
+      item.puzzle = puzzle;
+    }];
+  }
+}
+
 + (void)createItemWithItemTool:(ItemTool *)itemtool andPuzzleId:(NSString *)puzzleId completion:(void(^)(BOOL success, NSError *error))completion{
   Puzzle *puzzle = [Puzzle findByPuzzleid:puzzleId];
   [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
@@ -69,8 +95,6 @@
 }
 
 
-#pragma mark - Private Methods
-
 + (Item*)findOrCreateWithDirection:(NSNumber*)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId  inContext:(NSManagedObjectContext*)context {
   Item *item = [self getItemWithDirection:direction andOrder:order andPuzzleId:puzzleId inContext:context];
   if (!item) {
@@ -80,6 +104,8 @@
   }
   return  item;
 }
+
+#pragma mark - Private Methods
 
 +(Item*)getItemWithDirection:(NSNumber*)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId  inContext:(NSManagedObjectContext*)context {
   Puzzle *puzzle = [Puzzle findByPuzzleid:puzzleId];

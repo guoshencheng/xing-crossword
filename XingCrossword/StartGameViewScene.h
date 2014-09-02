@@ -18,3 +18,9 @@
 @property id<StartGameViewSceneDelegate> delegate;
 
 @end
+
+@protocol StartGameViewSceneDelegate <NSObject>
+
+- (void)startGameViewSceneShouldPushMainGameController:(StartGameViewScene *)startGmaeViewScene withPuzzletitle:(NSString *)title;
+
+@end

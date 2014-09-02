@@ -16,7 +16,8 @@
   skView.showsNodeCount = YES;
   MyScene * scene = [MyScene sceneWithSize:skView.bounds.size];
   scene.scaleMode = SKSceneScaleModeAspectFill;
-  scene.puzzleName = self.puzzleName;
+  scene.title = self.title;
+  [scene createAcross];
   [skView presentScene:scene];
 }
 

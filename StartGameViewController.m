@@ -8,7 +8,7 @@
 
 #import "StartGameViewController.h"
 #import "StartGameViewScene.h"
-#import "MyScene.h"
+#import "ViewController.h"
 
 @implementation StartGameViewController
 
@@ -22,8 +22,9 @@
   SKView * skView = (SKView *)self.view;
   skView.showsFPS = YES;
   skView.showsNodeCount = YES;
-  SKScene * scene = [StartGameViewScene sceneWithSize:skView.bounds.size];
+  StartGameViewScene * scene = [StartGameViewScene sceneWithSize:skView.bounds.size];
   scene.scaleMode = SKSceneScaleModeAspectFill;
+  scene.delegate = self;
   [skView presentScene:scene];
 }
 
@@ -41,10 +42,10 @@
   }
 }
 
-- (void)didReceiveMemoryWarning
-{
-  [super didReceiveMemoryWarning];
-  // Release any cached data, images, etc that aren't in use.
+- (void)startGameViewSceneShouldPushMainGameController:(StartGameViewScene *)startGmaeViewScene withPuzzletitle:(NSString *)title {
+  ViewController *viewController = [ViewController create];
+  viewController.title = title;
+  [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

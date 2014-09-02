@@ -18,29 +18,23 @@
   [self.view addSubview:self.textField];
 }
 
-- (void)initWordArray {
-  PuzzleGame *puzzleGame = [[PuzzleGame alloc] initWithPuzzle:nil size:CGSizeMake(0, 0)];
-  self.wordArray = @[
-                     @[@"1",@"1",@"1",@"1",@"1",@"1",@"0",@"0",@"1",@"1",@"1",@"0",@"0",@"1"],
-                     @[@"1",@"0",@"1",@"0",@"0",@"1",@"1",@"1",@"1",@"0",@"1",@"1",@"1",@"1"],
-                     @[@"0",@"1",@"1",@"1",@"1",@"0",@"1",@"0",@"1",@"0",@"1",@"0",@"0",@"1"],
-                     @[@"0",@"1",@"0",@"0",@"0",@"0",@"1",@"0",@"0",@"0",@"1",@"0",@"0",@"1"],
-                     @[@"1",@"1",@"1",@"1",@"1",@"0",@"1",@"1",@"1",@"1",@"0",@"1",@"1",@"1"],
-                     @[@"1",@"0",@"0",@"1",@"0",@"1",@"0",@"1",@"0",@"1",@"1",@"1",@"0",@"1"],
-                     @[@"1",@"0",@"0",@"1",@"0",@"1",@"1",@"1",@"1",@"0",@"0",@"1",@"0",@"1"],
-                     @[@"1",@"0",@"1",@"1",@"1",@"1",@"0",@"1",@"0",@"1",@"0",@"1",@"0",@"1"],
-                     @[@"1",@"1",@"1",@"0",@"0",@"0",@"0",@"1",@"0",@"1",@"0",@"1",@"0",@"1"],
-                     @[@"0",@"1",@"0",@"1",@"0",@"1",@"1",@"1",@"1",@"1",@"0",@"1",@"0",@"0"],
-                     @[@"1",@"1",@"1",@"1",@"0",@"0",@"1",@"0",@"0",@"0",@"1",@"1",@"1",@"1"],
-                     @[@"1",@"0",@"0",@"1",@"1",@"0",@"1",@"1",@"1",@"1",@"1",@"0",@"0",@"1"],
-                     @[@"1",@"1",@"1",@"0",@"1",@"0",@"1",@"0",@"1",@"0",@"1",@"0",@"1",@"1"],
-                     @[@"1",@"0",@"1",@"0",@"1",@"0",@"0",@"0",@"1",@"0",@"1",@"1",@"1",@"0"],
-                     @[@"0",@"0",@"1",@"0",@"0",@"1",@"0",@"1",@"1",@"1",@"0",@"0",@"1",@"1"],
-                     @[@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"0",@"1",@"0",@"0",@"1",@"0",@"1"],
-                     @[@"0",@"1",@"0",@"1",@"0",@"1",@"0",@"0",@"1",@"0",@"1",@"1",@"1",@"1"],
-                     @[@"0",@"1",@"0",@"1",@"0",@"1",@"0",@"1",@"1",@"1",@"1",@"0",@"0",@"1"],
-                     @[@"1",@"1",@"1",@"0",@"1",@"1",@"1",@"1",@"0",@"0",@"1",@"1",@"0",@"1"]
-                     ];
+- (void)createWordArray {
+  PuzzleGame *puzzleGame = [[PuzzleGame alloc]initWithPuzzleTitle:self.title size:self.size];
+  self.nodeArray = puzzleGame.grids;
+  self.wordArray = puzzleGame.mapGrid;
+}
+
+- (void)createAcross {
+  [self createWordArray];
+  [self initHorProblem];
+  [self initVerProblem];
+  for (int i = 0; i < self.nodeArray.count; i ++) {
+    NSArray *nodeArray = [self.nodeArray objectAtIndex:i];
+    for (int j = 0; j < nodeArray.count; j ++) {
+      SKSpriteNode *currentSprite = [nodeArray objectAtIndex:j];
+      [self addChild:currentSprite];
+    }
+  }
 }
 
 -(id)initWithSize:(CGSize)size {
@@ -49,39 +43,8 @@
   self.touchPoint = CGPointMake(-1, -1);
   self.horProblemArray = [[NSMutableArray alloc] init];
   self.verProblemArray = [[NSMutableArray alloc] init];
-  [self initWordArray];
   if (self = [super initWithSize:size]) {
     self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-    [self initHorProblem];
-    [self initVerProblem];
-    for (int i = 0; i < self.wordArray.count; i++) {
-      NSArray *currentArray = [self.wordArray objectAtIndex:i];
-      for (int j = 0; j < currentArray.count; j++) {
-        NSString *currentValue = [currentArray objectAtIndex:j];
-        SKSpriteNode *currentSprite;
-        if ([currentValue isEqualToString:@"1"]) {
-          currentSprite = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1.0] size:CGSizeMake(20, 20)];
-        } else {
-          currentSprite = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:1.0] size:CGSizeMake(20, 20)];
-        }
-        [currentSprite setName:[NSString stringWithFormat:@"%d,%d",j,i]];
-        currentSprite.position = CGPointMake( 30 + 20 * j, 390 - 20 * i );
-        SKLabelNode *currentLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-        currentLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
-        currentLabelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-        currentLabelNode.fontSize = 12;
-        currentLabelNode.fontColor = [UIColor blackColor];
-        [currentLabelNode setName:@"text"];
-        [currentLabelNode setUserInteractionEnabled:NO];
-        [currentSprite addChild:currentLabelNode];
-        [self addChild:currentSprite];
-      }
-      self.labelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-      self.labelNode.fontSize = 16;
-      self.labelNode.position = CGPointMake(160, 480);
-      [self.labelNode setName:@"problem"];
-      [self addChild:self.labelNode];
-    }
   }
   return self;
 }

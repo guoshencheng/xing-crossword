@@ -27,7 +27,7 @@
   }];
 }
 
-- (void)savaAllPuzzleResponseWithCompletion:(void (^)(BOOL, NSError *))completion{
+- (void)savaAllPuzzleResponseWithCompletion:(void (^)(BOOL success, NSError *error))completion {
   for (NSDictionary *puzzle in self.puzzleArray) {
     PuzzleTool *currentPuzzle = [[PuzzleTool alloc] init];
     NSArray *acrossHint = [self getPuzzleAcrossHintWithPuzzleDictionary:puzzle];
@@ -37,25 +37,7 @@
     currentPuzzle.title = [self getPuzzleTitleWithPuzzleDictionary:puzzle];
     currentPuzzle.puzzleId = [self getPuzzleIdWithPuzzleDictionary:puzzle];
     currentPuzzle.map = [self getPuzzleMapWithPuzzleDictionary:puzzle];
-    ItemTool *itemTool = [[ItemTool alloc] init];
-    [Puzzle createPuzzleWithPuzzle:currentPuzzle completion:^(BOOL success, NSError *error) {
-      for (int i = 0;i < acrossHint.count;i ++)
-      {
-        itemTool.hint = [acrossHint objectAtIndex:i];
-        itemTool.word = [acrossWord objectAtIndex:i];
-        itemTool.direction = @(0);
-        itemTool.order = @(i);
-        [Item createItemWithItemTool:itemTool andPuzzleId:currentPuzzle.puzzleId completion:completion];
-      }
-      for (int i =0; i < downHint.count; i ++) {
-        itemTool.hint = [downHint objectAtIndex:i];
-        itemTool.word = [downWord objectAtIndex:i];
-        itemTool.direction = @(1);
-        itemTool.order = @(i);
-        [Item createItemWithItemTool:itemTool andPuzzleId:currentPuzzle.puzzleId completion:completion];
-      }
-    }];
-    
+    [Puzzle createPuzzleWithPuzzle:currentPuzzle acrossHint:acrossHint acrossWord:acrossWord downHint:downHint downWord:downWord completion:completion];
   }
 }
 

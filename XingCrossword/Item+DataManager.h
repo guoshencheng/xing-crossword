@@ -11,9 +11,12 @@
 
 @interface Item (DataManager)
 
+
++(void)createItemWithAcrossHint:(NSArray *)acrossHint acrossWord:(NSArray *)acrossWord downHint:(NSArray *)downHint downWord:(NSArray *)downWord andPuzzleId:(NSString *)puzzleId completion:(void(^)(BOOL success, NSError *error))completion;
 + (void)createItemWithItemTool:(ItemTool *)itemtool andPuzzleId:(NSString *)puzzleId completion:(void(^)(BOOL success, NSError *error))completion;
 + (Item*)createAcrossItemWithOrder:(NSDictionary *)response andOrder:(NSNumber *)order completion:(void(^)(BOOL success, NSError *error))completion;
 + (Item*)createDownItemWithOrder:(NSDictionary *)response andOrder:(NSNumber *)order completion:(void(^)(BOOL success, NSError *error))completion;
 + (Item*)findByDirection:(NSNumber*)direction andOrder:(NSNumber*)order andPuzzleId:(NSString*)puzzleId;
++ (Item*)findOrCreateWithDirection:(NSNumber*)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId  inContext:(NSManagedObjectContext*)context;
 
 @end

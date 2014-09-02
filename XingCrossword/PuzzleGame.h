@@ -11,10 +11,16 @@
 
 @interface PuzzleGame : NSObject
 
-@property (readonly, assign) NSUInteger rowsCount;
-@property (readonly, assign) NSUInteger columnsCount;
+@property (nonatomic, assign) NSUInteger rowsCount;
+@property (nonatomic, assign) NSUInteger columnsCount;
 
-- (instancetype)initWithPuzzle:(Puzzle *)puzzle size:(CGSize)size;
+@property (nonatomic, assign) CGSize cellSize;
+@property (nonatomic, strong) NSArray *grids;
+@property (nonatomic, strong) NSArray *mapGrid;
+@property (nonatomic, strong) NSArray *downItems;
+@property (nonatomic, strong) NSArray *acrossItems;
+
+- (instancetype)initWithPuzzleTitle:(NSString *)title size:(CGSize)size;
 
 - (NSUInteger)rowsCount;
 - (NSUInteger)columnsCount;

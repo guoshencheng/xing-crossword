@@ -7,6 +7,7 @@
 //
 
 #import "Puzzle+DataManager.h"
+#import "Item+DataManager.h"
 #import "CoreData+MagicalRecord.h"
 
 @implementation Puzzle (DataManager)
@@ -26,16 +27,38 @@
   } completion:completion];
 }
 
-+(void)createPuzzleWithPuzzle:(PuzzleTool *)puzzleTool completion:(void (^)(BOOL, NSError *))completion {
++(void)createPuzzleWithPuzzle:(PuzzleTool *)puzzleTool acrossHint:(NSArray *)acrossHint acrossWord:(NSArray *)acrossWord downHint:(NSArray *)downHint downWord:(NSArray *)downWord completion:(void (^)(BOOL success, NSError *error))completion {
   [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
     Puzzle *puzzle = [self findOrCreateWithPuzzleid:puzzleTool.puzzleId inContext:localContext];
     puzzle.title = puzzleTool.title;
     puzzle.map = puzzleTool.map;
+    for (int i = 0;i < acrossHint.count;i ++)
+    {
+      Item *item = [Item findOrCreateWithDirection:@(0) andOrder:@(i) andPuzzleId:puzzleTool.puzzleId inContext:localContext];
+      item.hint = [acrossHint objectAtIndex:i];
+      item.word = [acrossWord objectAtIndex:i];
+      item.direction = @(0);
+      item.order = @(i);
+      item.puzzle = puzzle;
+    }
+    
+    for (int i =0; i < downHint.count; i ++) {
+      Item *item = [Item findOrCreateWithDirection:@(1) andOrder:@(i) andPuzzleId:puzzleTool.puzzleId inContext:localContext];
+      item.hint = [downHint objectAtIndex:i];
+      item.word = [downWord objectAtIndex:i];
+      item.direction = @(1);
+      item.order = @(i);
+      item.puzzle = puzzle;
+    }
   } completion:completion];
 }
 
 + (Puzzle*)findByPuzzleid:(NSString*)puzzleId {
   return  [Puzzle MR_findFirstByAttribute:@"puzzleId" withValue:puzzleId];
+}
+
++(Puzzle *)findByPuzzletitle:(NSString *)title {
+  return  [Puzzle MR_findFirstByAttribute:@"title" withValue:title];
 }
 
 #pragma mark - Private Methods
