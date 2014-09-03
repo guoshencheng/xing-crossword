@@ -8,6 +8,8 @@
 @property CGPoint touchPoint;
 @property NSArray *nodeArray;
 @property NSArray *wordArray;
+@property NSInteger wordArrayXMaxNumber;
+@property NSInteger wordArrayYMaxNumber;
 @property NSMutableArray *horProblemArray;
 @property NSMutableArray *verProblemArray;
 @property UITextField *textField;

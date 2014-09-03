@@ -57,7 +57,7 @@
 - (SKSpriteNode *)createCellAtRow:(NSUInteger)rowIndex column:(NSUInteger)columnIndex isEntry:(BOOL)isEntry {
   id<ColorTheme> theme = [ColorThemeFactory defaultTheme];
   SKSpriteNode *node = [SKSpriteNode spriteNodeWithColor:(isEntry ? [theme entryCellColor] : [theme blockCellColor]) size:self.cellSize];
-  [node setName:[NSString stringWithFormat:@"%d,%d", rowIndex, columnIndex]];
+  [node setName:[NSString stringWithFormat:@"%d,%d", columnIndex, rowIndex]];
   node.position = CGPointMake(self.cellSize.width * columnIndex, self.cellSize.height * (self.rowsCount - rowIndex));
   SKLabelNode *currentLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
   currentLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;

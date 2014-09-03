@@ -22,6 +22,9 @@
   PuzzleGame *puzzleGame = [[PuzzleGame alloc]initWithPuzzleTitle:self.title size:self.size];
   self.nodeArray = puzzleGame.grids;
   self.wordArray = puzzleGame.mapGrid;
+  NSArray *firstArray = [self.wordArray objectAtIndex:0];
+  self.wordArrayXMaxNumber = self.wordArray.count;
+  self.wordArrayYMaxNumber = firstArray.count;
 }
 
 - (void)createAcross {
@@ -57,11 +60,8 @@
     if ([node.name isEqual:@"text"]) {
       node = [node parent];
     }
-    if ([node.name isEqual:@"problem"]) {
-      continue;
-    }
     CGPoint mytouch = [self getCellPostionWithNodeName:node.name];
-    if (mytouch.x >= 0 && mytouch.y >= 0 && mytouch.x < 14 && mytouch.y < 19) {
+    if ([self isInGridWithPostion:mytouch]) {
       if ([self isTextFieldCellWithPostion:mytouch] ) {
         if ([self isTextFieldCellWithPostion:mytouch] && [self haveHorTextField:mytouch] && ![self haveVerTextField:mytouch] ) {
           self.hor = YES;
@@ -98,37 +98,31 @@
   /* Called before each frame is rendered */
 }
 
-- (CGPoint) getCellPostionWithTouchX:(float)x AndY:(float)y {
-  int hor = [self approximatelyEqualForDividend:(390 - y) andDivisor:20];
-  int ver = [self approximatelyEqualForDividend:(x - 30) andDivisor:20];
-  return CGPointMake(ver, hor);
+//Myscene+PostionHandle
+- (BOOL)isInGridWithPostion:(CGPoint)mytouch {
+  return  (mytouch.x >= 0 && mytouch.y >= 0 && mytouch.x < self.wordArrayXMaxNumber && mytouch.y < self.wordArrayYMaxNumber);
+  
 }
 
+//string+utility
 - (CGPoint) getCellPostionWithNodeName:(NSString*)nodeName {
   NSArray *strings = [nodeName componentsSeparatedByString:@","];
   float xValue = [[strings objectAtIndex:0]floatValue];
   float yValue = [[strings objectAtIndex:1]floatValue];
   return CGPointMake(xValue, yValue);
 }
-- (int) approximatelyEqualForDividend:(float)dividend  andDivisor:(float)divisor {
-  float AccurateResult = dividend / divisor ;
-  int quotient = dividend / divisor;
-  float differencd = AccurateResult - quotient;
-  if (differencd < 0.5) {
-    return quotient;
-  } else {
-    return quotient + 1;
-  }
-}
 
+//Myscene+PostionHandle
 - (BOOL)haveHorTextField:(CGPoint)point {
   return [self haveLeftTextFieldCellWithPostion:point] || [self haveRightTextFieldCellWithPostion:point];
 }
 
+//Myscene+PostionHandle
 - (BOOL)haveVerTextField:(CGPoint)point {
   return [self haveUpTextFieldCellWithPostion:point] || [self haveDownTextFieldCellWithPostion:point];
 }
 
+//Myscene+PostionHandle
 - (BOOL)haveLeftTextFieldCellWithPostion:(CGPoint)point {
   BOOL haveTextField = false;
   if (point.x > 0){
@@ -140,9 +134,10 @@
   return haveTextField;
 }
 
+//Myscene+PostionHandle
 - (BOOL)haveRightTextFieldCellWithPostion:(CGPoint)point {
   BOOL haveTextField = false;
-  if (point.x < 13) {
+  if (point.x < self.wordArrayXMaxNumber - 1) {
     NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:(point.x+1)];
     if ([currentLeftString isEqualToString:@"1"]) {
       haveTextField = true;
@@ -151,9 +146,10 @@
   return haveTextField;
 }
 
+//Myscene+PostionHandle
 - (BOOL)haveUpTextFieldCellWithPostion:(CGPoint)point {
   BOOL haveTextField = false;
-  if (point.y < 18) {
+  if (point.y < self.wordArrayYMaxNumber - 1) {
     NSString *currentLeftString= [[self.wordArray objectAtIndex:(point.y+1)] objectAtIndex:point.x];
     if ([currentLeftString isEqualToString:@"1"]) {
       haveTextField = true;
@@ -162,6 +158,7 @@
   return haveTextField;
 }
 
+//Myscene+PostionHandle
 - (BOOL)haveDownTextFieldCellWithPostion:(CGPoint)point {
   BOOL haveTextField = false;
   if (point.y > 0) {
@@ -173,6 +170,7 @@
   return haveTextField;
 }
 
+// get bool if the node can write word
 - (BOOL)isTextFieldCellWithPostion:(CGPoint)point {
   BOOL isTextField = false;
   NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:point.x];
@@ -182,6 +180,7 @@
   return isTextField;
 }
 
+//Myscene+PostionHandle
 - (SKSpriteNode*)getNodeWithPoint:(CGPoint)point {
   return (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
 }
@@ -276,7 +275,7 @@
 }
 
 - (void)initVerProblem {
-  for (int j = 0; j < 14; j++) {
+  for (int j = 0; j < self.wordArrayYMaxNumber; j++) {
     for (int i = 0; i < self.wordArray.count; i ++) {
       if ([self isTextFieldCellWithPostion:CGPointMake(j, i)] && ![self haveDownTextFieldCellWithPostion:CGPointMake(j, i)] && [self haveUpTextFieldCellWithPostion:CGPointMake(j, i)]) {
         [self.verProblemArray addObject:[NSValue valueWithCGPoint:CGPointMake(j, i)]];
@@ -363,6 +362,7 @@
   }
 }
 
+// MyScene+CGpoint
 - (NSString*)getStringFromHorCrossWordWithPoint:(CGPoint)point andStringBefore:(NSString*)string {
   if ([self haveRightTextFieldCellWithPostion:point]) {
     SKSpriteNode *currentNode = [self getNodeWithPoint:point];
@@ -375,6 +375,7 @@
   }
 }
 
+// MyScene+CGpoint
 - (NSString*)getStringFromVerCrossWordWithPoint:(CGPoint)point andStringBefore:(NSString*)string {
   if ([self haveUpTextFieldCellWithPostion:point]) {
     SKSpriteNode *currentNode = [self getNodeWithPoint:point];
