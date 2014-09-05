@@ -1,6 +1,8 @@
 
 #import "MyScene.h"
 #import "PuzzleGame.h"
+#import "MyScene+fill.h"
+#import "MyScene+PostionHandler.h"
 
 @implementation MyScene
 
@@ -63,30 +65,19 @@
     CGPoint mytouch = [self getCellPostionWithNodeName:node.name];
     if ([self isInGridWithPostion:mytouch]) {
       if ([self isTextFieldCellWithPostion:mytouch] ) {
-        if ([self isTextFieldCellWithPostion:mytouch] && [self haveHorTextField:mytouch] && ![self haveVerTextField:mytouch] ) {
-          self.hor = YES;
-        }
-        if ([self isTextFieldCellWithPostion:mytouch] && ![self haveHorTextField:mytouch] && [self  haveVerTextField:mytouch]) {
-          self.hor = NO;
-        }
-        if ([self isTextFieldCellWithPostion:mytouch] && [self haveHorTextField:mytouch] && [self haveVerTextField:mytouch]) {
-          self.hor = !self.hor;
-        }
-        
+        [self changeDirectionByTouch:mytouch];
         if (self.hor) {
           [self resetColor];
           [self fillingLeft:mytouch];
           [self fillingRight:mytouch];
-          int problemNumber = [self findProblemInHorProblemWithCGPoint:mytouch];
-          [self.labelNode setText:[NSString stringWithFormat:@"%@:%d",@"横向问题",problemNumber]];
-          self.currentProblemNumber = problemNumber;
+          self.currentProblemNumber = [self findProblemInHorProblemWithCGPoint:mytouch];
+          [self.labelNode setText:[NSString stringWithFormat:@"%@:%d",@"横向问题",self.currentProblemNumber]];
         }else {
           [self resetColor];
-          [self fillingUp:mytouch];
-          [self fillingDown:mytouch];
-          int problemNumber = [self findProblemInVerProblemWithCGPoint:mytouch];
-          [self.labelNode setText:[NSString stringWithFormat:@"%@:%d",@"纵向问题",problemNumber]];
-          self.currentProblemNumber = problemNumber;
+          [self fillDown:mytouch];
+          [self fillUp:mytouch];
+          self.currentProblemNumber = [self findProblemInVerProblemWithCGPoint:mytouch];
+          [self.labelNode setText:[NSString stringWithFormat:@"%@:%d",@"纵向问题",self.currentProblemNumber]];
         }
       }
     }
@@ -98,13 +89,6 @@
   /* Called before each frame is rendered */
 }
 
-//Myscene+PostionHandle
-- (BOOL)isInGridWithPostion:(CGPoint)mytouch {
-  return  (mytouch.x >= 0 && mytouch.y >= 0 && mytouch.x < self.wordArrayXMaxNumber && mytouch.y < self.wordArrayYMaxNumber);
-  
-}
-
-//string+utility
 - (CGPoint) getCellPostionWithNodeName:(NSString*)nodeName {
   NSArray *strings = [nodeName componentsSeparatedByString:@","];
   float xValue = [[strings objectAtIndex:0]floatValue];
@@ -112,143 +96,7 @@
   return CGPointMake(xValue, yValue);
 }
 
-//Myscene+PostionHandle
-- (BOOL)haveHorTextField:(CGPoint)point {
-  return [self haveLeftTextFieldCellWithPostion:point] || [self haveRightTextFieldCellWithPostion:point];
-}
-
-//Myscene+PostionHandle
-- (BOOL)haveVerTextField:(CGPoint)point {
-  return [self haveUpTextFieldCellWithPostion:point] || [self haveDownTextFieldCellWithPostion:point];
-}
-
-//Myscene+PostionHandle
-- (BOOL)haveLeftTextFieldCellWithPostion:(CGPoint)point {
-  BOOL haveTextField = false;
-  if (point.x > 0){
-    NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:(point.x-1)];
-    if ([currentLeftString isEqualToString:@"1"]) {
-      haveTextField = true;
-    }
-  }
-  return haveTextField;
-}
-
-//Myscene+PostionHandle
-- (BOOL)haveRightTextFieldCellWithPostion:(CGPoint)point {
-  BOOL haveTextField = false;
-  if (point.x < self.wordArrayXMaxNumber - 1) {
-    NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:(point.x+1)];
-    if ([currentLeftString isEqualToString:@"1"]) {
-      haveTextField = true;
-    }
-  }
-  return haveTextField;
-}
-
-//Myscene+PostionHandle
-- (BOOL)haveUpTextFieldCellWithPostion:(CGPoint)point {
-  BOOL haveTextField = false;
-  if (point.y < self.wordArrayYMaxNumber - 1) {
-    NSString *currentLeftString= [[self.wordArray objectAtIndex:(point.y+1)] objectAtIndex:point.x];
-    if ([currentLeftString isEqualToString:@"1"]) {
-      haveTextField = true;
-    }
-  }
-  return haveTextField;
-}
-
-//Myscene+PostionHandle
-- (BOOL)haveDownTextFieldCellWithPostion:(CGPoint)point {
-  BOOL haveTextField = false;
-  if (point.y > 0) {
-    NSString *currentLeftString= [[self.wordArray objectAtIndex:(point.y-1)] objectAtIndex:point.x];
-    if ([currentLeftString isEqualToString:@"1"]) {
-      haveTextField = true;
-    }
-  }
-  return haveTextField;
-}
-
-// get bool if the node can write word
-- (BOOL)isTextFieldCellWithPostion:(CGPoint)point {
-  BOOL isTextField = false;
-  NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:point.x];
-  if ([currentLeftString isEqualToString:@"1"]) {
-    isTextField = true;
-  }
-  return isTextField;
-}
-
-//Myscene+PostionHandle
-- (SKSpriteNode*)getNodeWithPoint:(CGPoint)point {
-  return (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-}
-
-- (void)fillingUp:(CGPoint)point {
-  if ([self haveUpTextFieldCellWithPostion:point]) {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
-    
-    [self fillingUp:CGPointMake(point.x, point.y + 1)];
-  } else {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
-  }
-}
-- (void)fillingDown:(CGPoint)point {
-  if ([self haveDownTextFieldCellWithPostion:point]) {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
-    
-    [self fillingDown:CGPointMake(point.x, point.y - 1)];
-  } else {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
-  }
-}
-
-- (void)fillingUpWithEmpty:(CGPoint)point {
-  if ([self haveUpTextFieldCellWithPostion:point]) {
-    SKSpriteNode *currentNode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-    SKLabelNode *currenttext = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-    [currenttext setText:@""];
-    [self fillingUpWithEmpty:CGPointMake(point.x , point.y + 1)];
-  } else {
-    SKSpriteNode *currentNode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-    SKLabelNode *currenttext = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-    [currenttext setText:@""];
-  }
-}
-
-- (void)fillingLeft:(CGPoint)point {
-  if ([self haveLeftTextFieldCellWithPostion:point]) {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
-    [self fillingLeft:CGPointMake(point.x - 1, point.y)];
-  } else {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
-  }
-}
-
-- (void)fillingRightWithEmpty:(CGPoint)point {
-  if ([self haveRightTextFieldCellWithPostion:point]) {
-    SKSpriteNode *currentNode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-    SKLabelNode *currenttext = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-    [currenttext setText:@""];
-    [self fillingRightWithEmpty:CGPointMake(point.x + 1, point.y)];
-  } else {
-    SKSpriteNode *currentNode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-    SKLabelNode *currenttext = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-    [currenttext setText:@""];
-  }
-}
-
-- (void)fillingRight:(CGPoint)point {
-  if ([self haveRightTextFieldCellWithPostion:point]) {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
-    
-    [self fillingRight:CGPointMake(point.x + 1, point.y)];
-  } else {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
-  }
-}
-
+//reset all Node's Color
 - (void)resetColor {
   for (int i = 0; i < self.wordArray.count; i++) {
     NSArray *currentArray = [self.wordArray objectAtIndex:i];
@@ -263,6 +111,7 @@
   }
 }
 
+//init all Hor Problem and Add Them To the Array With Its First Node Postion
 - (void)initHorProblem {
   for (int i = 0; i < self.wordArray.count; i++) {
     NSArray *currentArray = [self.wordArray objectAtIndex:i];
@@ -274,16 +123,18 @@
   }
 }
 
+//init all Ver Problem and Add Them To the Array With Its First Node Postion
 - (void)initVerProblem {
   for (int j = 0; j < self.wordArrayYMaxNumber; j++) {
     for (int i = 0; i < self.wordArray.count; i ++) {
-      if ([self isTextFieldCellWithPostion:CGPointMake(j, i)] && ![self haveDownTextFieldCellWithPostion:CGPointMake(j, i)] && [self haveUpTextFieldCellWithPostion:CGPointMake(j, i)]) {
+      if ([self isTextFieldCellWithPostion:CGPointMake(j, i)] && ![self isHaveUpTextFieldCellWithPostion:CGPointMake(j, i)] && [self isHaveDownTextFieldCellWithPostion:CGPointMake(j, i)]) {
         [self.verProblemArray addObject:[NSValue valueWithCGPoint:CGPointMake(j, i)]];
       }
     }
   }
 }
 
+// find the First Node's Postion Hor a ver Problem
 - (int)findProblemInHorProblemWithCGPoint:(CGPoint)point {
   int numberOfProblem = 0;
   for (int i = 0; i < self.horProblemArray.count; i ++) {
@@ -297,6 +148,8 @@
   return numberOfProblem;
 }
 
+
+// find the First Node's Postion for a ver Problem
 - (int)findProblemInVerProblemWithCGPoint:(CGPoint)point {
   int numberOfProble = 0;
   for (int i = 0; i < self.verProblemArray.count; i ++) {
@@ -310,6 +163,7 @@
   return  numberOfProble;
 }
 
+//set textField String to WordCross's every Node
 - (void)setAnswerStringToCrossWithString:(NSString*)answerString {
   if (self.hor) {
     CGPoint currentPoint = [[self.horProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
@@ -317,7 +171,7 @@
       [self fillingRightWithEmpty:currentPoint];
     }else {
       for (int i = 0; i < answerString.length; i ++) {
-         NSString *currentChar = [answerString substringWithRange:NSMakeRange(i, 1)];
+        NSString *currentChar = [answerString substringWithRange:NSMakeRange(i, 1)];
         SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x+i, currentPoint.y)];
         SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
         label.text = currentChar;
@@ -340,18 +194,19 @@
         SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x, currentPoint.y + i)];
         SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
         label.text = currentChar;
-        if (![self haveUpTextFieldCellWithPostion:CGPointMake(currentPoint.x, currentPoint.y + i)]) {
+        if (![self isHaveDownTextFieldCellWithPostion:CGPointMake(currentPoint.x, currentPoint.y + i)]) {
         break;
         }
       }
       CGPoint lastStringNodePoint = CGPointMake(currentPoint.x, currentPoint.y + answerString.length - 1);
-      if ([self haveUpTextFieldCellWithPostion:lastStringNodePoint]) {
-        [self fillingUpWithEmpty:CGPointMake(currentPoint.x, currentPoint.y + answerString.length)];
+      if ([self isHaveDownTextFieldCellWithPostion:lastStringNodePoint]) {
+        [self fillingDownWithEmpty:CGPointMake(currentPoint.x, currentPoint.y + answerString.length)];
       }
     }
   }
 }
 
+//get String From WordCross
 - (NSString*)getStringFromCrossWordWithStringBefore:(NSString*)string {
   if (self.hor) {
     CGPoint currentPoint = [[self.horProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
@@ -359,32 +214,6 @@
   } else {
     CGPoint currentPoint = [[self.verProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
     return  [self getStringFromVerCrossWordWithPoint:currentPoint andStringBefore:string];
-  }
-}
-
-// MyScene+CGpoint
-- (NSString*)getStringFromHorCrossWordWithPoint:(CGPoint)point andStringBefore:(NSString*)string {
-  if ([self haveRightTextFieldCellWithPostion:point]) {
-    SKSpriteNode *currentNode = [self getNodeWithPoint:point];
-    SKLabelNode *currentlabel = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-    return [self getStringFromHorCrossWordWithPoint:CGPointMake(point.x+1, point.y) andStringBefore:[NSString stringWithFormat:@"%@%@",string,currentlabel.text]];
-  } else {
-    SKSpriteNode *currentNode = [self getNodeWithPoint:point];
-    SKLabelNode *currentlabel = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-    return [NSString stringWithFormat:@"%@%@",string,currentlabel.text];
-  }
-}
-
-// MyScene+CGpoint
-- (NSString*)getStringFromVerCrossWordWithPoint:(CGPoint)point andStringBefore:(NSString*)string {
-  if ([self haveUpTextFieldCellWithPostion:point]) {
-    SKSpriteNode *currentNode = [self getNodeWithPoint:point];
-    SKLabelNode *currentlabel = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-    return [self getStringFromVerCrossWordWithPoint:CGPointMake(point.x, point.y+1) andStringBefore:[NSString stringWithFormat:@"%@%@",string,currentlabel.text]];
-  } else {
-    SKSpriteNode *currentNode = [self getNodeWithPoint:point];
-    SKLabelNode *currentlabel = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-    return [NSString stringWithFormat:@"%@%@",string,currentlabel.text];
   }
 }
 

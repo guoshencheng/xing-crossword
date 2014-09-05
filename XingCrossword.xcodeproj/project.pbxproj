@@ -31,6 +31,8 @@
 		16427F3B196FDE4400C9153E /* Crossword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16427F39196FDE4400C9153E /* Crossword.xcdatamodeld */; };
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
+		9270F4D419B965E200934ED3 /* MyScene+PostionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */; };
+		9270F4D719B96F6300934ED3 /* MyScene+fill.m in Sources */ = {isa = PBXBuildFile; fileRef = 9270F4D619B96F6300934ED3 /* MyScene+fill.m */; };
 		927CD9F7198F378A007DAA10 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927CD9F6198F378A007DAA10 /* MainViewController.xib */; };
 		927CD9FB198F3BB9007DAA10 /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CD9F9198F3BB9007DAA10 /* StartGameViewController.m */; };
 		927CD9FC198F3BB9007DAA10 /* StartGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927CD9FA198F3BB9007DAA10 /* StartGameViewController.xib */; };
@@ -97,6 +99,10 @@
 		64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.xcconfig"; path = "Pods/Pods-XingCrosswordTests.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9270F4D219B965E200934ED3 /* MyScene+PostionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyScene+PostionHandler.h"; path = "XingCrossword/MyScene+PostionHandler.h"; sourceTree = "<group>"; };
+		9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MyScene+PostionHandler.m"; path = "XingCrossword/MyScene+PostionHandler.m"; sourceTree = "<group>"; };
+		9270F4D519B96F6300934ED3 /* MyScene+fill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyScene+fill.h"; path = "XingCrossword/MyScene+fill.h"; sourceTree = "<group>"; };
+		9270F4D619B96F6300934ED3 /* MyScene+fill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MyScene+fill.m"; path = "XingCrossword/MyScene+fill.m"; sourceTree = "<group>"; };
 		927CD9F6198F378A007DAA10 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		927CD9F8198F3BB9007DAA10 /* StartGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameViewController.h; sourceTree = "<group>"; };
 		927CD9F9198F3BB9007DAA10 /* StartGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameViewController.m; sourceTree = "<group>"; };
@@ -246,6 +252,10 @@
 				1611C152196D50AE0060A5BA /* ViewController.h */,
 				1611C153196D50AE0060A5BA /* ViewController.m */,
 				927CD9F6198F378A007DAA10 /* MainViewController.xib */,
+				9270F4D219B965E200934ED3 /* MyScene+PostionHandler.h */,
+				9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */,
+				9270F4D519B96F6300934ED3 /* MyScene+fill.h */,
+				9270F4D619B96F6300934ED3 /* MyScene+fill.m */,
 			);
 			name = MainGameViewController;
 			sourceTree = "<group>";
@@ -559,9 +569,11 @@
 				1611C146196D50480060A5BA /* Puzzle.m in Sources */,
 				9288A25C19B081DB0035C828 /* ItemTool.m in Sources */,
 				1611C155196D50AE0060A5BA /* MyScene.m in Sources */,
+				9270F4D419B965E200934ED3 /* MyScene+PostionHandler.m in Sources */,
 				927CD9FB198F3BB9007DAA10 /* StartGameViewController.m in Sources */,
 				1611C145196D50480060A5BA /* Item.m in Sources */,
 				1611C14B196D50950060A5BA /* main.m in Sources */,
+				9270F4D719B96F6300934ED3 /* MyScene+fill.m in Sources */,
 				9286C066196E4CC500DE70FA /* Item+DataManager.m in Sources */,
 				1611C13D196D502C0060A5BA /* PuzzleGame.m in Sources */,
 				9288A25F19B081F00035C828 /* PuzzleTool.m in Sources */,
