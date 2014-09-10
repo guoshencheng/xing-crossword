@@ -32,6 +32,10 @@
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
 		924B929119C034DA00097884 /* MyScene+ProblemArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 924B929019C034DA00097884 /* MyScene+ProblemArray.m */; };
+		924B929519C038A800097884 /* startGameCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 924B929419C038A800097884 /* startGameCollectionViewCell.m */; };
+		924B929719C038B900097884 /* startGameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 924B929619C038B900097884 /* startGameCollectionViewCell.xib */; };
+		924B929B19C0437000097884 /* startGameCollectionViewCell+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 924B929A19C0437000097884 /* startGameCollectionViewCell+Configuration.m */; };
+		924B929E19C04F4B00097884 /* StartGameViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 924B929D19C04F4B00097884 /* StartGameViewController+Configuration.m */; };
 		9270F4D419B965E200934ED3 /* MyScene+PostionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */; };
 		9270F4D719B96F6300934ED3 /* MyScene+fill.m in Sources */ = {isa = PBXBuildFile; fileRef = 9270F4D619B96F6300934ED3 /* MyScene+fill.m */; };
 		927CD9F7198F378A007DAA10 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927CD9F6198F378A007DAA10 /* MainViewController.xib */; };
@@ -102,6 +106,13 @@
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		924B928F19C034DA00097884 /* MyScene+ProblemArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyScene+ProblemArray.h"; path = "XingCrossword/MyScene+ProblemArray.h"; sourceTree = "<group>"; };
 		924B929019C034DA00097884 /* MyScene+ProblemArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MyScene+ProblemArray.m"; path = "XingCrossword/MyScene+ProblemArray.m"; sourceTree = "<group>"; };
+		924B929319C038A800097884 /* startGameCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = startGameCollectionViewCell.h; path = XingCrossword/startGameCollectionViewCell.h; sourceTree = "<group>"; };
+		924B929419C038A800097884 /* startGameCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = startGameCollectionViewCell.m; path = XingCrossword/startGameCollectionViewCell.m; sourceTree = "<group>"; };
+		924B929619C038B900097884 /* startGameCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = startGameCollectionViewCell.xib; path = XingCrossword/startGameCollectionViewCell.xib; sourceTree = "<group>"; };
+		924B929919C0437000097884 /* startGameCollectionViewCell+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "startGameCollectionViewCell+Configuration.h"; path = "XingCrossword/startGameCollectionViewCell+Configuration.h"; sourceTree = "<group>"; };
+		924B929A19C0437000097884 /* startGameCollectionViewCell+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "startGameCollectionViewCell+Configuration.m"; path = "XingCrossword/startGameCollectionViewCell+Configuration.m"; sourceTree = "<group>"; };
+		924B929C19C04F4B00097884 /* StartGameViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "StartGameViewController+Configuration.h"; path = "XingCrossword/StartGameViewController+Configuration.h"; sourceTree = "<group>"; };
+		924B929D19C04F4B00097884 /* StartGameViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "StartGameViewController+Configuration.m"; path = "XingCrossword/StartGameViewController+Configuration.m"; sourceTree = "<group>"; };
 		9270F4D219B965E200934ED3 /* MyScene+PostionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyScene+PostionHandler.h"; path = "XingCrossword/MyScene+PostionHandler.h"; sourceTree = "<group>"; };
 		9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MyScene+PostionHandler.m"; path = "XingCrossword/MyScene+PostionHandler.m"; sourceTree = "<group>"; };
 		9270F4D519B96F6300934ED3 /* MyScene+fill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyScene+fill.h"; path = "XingCrossword/MyScene+fill.h"; sourceTree = "<group>"; };
@@ -247,6 +258,27 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		924B929219C0384E00097884 /* no use */ = {
+			isa = PBXGroup;
+			children = (
+				92B4E58019A592EA005F9B0E /* StartGameViewScene.h */,
+				92B4E58119A592EA005F9B0E /* StartGameViewScene.m */,
+			);
+			name = "no use";
+			sourceTree = "<group>";
+		};
+		924B929819C042FE00097884 /* startGameCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				924B929319C038A800097884 /* startGameCollectionViewCell.h */,
+				924B929419C038A800097884 /* startGameCollectionViewCell.m */,
+				924B929619C038B900097884 /* startGameCollectionViewCell.xib */,
+				924B929919C0437000097884 /* startGameCollectionViewCell+Configuration.h */,
+				924B929A19C0437000097884 /* startGameCollectionViewCell+Configuration.m */,
+			);
+			name = startGameCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		927CD9F4198F3583007DAA10 /* MainGameViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,10 +289,10 @@
 				927CD9F6198F378A007DAA10 /* MainViewController.xib */,
 				9270F4D219B965E200934ED3 /* MyScene+PostionHandler.h */,
 				9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */,
-				9270F4D519B96F6300934ED3 /* MyScene+fill.h */,
-				9270F4D619B96F6300934ED3 /* MyScene+fill.m */,
 				924B928F19C034DA00097884 /* MyScene+ProblemArray.h */,
 				924B929019C034DA00097884 /* MyScene+ProblemArray.m */,
+				9270F4D519B96F6300934ED3 /* MyScene+fill.h */,
+				9270F4D619B96F6300934ED3 /* MyScene+fill.m */,
 			);
 			name = MainGameViewController;
 			sourceTree = "<group>";
@@ -268,11 +300,13 @@
 		927CD9F5198F35A8007DAA10 /* StartGameViewController */ = {
 			isa = PBXGroup;
 			children = (
+				924B929219C0384E00097884 /* no use */,
+				924B929C19C04F4B00097884 /* StartGameViewController+Configuration.h */,
+				924B929D19C04F4B00097884 /* StartGameViewController+Configuration.m */,
 				927CD9F8198F3BB9007DAA10 /* StartGameViewController.h */,
 				927CD9F9198F3BB9007DAA10 /* StartGameViewController.m */,
 				927CD9FA198F3BB9007DAA10 /* StartGameViewController.xib */,
-				92B4E58019A592EA005F9B0E /* StartGameViewScene.h */,
-				92B4E58119A592EA005F9B0E /* StartGameViewScene.m */,
+				924B929819C042FE00097884 /* startGameCollectionViewCell */,
 			);
 			name = StartGameViewController;
 			sourceTree = "<group>";
@@ -478,6 +512,7 @@
 				161CCDCD196E33B200C8BF34 /* InfoPlist.strings in Resources */,
 				1611C128196CF0640060A5BA /* PayloadJSONs.md in Resources */,
 				927CD9FC198F3BB9007DAA10 /* StartGameViewController.xib in Resources */,
+				924B929719C038B900097884 /* startGameCollectionViewCell.xib in Resources */,
 				1611C148196D50590060A5BA /* XingCrossword-Info.plist in Resources */,
 				1611C14D196D50A00060A5BA /* Images.xcassets in Resources */,
 				927CD9F7198F378A007DAA10 /* MainViewController.xib in Resources */,
@@ -578,11 +613,14 @@
 				9270F4D419B965E200934ED3 /* MyScene+PostionHandler.m in Sources */,
 				927CD9FB198F3BB9007DAA10 /* StartGameViewController.m in Sources */,
 				1611C145196D50480060A5BA /* Item.m in Sources */,
+				924B929B19C0437000097884 /* startGameCollectionViewCell+Configuration.m in Sources */,
 				1611C14B196D50950060A5BA /* main.m in Sources */,
 				9270F4D719B96F6300934ED3 /* MyScene+fill.m in Sources */,
 				9286C066196E4CC500DE70FA /* Item+DataManager.m in Sources */,
 				1611C13D196D502C0060A5BA /* PuzzleGame.m in Sources */,
+				924B929519C038A800097884 /* startGameCollectionViewCell.m in Sources */,
 				9288A25F19B081F00035C828 /* PuzzleTool.m in Sources */,
+				924B929E19C04F4B00097884 /* StartGameViewController+Configuration.m in Sources */,
 				16427F2F196FCB1F00C9153E /* ColorTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

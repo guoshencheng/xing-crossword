@@ -13,10 +13,15 @@
 @interface Item (DataManager)
 
 + (Item*)findOrCreateWithDirection:(NSNumber*)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId  inContext:(NSManagedObjectContext*)context;
-+ (void)saveInputbyDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId andInputString:(NSString *)input completion:(MRSaveCompletionHandler)completion;
+
 + (Item *)findWithDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId;
+
++ (NSArray *)findAllItemInPuzzleWithPuzzleId:(NSString *)puzzleId;
+
 + (NSString *)findHintByDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId;
 + (NSString *)findWordByDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId;
 + (NSString *)findInputByDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId;
+
++ (void)saveInputbyDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId andInputString:(NSString *)input completion:(MRSaveCompletionHandler)completion;
 
 @end

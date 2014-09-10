@@ -174,12 +174,43 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   if (self.currentProblemNumber > 0) {
     [self setAnswerStringToCrossWithString:self.textField.text];
-    [Item saveInputbyDirection:(self.hor?@(0):@(1)) andOrder:@(self.currentProblemNumber - 1) andPuzzleId:self.puzzleId andInputString:self.textField.text completion:^(BOOL success, NSError *error) {
-      [self resetLabelColor];
-    }];
+    [self saveInput];
   }
   [self.textField resignFirstResponder];
   return  YES;
 }
+
+- (void)saveInput {
+  [Item saveInputbyDirection:(self.hor?@(0):@(1)) andOrder:@(self.currentProblemNumber - 1) andPuzzleId:self.puzzleId andInputString:self.textField.text completion:^(BOOL success, NSError *error) {
+    [self resetLabelColor];
+  }];
+  CGPoint point = self.hor ? ([[self.horProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue]) : ([[self.verProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue]);
+  self.hor ? [self saveHorInputFrom:point] : [self saveVerInputFrom:point];
+  
+}
+
+- (void)saveHorInputFrom:(CGPoint)point {
+  if ([self isTextFieldCellWithPostion:point]) {
+    NSInteger currentProblem = [self findProblemInVerProblemWithCGPoint:point];
+    if (currentProblem > 0) {
+      NSString *input = [self getStringFromVerCrossWordWithPoint:[[self.verProblemArray objectAtIndex:(currentProblem - 1)] CGPointValue]andStringBefore:@""];
+      [Item saveInputbyDirection:@(1) andOrder:@(currentProblem - 1) andPuzzleId:self.puzzleId andInputString:input completion:nil];
+    }
+    [self saveHorInputFrom:CGPointMake(point.x + 1, point.y)];
+  }
+}
+
+- (void)saveVerInputFrom:(CGPoint)point {
+  if ([self isTextFieldCellWithPostion:point]) {
+    NSInteger currentProblem = [self findProblemInHorProblemWithCGPoint:point];
+    if (currentProblem > 0) {
+      NSString *input = [self getStringFromHorCrossWordWithPoint:[[self.horProblemArray objectAtIndex:(currentProblem - 1)] CGPointValue] andStringBefore:@""];
+      [Item saveInputbyDirection:@(0) andOrder:@(currentProblem - 1) andPuzzleId:self.puzzleId andInputString:input completion:nil];
+    }
+    [self saveVerInputFrom:CGPointMake(point.x, point.y + 1)];
+  }
+  
+}
+
 
 @end

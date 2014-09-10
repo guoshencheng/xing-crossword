@@ -55,12 +55,12 @@
   if ([self isHaveDownTextFieldCellWithPostion:point]) {
     SKSpriteNode *currentNode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
     SKLabelNode *currenttext = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-    [currenttext setText:@""];
+    [currenttext setText:@" "];
     [self fillingDownWithEmpty:CGPointMake(point.x , point.y + 1)];
   } else {
     SKSpriteNode *currentNode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
     SKLabelNode *currenttext = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-    [currenttext setText:@""];
+    [currenttext setText:@" "];
   }
 }
 
@@ -68,12 +68,12 @@
   if ([self haveRightTextFieldCellWithPostion:point]) {
     SKSpriteNode *currentNode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
     SKLabelNode *currenttext = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-    [currenttext setText:@""];
+    [currenttext setText:@" "];
     [self fillingRightWithEmpty:CGPointMake(point.x + 1, point.y)];
   } else {
     SKSpriteNode *currentNode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
     SKLabelNode *currenttext = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-    [currenttext setText:@""];
+    [currenttext setText:@" "];
   }
 }
 

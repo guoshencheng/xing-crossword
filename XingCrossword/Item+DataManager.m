@@ -26,6 +26,12 @@
   return item.input;
 }
 
++ (NSArray *)findAllItemInPuzzleWithPuzzleId:(NSString *)puzzleId {
+  Puzzle *puzzle = [Puzzle findByPuzzleid:puzzleId];
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"puzzle == %@", puzzle];
+  return [Item MR_findAllWithPredicate:predicate];
+}
+
 + (void)saveInputbyDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId andInputString:(NSString *)input completion:(MRSaveCompletionHandler)completion {
   [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
     Item *item = [self getItemWithDirection:direction andOrder:order andPuzzleId:puzzleId inContext:localContext];

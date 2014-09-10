@@ -7,8 +7,14 @@
 //
 
 #import "StartGameViewScene.h"
+#import "startGameCollectionViewCell.h"
+#import "WebService.h"
 
-@interface StartGameViewController : UIViewController <StartGameViewSceneDelegate>
+@interface StartGameViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, WebServiceDelegate, startGameCollectionViewCellDelegate>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (strong ,nonatomic) NSArray *puzzleArray;
 
 + (id)create;
 

@@ -64,6 +64,7 @@
   currentLabelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
   currentLabelNode.fontSize = 12;
   currentLabelNode.fontColor = [UIColor blackColor];
+  currentLabelNode.text = @" ";
   [currentLabelNode setName:@"text"];
   [currentLabelNode setUserInteractionEnabled:NO];
   [node addChild:currentLabelNode];

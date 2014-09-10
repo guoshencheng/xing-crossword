@@ -97,9 +97,12 @@
 
 - (BOOL)isTextFieldCellWithPostion:(CGPoint)point {
   BOOL isTextField = false;
-  NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:point.x];
-  if ([currentLeftString isEqualToString:@"1"]) {
-    isTextField = true;
+  NSArray *firstArray = [self.wordArray objectAtIndex:0];
+  if (point.y < self.wordArray.count && point.x < firstArray.count) {
+    NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:point.x];
+    if ([currentLeftString isEqualToString:@"1"]) {
+      isTextField = true;
+    }
   }
   return isTextField;
 }
