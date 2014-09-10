@@ -59,25 +59,25 @@
 }
 
 - (NSArray *)getPuzzleAcrossHintWithPuzzleDictionary:(NSDictionary *)puzzle {
-  NSDictionary *hint = [puzzle objectForKey:@"hint"];
+  NSDictionary *hint = [puzzle objectForKey:@"hints"];
   NSArray *accross = [hint objectForKey:@"across"];
   return accross;
 }
 
 - (NSArray *)getPuzzleDownHintWithPuzzleDictionary:(NSDictionary *)puzzle {
-  NSDictionary *hint = [puzzle objectForKey:@"hint"];
+  NSDictionary *hint = [puzzle objectForKey:@"hints"];
   NSArray *down = [hint objectForKey:@"down"];
   return down;
 }
 
 - (NSArray *)getPuzzleAcrossWordWithPuzzleDictionary:(NSDictionary *)puzzle {
-  NSDictionary *word = [puzzle objectForKey:@"word"];
+  NSDictionary *word = [puzzle objectForKey:@"words"];
   NSArray *across = [word objectForKey:@"across"];
   return across;
 }
 
 - (NSArray *)getPuzzleDownWordWithPuzzleDictionary:(NSDictionary *)puzzle {
-  NSDictionary *word = [puzzle objectForKey:@"word"];
+  NSDictionary *word = [puzzle objectForKey:@"words"];
   NSArray *down = [word objectForKey:@"down"];
   return down;
 }

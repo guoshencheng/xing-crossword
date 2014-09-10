@@ -57,6 +57,10 @@
   return  [Puzzle MR_findFirstByAttribute:@"puzzleId" withValue:puzzleId];
 }
 
++ (Puzzle*)findByPuzzleid:(NSString*)puzzleId inContext:(NSManagedObjectContext *)context {
+  return  [Puzzle MR_findFirstByAttribute:@"puzzleId" withValue:puzzleId inContext:context];
+}
+
 +(Puzzle *)findByPuzzletitle:(NSString *)title {
   return  [Puzzle MR_findFirstByAttribute:@"title" withValue:title];
 }

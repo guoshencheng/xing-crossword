@@ -1,7 +1,9 @@
 
 #import "MyScene.h"
 #import "PuzzleGame.h"
+#import "Item+DataManager.h"
 #import "MyScene+fill.h"
+#import "MyScene+ProblemArray.h"
 #import "MyScene+PostionHandler.h"
 
 @implementation MyScene
@@ -33,6 +35,23 @@
   [self createWordArray];
   [self initHorProblem];
   [self initVerProblem];
+  [self initNodeArray];
+  [self createAnswerLabel];
+  [self fillWithInput];
+}
+
+- (void)createAnswerLabel {
+  self.labelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+  self.labelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+  self.labelNode.position = CGPointMake(160, self.size.height * 11 / 16);
+  self.labelNode.fontSize = 20;
+  self.labelNode.fontColor = [UIColor whiteColor];
+  [self.labelNode setName:@"answerLabel"];
+  [self.labelNode setUserInteractionEnabled:NO];
+  [self addChild:self.labelNode];
+}
+
+- (void)initNodeArray {
   for (int i = 0; i < self.nodeArray.count; i ++) {
     NSArray *nodeArray = [self.nodeArray objectAtIndex:i];
     for (int j = 0; j < nodeArray.count; j ++) {
@@ -59,6 +78,9 @@
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     NSLog(@"%@",node.name);
+    if ([node.name isEqual:self.labelNode.name]) {
+      continue;
+    }
     if ([node.name isEqual:@"text"]) {
       node = [node parent];
     }
@@ -71,22 +93,40 @@
           [self fillingLeft:mytouch];
           [self fillingRight:mytouch];
           self.currentProblemNumber = [self findProblemInHorProblemWithCGPoint:mytouch];
-          [self.labelNode setText:[NSString stringWithFormat:@"%@:%d",@"横向问题",self.currentProblemNumber]];
         }else {
           [self resetColor];
           [self fillDown:mytouch];
           [self fillUp:mytouch];
           self.currentProblemNumber = [self findProblemInVerProblemWithCGPoint:mytouch];
-          [self.labelNode setText:[NSString stringWithFormat:@"%@:%d",@"纵向问题",self.currentProblemNumber]];
         }
+        [self resetLabelColor];
+        [self.labelNode setText:[self getProblemText]];
       }
     }
-    [self.textField setText:[self getStringFromCrossWordWithStringBefore:@""]];
+    if (self.currentProblemNumber > 0) {
+      [self.textField setText:[self getStringFromCrossWordWithStringBefore:@""]];
+    }
   }
 }
 
 -(void)update:(CFTimeInterval)currentTime {
   /* Called before each frame is rendered */
+}
+
+- (void)resetLabelColor {
+  self.labelNode.fontColor = ([[self getInputText] isEqual: [self getCorrectAnswerText]]) ? [UIColor greenColor] : [UIColor whiteColor];
+}
+
+- (NSString *)getInputText {
+  return [Item findInputByDirection:(self.hor?@(0):@(1)) andOrder:@(self.currentProblemNumber - 1) andPuzzleId:self.puzzleId];
+}
+
+- (NSString *)getCorrectAnswerText {
+  return [Item findWordByDirection:(self.hor?@(0):@(1)) andOrder:@(self.currentProblemNumber - 1) andPuzzleId:self.puzzleId];
+}
+
+- (NSString *)getProblemText {
+  return [Item findHintByDirection:(self.hor?@(0):@(1)) andOrder:@(self.currentProblemNumber - 1) andPuzzleId:self.puzzleId];
 }
 
 - (CGPoint) getCellPostionWithNodeName:(NSString*)nodeName {
@@ -111,110 +151,12 @@
   }
 }
 
-//init all Hor Problem and Add Them To the Array With Its First Node Postion
-- (void)initHorProblem {
-  for (int i = 0; i < self.wordArray.count; i++) {
-    NSArray *currentArray = [self.wordArray objectAtIndex:i];
-    for (int j = 0; j < currentArray.count; j++) {
-      if ([self isTextFieldCellWithPostion:CGPointMake(j, i)] && [self haveRightTextFieldCellWithPostion:CGPointMake(j, i)] && ![self haveLeftTextFieldCellWithPostion:CGPointMake(j, i)]) {
-        [self.horProblemArray addObject:[NSValue valueWithCGPoint:CGPointMake(j, i)]];
-      }
-    }
-  }
+- (CGFloat)screenWidth {
+  return [[UIScreen mainScreen] bounds].size.width;
 }
 
-//init all Ver Problem and Add Them To the Array With Its First Node Postion
-- (void)initVerProblem {
-  for (int j = 0; j < self.wordArrayYMaxNumber; j++) {
-    for (int i = 0; i < self.wordArray.count; i ++) {
-      if ([self isTextFieldCellWithPostion:CGPointMake(j, i)] && ![self isHaveUpTextFieldCellWithPostion:CGPointMake(j, i)] && [self isHaveDownTextFieldCellWithPostion:CGPointMake(j, i)]) {
-        [self.verProblemArray addObject:[NSValue valueWithCGPoint:CGPointMake(j, i)]];
-      }
-    }
-  }
-}
-
-// find the First Node's Postion Hor a ver Problem
-- (int)findProblemInHorProblemWithCGPoint:(CGPoint)point {
-  int numberOfProblem = 0;
-  for (int i = 0; i < self.horProblemArray.count; i ++) {
-    CGPoint currentPoint = [[self.horProblemArray objectAtIndex:i] CGPointValue];
-    float x = currentPoint.x;
-    float y = currentPoint.y;
-    if (x <= point.x && y == point.y) {
-      numberOfProblem = i + 1;
-    }
-  }
-  return numberOfProblem;
-}
-
-
-// find the First Node's Postion for a ver Problem
-- (int)findProblemInVerProblemWithCGPoint:(CGPoint)point {
-  int numberOfProble = 0;
-  for (int i = 0; i < self.verProblemArray.count; i ++) {
-    CGPoint currentPoint = [[self.verProblemArray objectAtIndex:i] CGPointValue];
-    float x = currentPoint.x;
-    float y = currentPoint.y;
-    if (x == point.x && y <= point.y) {
-      numberOfProble = i + 1;
-    }
-  }
-  return  numberOfProble;
-}
-
-//set textField String to WordCross's every Node
-- (void)setAnswerStringToCrossWithString:(NSString*)answerString {
-  if (self.hor) {
-    CGPoint currentPoint = [[self.horProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
-    if ( answerString.length < 1) {
-      [self fillingRightWithEmpty:currentPoint];
-    }else {
-      for (int i = 0; i < answerString.length; i ++) {
-        NSString *currentChar = [answerString substringWithRange:NSMakeRange(i, 1)];
-        SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x+i, currentPoint.y)];
-        SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-        label.text = currentChar;
-        if (![self haveRightTextFieldCellWithPostion:CGPointMake(currentPoint.x + i, currentPoint.y)]){
-          break;
-        }
-      }
-      CGPoint lastStringNodePoint = CGPointMake(currentPoint.x + answerString.length - 1, currentPoint.y);
-      if ([self haveRightTextFieldCellWithPostion:lastStringNodePoint]) {
-        [self fillingRightWithEmpty:CGPointMake(currentPoint.x + answerString.length, currentPoint.y)];
-      }
-    }
-  }else {
-    CGPoint currentPoint = [[self.verProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
-    if (answerString.length < 1) {
-      [self fillingRightWithEmpty:currentPoint];
-    } else {
-        for (int i = 0; i < answerString.length; i ++) {
-        NSString *currentChar = [answerString substringWithRange:NSMakeRange(i, 1)];
-        SKSpriteNode *currentNode = [self getNodeWithPoint:CGPointMake(currentPoint.x, currentPoint.y + i)];
-        SKLabelNode *label = (SKLabelNode*)[currentNode childNodeWithName:@"text"];
-        label.text = currentChar;
-        if (![self isHaveDownTextFieldCellWithPostion:CGPointMake(currentPoint.x, currentPoint.y + i)]) {
-        break;
-        }
-      }
-      CGPoint lastStringNodePoint = CGPointMake(currentPoint.x, currentPoint.y + answerString.length - 1);
-      if ([self isHaveDownTextFieldCellWithPostion:lastStringNodePoint]) {
-        [self fillingDownWithEmpty:CGPointMake(currentPoint.x, currentPoint.y + answerString.length)];
-      }
-    }
-  }
-}
-
-//get String From WordCross
-- (NSString*)getStringFromCrossWordWithStringBefore:(NSString*)string {
-  if (self.hor) {
-    CGPoint currentPoint = [[self.horProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
-    return [self getStringFromHorCrossWordWithPoint:currentPoint andStringBefore:string];
-  } else {
-    CGPoint currentPoint = [[self.verProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue];
-    return  [self getStringFromVerCrossWordWithPoint:currentPoint andStringBefore:string];
-  }
+- (CGFloat)screenHeight {
+  return [[UIScreen mainScreen] bounds].size.height;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -232,6 +174,9 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   if (self.currentProblemNumber > 0) {
     [self setAnswerStringToCrossWithString:self.textField.text];
+    [Item saveInputbyDirection:(self.hor?@(0):@(1)) andOrder:@(self.currentProblemNumber - 1) andPuzzleId:self.puzzleId andInputString:self.textField.text completion:^(BOOL success, NSError *error) {
+      [self resetLabelColor];
+    }];
   }
   [self.textField resignFirstResponder];
   return  YES;

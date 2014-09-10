@@ -11,10 +11,11 @@
 
 @interface Puzzle (DataManager)
 
++ (Puzzle*)findByPuzzleid:(NSString*)puzzleId;
 + (NSArray*)findAllPuzzle;
 + (void)createPuzzleWithResponse:(NSDictionary*)response completion:(void(^)(BOOL success, NSError *error))completion;
 +(void)createPuzzleWithPuzzle:(PuzzleTool *)puzzleTool acrossHint:(NSArray *)acrossHint acrossWord:(NSArray *)acrossWord downHint:(NSArray *)downHint downWord:(NSArray *)downWord completion:(void (^)(BOOL, NSError *))completion;
-+ (Puzzle*)findByPuzzleid:(NSString*)puzzleId;
++ (Puzzle*)findByPuzzleid:(NSString*)puzzleId inContext:(NSManagedObjectContext *)context;
 + (Puzzle *)findByPuzzletitle:(NSString *)title;
 + (id)getPuzzleWithPuzzleid:(NSString*)puzzleId inContext:(NSManagedObjectContext *)context;
 

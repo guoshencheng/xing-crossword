@@ -42,9 +42,10 @@
   }
 }
 
-- (void)startGameViewSceneShouldPushMainGameController:(StartGameViewScene *)startGmaeViewScene withPuzzletitle:(NSString *)title {
+- (void)startGameViewSceneShouldPushMainGameController:(StartGameViewScene *)startGmaeViewScene withPuzzletitle:(NSString *)title andPuzzleId:(NSString *)puzzleId{
   ViewController *viewController = [ViewController create];
   viewController.title = title;
+  viewController.puzzleId = puzzleId;
   [self.navigationController pushViewController:viewController animated:YES];
 }
 

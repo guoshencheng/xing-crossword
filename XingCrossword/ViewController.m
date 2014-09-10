@@ -17,6 +17,7 @@
   MyScene * scene = [MyScene sceneWithSize:skView.bounds.size];
   scene.scaleMode = SKSceneScaleModeAspectFill;
   scene.title = self.title;
+  scene.puzzleId = self.puzzleId;
   [scene createAcross];
   [skView presentScene:scene];
 }

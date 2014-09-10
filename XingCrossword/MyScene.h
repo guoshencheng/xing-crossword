@@ -4,6 +4,7 @@
 @interface MyScene : SKScene <UITextFieldDelegate>
 
 @property NSString *title;
+@property NSString *puzzleId;
 @property Boolean hor;
 @property CGPoint touchPoint;
 @property NSArray *nodeArray;

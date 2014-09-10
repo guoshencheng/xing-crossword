@@ -21,6 +21,6 @@
 
 @protocol StartGameViewSceneDelegate <NSObject>
 
-- (void)startGameViewSceneShouldPushMainGameController:(StartGameViewScene *)startGmaeViewScene withPuzzletitle:(NSString *)title;
+- (void)startGameViewSceneShouldPushMainGameController:(StartGameViewScene *)startGmaeViewScene withPuzzletitle:(NSString *)title andPuzzleId:(NSString *)puzzleId;
 
 @end

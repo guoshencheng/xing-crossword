@@ -8,15 +8,15 @@
 
 #import "Item.h"
 #import "ItemTool.h"
+#import "CoreData+MagicalRecord.h"
 
 @interface Item (DataManager)
 
-
-+(void)createItemWithAcrossHint:(NSArray *)acrossHint acrossWord:(NSArray *)acrossWord downHint:(NSArray *)downHint downWord:(NSArray *)downWord andPuzzleId:(NSString *)puzzleId completion:(void(^)(BOOL success, NSError *error))completion;
-+ (void)createItemWithItemTool:(ItemTool *)itemtool andPuzzleId:(NSString *)puzzleId completion:(void(^)(BOOL success, NSError *error))completion;
-+ (Item*)createAcrossItemWithOrder:(NSDictionary *)response andOrder:(NSNumber *)order completion:(void(^)(BOOL success, NSError *error))completion;
-+ (Item*)createDownItemWithOrder:(NSDictionary *)response andOrder:(NSNumber *)order completion:(void(^)(BOOL success, NSError *error))completion;
-+ (Item*)findByDirection:(NSNumber*)direction andOrder:(NSNumber*)order andPuzzleId:(NSString*)puzzleId;
 + (Item*)findOrCreateWithDirection:(NSNumber*)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId  inContext:(NSManagedObjectContext*)context;
++ (void)saveInputbyDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId andInputString:(NSString *)input completion:(MRSaveCompletionHandler)completion;
++ (Item *)findWithDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId;
++ (NSString *)findHintByDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId;
++ (NSString *)findWordByDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId;
++ (NSString *)findInputByDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId;
 
 @end

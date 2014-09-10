@@ -12,6 +12,7 @@
 @interface ViewController : UIViewController
 
 @property NSString *title;
+@property NSString *puzzleId;
 
 + (id)create;
 

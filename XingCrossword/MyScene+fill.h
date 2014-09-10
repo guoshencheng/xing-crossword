@@ -19,4 +19,7 @@
 - (void)fillingRightWithEmpty:(CGPoint)point;
 - (void)fillingDownWithEmpty:(CGPoint)point;
 
+- (void)setAnswerStringToCrossWithString:(NSString*)answerString;
+- (void)fillWithInput;
+
 @end

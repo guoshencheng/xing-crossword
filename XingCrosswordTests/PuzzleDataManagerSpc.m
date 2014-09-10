@@ -48,22 +48,6 @@ describe(@"Create or update a puzzle in CoreData", ^{
   });
 });
 
-describe(@"Get puzzle with puzzle Id", ^{
-  it(@"return NSMangerObject if the puzzle exist", ^{
-    Puzzle *puzzle1 = [Puzzle MR_createEntity];
-    puzzle1.puzzleId = @"xzm-20140714";
-    Puzzle *puzzle = [Puzzle findByPuzzleid:@"xzm-20140714"];
-    [[puzzle should] equal:puzzle1];
-  });
-  
-  it(@"return nil if the puzzle  not exist", ^{
-    Puzzle *puzzle1 = [Puzzle MR_createEntity];
-    puzzle1.puzzleId = @"xzm-20140714";
-    Puzzle *puzzle = [Puzzle findByPuzzleid:@""];
-    [[puzzle should] beNil];
-  });
-});
-
 
 
 afterEach(^{

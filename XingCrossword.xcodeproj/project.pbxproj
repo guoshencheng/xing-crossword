@@ -31,6 +31,7 @@
 		16427F3B196FDE4400C9153E /* Crossword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16427F39196FDE4400C9153E /* Crossword.xcdatamodeld */; };
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
+		924B929119C034DA00097884 /* MyScene+ProblemArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 924B929019C034DA00097884 /* MyScene+ProblemArray.m */; };
 		9270F4D419B965E200934ED3 /* MyScene+PostionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */; };
 		9270F4D719B96F6300934ED3 /* MyScene+fill.m in Sources */ = {isa = PBXBuildFile; fileRef = 9270F4D619B96F6300934ED3 /* MyScene+fill.m */; };
 		927CD9F7198F378A007DAA10 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927CD9F6198F378A007DAA10 /* MainViewController.xib */; };
@@ -99,6 +100,8 @@
 		64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.xcconfig"; path = "Pods/Pods-XingCrosswordTests.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		924B928F19C034DA00097884 /* MyScene+ProblemArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyScene+ProblemArray.h"; path = "XingCrossword/MyScene+ProblemArray.h"; sourceTree = "<group>"; };
+		924B929019C034DA00097884 /* MyScene+ProblemArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MyScene+ProblemArray.m"; path = "XingCrossword/MyScene+ProblemArray.m"; sourceTree = "<group>"; };
 		9270F4D219B965E200934ED3 /* MyScene+PostionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyScene+PostionHandler.h"; path = "XingCrossword/MyScene+PostionHandler.h"; sourceTree = "<group>"; };
 		9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MyScene+PostionHandler.m"; path = "XingCrossword/MyScene+PostionHandler.m"; sourceTree = "<group>"; };
 		9270F4D519B96F6300934ED3 /* MyScene+fill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyScene+fill.h"; path = "XingCrossword/MyScene+fill.h"; sourceTree = "<group>"; };
@@ -256,6 +259,8 @@
 				9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */,
 				9270F4D519B96F6300934ED3 /* MyScene+fill.h */,
 				9270F4D619B96F6300934ED3 /* MyScene+fill.m */,
+				924B928F19C034DA00097884 /* MyScene+ProblemArray.h */,
+				924B929019C034DA00097884 /* MyScene+ProblemArray.m */,
 			);
 			name = MainGameViewController;
 			sourceTree = "<group>";
@@ -557,6 +562,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				924B929119C034DA00097884 /* MyScene+ProblemArray.m in Sources */,
 				92B4E58219A592EA005F9B0E /* StartGameViewScene.m in Sources */,
 				16427F3B196FDE4400C9153E /* Crossword.xcdatamodeld in Sources */,
 				9286C069196E4D3200DE70FA /* Puzzle+DataManager.m in Sources */,
