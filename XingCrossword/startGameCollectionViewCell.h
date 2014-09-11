@@ -26,8 +26,8 @@
 
 @property (strong, nonatomic) Puzzle *puzzle;
 @property (strong, nonatomic) NSArray *itemArray;
-@property (assign, nonatomic) int *answerCount;
-@property (assign, nonatomic) int *rightAnswerCount;
+@property (assign, nonatomic) int answerCount;
+@property (assign, nonatomic) int rightAnswerCount;
 
 - (void)updateWithPuzzle:(Puzzle *)puzzle;
 

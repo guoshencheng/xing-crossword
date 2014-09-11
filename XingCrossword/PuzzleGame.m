@@ -58,7 +58,7 @@
   id<ColorTheme> theme = [ColorThemeFactory defaultTheme];
   SKSpriteNode *node = [SKSpriteNode spriteNodeWithColor:(isEntry ? [theme entryCellColor] : [theme blockCellColor]) size:self.cellSize];
   [node setName:[NSString stringWithFormat:@"%d,%d", columnIndex, rowIndex]];
-  node.position = CGPointMake(self.cellSize.width * columnIndex, self.cellSize.height * (self.rowsCount - rowIndex));
+  node.position = CGPointMake(self.cellSize.width * (columnIndex + 0.5), [self screenHeight] - 160 - self.cellSize.height * (rowIndex + 0.5));
   SKLabelNode *currentLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
   currentLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
   currentLabelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
@@ -71,5 +71,14 @@
   
   return node;
 }
+
+- (CGFloat)screenWidth {
+  return [[UIScreen mainScreen] bounds].size.width;
+}
+
+- (CGFloat)screenHeight {
+  return [[UIScreen mainScreen] bounds].size.height;
+}
+
 
 @end

@@ -9,10 +9,42 @@
 @implementation MyScene
 
 - (void)didMoveToView:(SKView *)view {
-  self.textField = [[UITextField alloc] initWithFrame:CGRectMake(self.size.width / 4, self.size.height * 1 / 8 + 20, 160, 40)];
+  [self configureTextField];
+  [self configureButton];
+  [self configureLabel];
+}
+
+- (void)configureButton {
+  self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 20, 60, 20)];
+  self.backButton.backgroundColor = [UIColor grayColor];
+  self.backButton.layer.cornerRadius = 5.0f;
+  [self.backButton setTitle:@"back" forState:UIControlStateNormal];
+  [self.backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+  [self.backButton addTarget:self action:@selector(sendPopBack) forControlEvents:UIControlEventTouchDown];
+  [self.view addSubview:self.backButton];
+}
+
+- (void)sendPopBack {
+  if ([self.delegate respondsToSelector:@selector(mySceneWillPop:)]) {
+    [self.delegate mySceneWillPop:self];
+  }
+}
+
+- (void)configureLabel {
+  self.label = [[UILabel alloc] initWithFrame:CGRectMake(([self screenWidth] - 300) / 2, 105, 300, 40)];
+  self.label.textColor = [UIColor whiteColor];
+  self.label.numberOfLines = 2;
+  self.label.font = [UIFont systemFontOfSize:12];
+  self.label.backgroundColor = [UIColor clearColor];
+  [self.view addSubview:self.label];
+  
+}
+
+- (void)configureTextField {
+  self.textField = [[UITextField alloc] initWithFrame:CGRectMake(([self screenWidth] - 160) / 2, 70, 160, 25)];
   self.textField.borderStyle = UITextBorderStyleRoundedRect;
   self.textField.textColor = [UIColor blackColor];
-  self.textField.font = [UIFont systemFontOfSize:17.0];
+  self.textField.font = [UIFont systemFontOfSize:15.0];
   self.textField.placeholder = @"Enter your answer here";
   self.textField.backgroundColor = [UIColor whiteColor];
   self.textField.autocorrectionType = UITextAutocorrectionTypeYes;
@@ -44,7 +76,7 @@
   self.labelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
   self.labelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
   self.labelNode.position = CGPointMake(160, self.size.height * 11 / 16);
-  self.labelNode.fontSize = 20;
+  self.labelNode.fontSize = 15;
   self.labelNode.fontColor = [UIColor whiteColor];
   [self.labelNode setName:@"answerLabel"];
   [self.labelNode setUserInteractionEnabled:NO];
@@ -75,6 +107,7 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   for (UITouch *touch in touches) {
+    [self.textField resignFirstResponder];
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     NSLog(@"%@",node.name);
@@ -100,7 +133,7 @@
           self.currentProblemNumber = [self findProblemInVerProblemWithCGPoint:mytouch];
         }
         [self resetLabelColor];
-        [self.labelNode setText:[self getProblemText]];
+        [self.label setText:[self getProblemText]];
       }
     }
     if (self.currentProblemNumber > 0) {
@@ -114,7 +147,7 @@
 }
 
 - (void)resetLabelColor {
-  self.labelNode.fontColor = ([[self getInputText] isEqual: [self getCorrectAnswerText]]) ? [UIColor greenColor] : [UIColor whiteColor];
+  self.label.textColor = ([[self getInputText] isEqual: [self getCorrectAnswerText]]) ? [UIColor greenColor] : [UIColor whiteColor];
 }
 
 - (NSString *)getInputText {

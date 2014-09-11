@@ -46,13 +46,13 @@
 }
 
 - (void)setAnswerView {
-  self.anwserProblemProcessLabel.text = [NSString stringWithFormat:@"%@ %d",@"Answerd:",(int)self.answerCount * 25 / self.itemArray.count];
-  self.answerProblmProcessViewConstraint.constant = (50.0 * (int)self.answerCount) / self.itemArray.count;
+  self.anwserProblemProcessLabel.text = [NSString stringWithFormat:@"%@ %d",@"Answerd:",self.answerCount * 100 / self.itemArray.count];
+  self.answerProblmProcessViewConstraint.constant = (200.0 * (int)self.answerCount) / self.itemArray.count;
 }
 
 - (void)setRightAnswerView {
-  self.rightAnswerProcessLabel.text = [NSString stringWithFormat:@"%@ %d",@"Correct:",(int)self.rightAnswerCount * 25 / self.itemArray.count];
-  self.rightAnswerProcessViewConstraint.constant = (50.0 * (int)self.rightAnswerCount ) / self.itemArray.count;
+  self.rightAnswerProcessLabel.text = [NSString stringWithFormat:@"%@ %d",@"Correct:",self.rightAnswerCount * 100 / self.itemArray.count];
+  self.rightAnswerProcessViewConstraint.constant = (200.0 * (int)self.rightAnswerCount ) / self.itemArray.count;
 }
 
 @end

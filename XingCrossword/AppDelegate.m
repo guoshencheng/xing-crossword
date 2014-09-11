@@ -26,6 +26,7 @@
   self.window.backgroundColor = [UIColor whiteColor];
   StartGameViewController *starViewController = [StartGameViewController create];
   self.navigationController = [[UINavigationController alloc] initWithRootViewController:starViewController];
+  self.navigationController.navigationBarHidden = YES;
   self.window.rootViewController = self.navigationController;
   [self.window makeKeyAndVisible];
   // Override point for customization after application launch.

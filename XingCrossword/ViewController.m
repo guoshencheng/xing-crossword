@@ -16,15 +16,20 @@
   skView.showsNodeCount = YES;
   MyScene * scene = [MyScene sceneWithSize:skView.bounds.size];
   scene.scaleMode = SKSceneScaleModeAspectFill;
+  scene.delegate = self;
   scene.title = self.title;
   scene.puzzleId = self.puzzleId;
   [scene createAcross];
   [skView presentScene:scene];
 }
 
+- (void)mySceneWillPop:(MyScene *)myscene {
+  [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (BOOL)shouldAutorotate
 {
-  return YES;
+  return NO;
 }
 
 - (NSUInteger)supportedInterfaceOrientations

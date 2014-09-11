@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SpriteKit/SpriteKit.h>
+#import "MyScene.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <MySceneDelegate>
 
 @property NSString *title;
 @property NSString *puzzleId;
