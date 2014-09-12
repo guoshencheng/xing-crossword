@@ -10,6 +10,7 @@
 #import "MyScene.h"
 
 @interface ViewController : UIViewController <MySceneDelegate>
+@property (weak, nonatomic) IBOutlet SKView *skView;
 
 @property NSString *title;
 @property NSString *puzzleId;

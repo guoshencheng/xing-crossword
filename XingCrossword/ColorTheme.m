@@ -15,7 +15,7 @@
 @implementation NormalColorTheme
 
 - (SKColor *)entryCellColor {
-  return [SKColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1.0];
+  return [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
 }
 
 - (SKColor *)blockCellColor {

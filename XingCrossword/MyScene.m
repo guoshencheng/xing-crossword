@@ -16,12 +16,17 @@
 
 - (void)configureButton {
   self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 20, 60, 20)];
-  self.backButton.backgroundColor = [UIColor grayColor];
-  self.backButton.layer.cornerRadius = 5.0f;
   [self.backButton setTitle:@"back" forState:UIControlStateNormal];
+  self.backButton.titleLabel.font = [UIFont systemFontOfSize:10.0];
   [self.backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
   [self.backButton addTarget:self action:@selector(sendPopBack) forControlEvents:UIControlEventTouchDown];
   [self.view addSubview:self.backButton];
+}
+
+- (void)createButtonTexture {
+  SKSpriteNode *buttonnode = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"button.png"] size:CGSizeMake(60, 20)];
+  buttonnode.position = CGPointMake(40, [self screenHeight] - 30);
+  [self addChild:buttonnode];
 }
 
 - (void)sendPopBack {
@@ -32,7 +37,7 @@
 
 - (void)configureLabel {
   self.label = [[UILabel alloc] initWithFrame:CGRectMake(([self screenWidth] - 300) / 2, 105, 300, 40)];
-  self.label.textColor = [UIColor whiteColor];
+  self.label.textColor = [UIColor blackColor];
   self.label.numberOfLines = 2;
   self.label.font = [UIFont systemFontOfSize:12];
   self.label.backgroundColor = [UIColor clearColor];
@@ -40,13 +45,19 @@
   
 }
 
+- (void)createlabelTexture {
+  SKSpriteNode *labelnode = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"textfield.png"] size:CGSizeMake(200, 40)];
+  labelnode.position = CGPointMake([self screenWidth]  / 2, [self screenHeight] - 82);
+  [self addChild:labelnode];
+}
+
 - (void)configureTextField {
-  self.textField = [[UITextField alloc] initWithFrame:CGRectMake(([self screenWidth] - 160) / 2, 70, 160, 25)];
+  self.textField = [[UITextField alloc] initWithFrame:CGRectMake(([self screenWidth] - 180) / 2, 70, 180, 25)];
   self.textField.borderStyle = UITextBorderStyleRoundedRect;
   self.textField.textColor = [UIColor blackColor];
   self.textField.font = [UIFont systemFontOfSize:15.0];
   self.textField.placeholder = @"Enter your answer here";
-  self.textField.backgroundColor = [UIColor whiteColor];
+  self.textField.backgroundColor = [UIColor clearColor];
   self.textField.autocorrectionType = UITextAutocorrectionTypeYes;
   self.textField.keyboardType = UIKeyboardTypeDefault;
   self.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -100,7 +111,12 @@
   self.horProblemArray = [[NSMutableArray alloc] init];
   self.verProblemArray = [[NSMutableArray alloc] init];
   if (self = [super initWithSize:size]) {
-    self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
+    SKSpriteNode *backGround = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+    backGround.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    backGround.name = @"BACKGROUND";
+    [self addChild:backGround];
+    [self createlabelTexture];
+    [self createButtonTexture];
   }
   return self;
 }
@@ -111,7 +127,7 @@
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     NSLog(@"%@",node.name);
-    if ([node.name isEqual:self.labelNode.name]) {
+    if ([node.name isEqual:self.labelNode.name] || [node.name isEqual:@"BACKGROUND"]) {
       continue;
     }
     if ([node.name isEqual:@"text"]) {
@@ -147,7 +163,7 @@
 }
 
 - (void)resetLabelColor {
-  self.label.textColor = ([[self getInputText] isEqual: [self getCorrectAnswerText]]) ? [UIColor greenColor] : [UIColor whiteColor];
+  self.label.textColor = ([[self getInputText] isEqual: [self getCorrectAnswerText]]) ? [UIColor greenColor] : [UIColor blackColor];
 }
 
 - (NSString *)getInputText {
@@ -176,9 +192,11 @@
     for (int j = 0; j < currentArray.count; j++) {
       NSString *currentValue = [currentArray objectAtIndex:j];
       if ([currentValue isEqualToString:@"1"]) {
-        [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]] setColor:[UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1.0]];
+        SKSpriteNode * currentnode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]];
+        currentnode.texture = [SKTexture textureWithImageNamed:@"empty.png"];
       } else {
-        [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]] setColor:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:1.0]];
+        SKSpriteNode * currentnode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]];
+        currentnode.texture = [SKTexture textureWithImageNamed:@"block.png"];
       }
     }
   }

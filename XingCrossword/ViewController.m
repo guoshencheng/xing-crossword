@@ -11,7 +11,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-  SKView * skView = (SKView *)self.view;
+  SKView * skView = (SKView *)self.skView;
   skView.showsFPS = YES;
   skView.showsNodeCount = YES;
   MyScene * scene = [MyScene sceneWithSize:skView.bounds.size];

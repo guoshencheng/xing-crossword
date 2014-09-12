@@ -38,6 +38,8 @@
 		924B929E19C04F4B00097884 /* StartGameViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 924B929D19C04F4B00097884 /* StartGameViewController+Configuration.m */; };
 		9270F4D419B965E200934ED3 /* MyScene+PostionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */; };
 		9270F4D719B96F6300934ED3 /* MyScene+fill.m in Sources */ = {isa = PBXBuildFile; fileRef = 9270F4D619B96F6300934ED3 /* MyScene+fill.m */; };
+		9273FA0319C2A57E0061FC14 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9273FA0219C2A57E0061FC14 /* background@2x.png */; };
+		9273FA0519C2A58C0061FC14 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9273FA0419C2A58C0061FC14 /* background.png */; };
 		927CD9F7198F378A007DAA10 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927CD9F6198F378A007DAA10 /* MainViewController.xib */; };
 		927CD9FB198F3BB9007DAA10 /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 927CD9F9198F3BB9007DAA10 /* StartGameViewController.m */; };
 		927CD9FC198F3BB9007DAA10 /* StartGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927CD9FA198F3BB9007DAA10 /* StartGameViewController.xib */; };
@@ -54,6 +56,13 @@
 		9298426F195E9BD900136AB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92984247195E9BD900136AB0 /* Foundation.framework */; };
 		92984270195E9BD900136AB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9298424B195E9BD900136AB0 /* UIKit.framework */; };
 		92B05ABF196E9037007171E9 /* PuzzleDataManagerSpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B05ABE196E9037007171E9 /* PuzzleDataManagerSpc.m */; };
+		92B321ED19C2D448001200F3 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B321EA19C2D448001200F3 /* block.png */; };
+		92B321EE19C2D448001200F3 /* empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B321EB19C2D448001200F3 /* empty.png */; };
+		92B321EF19C2D448001200F3 /* fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B321EC19C2D448001200F3 /* fill.png */; };
+		92B321F219C2DEFE001200F3 /* textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B321F019C2DEFE001200F3 /* textfield.png */; };
+		92B321F319C2DEFE001200F3 /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B321F119C2DEFE001200F3 /* textfield@2x.png */; };
+		92B321F619C2E605001200F3 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B321F419C2E605001200F3 /* button.png */; };
+		92B321F719C2E605001200F3 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B321F519C2E605001200F3 /* button@2x.png */; };
 		92B4E58219A592EA005F9B0E /* StartGameViewScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B4E58119A592EA005F9B0E /* StartGameViewScene.m */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +126,8 @@
 		9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MyScene+PostionHandler.m"; path = "XingCrossword/MyScene+PostionHandler.m"; sourceTree = "<group>"; };
 		9270F4D519B96F6300934ED3 /* MyScene+fill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyScene+fill.h"; path = "XingCrossword/MyScene+fill.h"; sourceTree = "<group>"; };
 		9270F4D619B96F6300934ED3 /* MyScene+fill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MyScene+fill.m"; path = "XingCrossword/MyScene+fill.m"; sourceTree = "<group>"; };
+		9273FA0219C2A57E0061FC14 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "XingCrossword/image/background@2x.png"; sourceTree = "<group>"; };
+		9273FA0419C2A58C0061FC14 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = XingCrossword/image/background.png; sourceTree = "<group>"; };
 		927CD9F6198F378A007DAA10 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		927CD9F8198F3BB9007DAA10 /* StartGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameViewController.h; sourceTree = "<group>"; };
 		927CD9F9198F3BB9007DAA10 /* StartGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameViewController.m; sourceTree = "<group>"; };
@@ -139,6 +150,13 @@
 		9298426C195E9BD900136AB0 /* XingCrosswordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XingCrosswordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9298426D195E9BD900136AB0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		92B05ABE196E9037007171E9 /* PuzzleDataManagerSpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PuzzleDataManagerSpc.m; path = XingCrosswordTests/PuzzleDataManagerSpc.m; sourceTree = SOURCE_ROOT; };
+		92B321EA19C2D448001200F3 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block.png; path = XingCrossword/image/block.png; sourceTree = "<group>"; };
+		92B321EB19C2D448001200F3 /* empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = empty.png; path = XingCrossword/image/empty.png; sourceTree = "<group>"; };
+		92B321EC19C2D448001200F3 /* fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fill.png; path = XingCrossword/image/fill.png; sourceTree = "<group>"; };
+		92B321F019C2DEFE001200F3 /* textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = textfield.png; path = XingCrossword/image/textfield.png; sourceTree = "<group>"; };
+		92B321F119C2DEFE001200F3 /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "textfield@2x.png"; path = "XingCrossword/image/textfield@2x.png"; sourceTree = "<group>"; };
+		92B321F419C2E605001200F3 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button.png; path = XingCrossword/image/button.png; sourceTree = "<group>"; };
+		92B321F519C2E605001200F3 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button@2x.png"; path = "XingCrossword/image/button@2x.png"; sourceTree = "<group>"; };
 		92B4E58019A592EA005F9B0E /* StartGameViewScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartGameViewScene.h; path = XingCrossword/StartGameViewScene.h; sourceTree = "<group>"; };
 		92B4E58119A592EA005F9B0E /* StartGameViewScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartGameViewScene.m; path = XingCrossword/StartGameViewScene.m; sourceTree = "<group>"; };
 		CC5E68F9A46A401BA6B5A828 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -279,6 +297,22 @@
 			name = startGameCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		9273FA0119C2A54D0061FC14 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				92B321F419C2E605001200F3 /* button.png */,
+				92B321F519C2E605001200F3 /* button@2x.png */,
+				92B321F019C2DEFE001200F3 /* textfield.png */,
+				92B321F119C2DEFE001200F3 /* textfield@2x.png */,
+				92B321EA19C2D448001200F3 /* block.png */,
+				92B321EB19C2D448001200F3 /* empty.png */,
+				92B321EC19C2D448001200F3 /* fill.png */,
+				9273FA0419C2A58C0061FC14 /* background.png */,
+				9273FA0219C2A57E0061FC14 /* background@2x.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
 		927CD9F4198F3583007DAA10 /* MainGameViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +433,7 @@
 		92984250195E9BD900136AB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9273FA0119C2A54D0061FC14 /* image */,
 				161CCDCB196E33B200C8BF34 /* InfoPlist.strings */,
 				1611C14A196D50950060A5BA /* main.m */,
 				1611C149196D50750060A5BA /* XingCrossword-Prefix.pch */,
@@ -509,14 +544,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				161CCDD0196E33BD00C8BF34 /* InfoPlist.strings in Resources */,
+				92B321EE19C2D448001200F3 /* empty.png in Resources */,
 				161CCDCD196E33B200C8BF34 /* InfoPlist.strings in Resources */,
 				1611C128196CF0640060A5BA /* PayloadJSONs.md in Resources */,
 				927CD9FC198F3BB9007DAA10 /* StartGameViewController.xib in Resources */,
 				924B929719C038B900097884 /* startGameCollectionViewCell.xib in Resources */,
+				92B321F319C2DEFE001200F3 /* textfield@2x.png in Resources */,
+				92B321F619C2E605001200F3 /* button.png in Resources */,
+				92B321EF19C2D448001200F3 /* fill.png in Resources */,
 				1611C148196D50590060A5BA /* XingCrossword-Info.plist in Resources */,
 				1611C14D196D50A00060A5BA /* Images.xcassets in Resources */,
 				927CD9F7198F378A007DAA10 /* MainViewController.xib in Resources */,
+				92B321F219C2DEFE001200F3 /* textfield.png in Resources */,
+				9273FA0319C2A57E0061FC14 /* background@2x.png in Resources */,
+				9273FA0519C2A58C0061FC14 /* background.png in Resources */,
 				1611C15A196D50EE0060A5BA /* XingCrosswordTests-Info.plist in Resources */,
+				92B321F719C2E605001200F3 /* button@2x.png in Resources */,
+				92B321ED19C2D448001200F3 /* block.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

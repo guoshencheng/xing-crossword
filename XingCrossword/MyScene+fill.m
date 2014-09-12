@@ -14,40 +14,48 @@
 
 - (void)fillDown:(CGPoint)point {
   if ([self isHaveDownTextFieldCellWithPostion:point]) {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
+    SKSpriteNode * currentnode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
     
     [self fillDown:CGPointMake(point.x, point.y + 1)];
   } else {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
+    SKSpriteNode * currentnode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
   }
 }
 
 - (void)fillUp:(CGPoint)point {
   if ([self isHaveUpTextFieldCellWithPostion:point]) {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
+    SKSpriteNode * currentnode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
     
     [self fillUp:CGPointMake(point.x, point.y - 1)];
   } else {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
+    SKSpriteNode * currentnode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
   }
 }
 
 - (void)fillingLeft:(CGPoint)point {
   if ([self haveLeftTextFieldCellWithPostion:point]) {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
+    SKSpriteNode * currentnode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
     [self fillingLeft:CGPointMake(point.x - 1, point.y)];
   } else {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
+    SKSpriteNode * currentnode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
   }
 }
 
 - (void)fillingRight:(CGPoint)point {
   if ([self haveRightTextFieldCellWithPostion:point]) {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
+    SKSpriteNode * currentnode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
     
     [self fillingRight:CGPointMake(point.x + 1, point.y)];
   } else {
-    [(SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]] setColor:[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1.0]];
+    SKSpriteNode * currentnode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
   }
 }
 
