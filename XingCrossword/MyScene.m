@@ -8,101 +8,7 @@
 
 @implementation MyScene
 
-- (void)didMoveToView:(SKView *)view {
-  [self configureTextField];
-  [self configureButton];
-  [self configureLabel];
-}
-
-- (void)configureButton {
-  self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 20, 60, 20)];
-  [self.backButton setTitle:@"back" forState:UIControlStateNormal];
-  self.backButton.titleLabel.font = [UIFont systemFontOfSize:10.0];
-  [self.backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-  [self.backButton addTarget:self action:@selector(sendPopBack) forControlEvents:UIControlEventTouchDown];
-  [self.view addSubview:self.backButton];
-}
-
-- (void)createButtonTexture {
-  SKSpriteNode *buttonnode = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"button.png"] size:CGSizeMake(60, 20)];
-  buttonnode.position = CGPointMake(40, [self screenHeight] - 30);
-  [self addChild:buttonnode];
-}
-
-- (void)sendPopBack {
-  if ([self.delegate respondsToSelector:@selector(mySceneWillPop:)]) {
-    [self.delegate mySceneWillPop:self];
-  }
-}
-
-- (void)configureLabel {
-  self.label = [[UILabel alloc] initWithFrame:CGRectMake(([self screenWidth] - 300) / 2, 105, 300, 40)];
-  self.label.textColor = [UIColor blackColor];
-  self.label.numberOfLines = 2;
-  self.label.font = [UIFont systemFontOfSize:12];
-  self.label.backgroundColor = [UIColor clearColor];
-  [self.view addSubview:self.label];
-  
-}
-
-- (void)createlabelTexture {
-  SKSpriteNode *labelnode = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"textfield.png"] size:CGSizeMake(200, 40)];
-  labelnode.position = CGPointMake([self screenWidth]  / 2, [self screenHeight] - 82);
-  [self addChild:labelnode];
-}
-
-- (void)configureTextField {
-  self.textField = [[UITextField alloc] initWithFrame:CGRectMake(([self screenWidth] - 180) / 2, 70, 180, 25)];
-  self.textField.borderStyle = UITextBorderStyleRoundedRect;
-  self.textField.textColor = [UIColor blackColor];
-  self.textField.font = [UIFont systemFontOfSize:15.0];
-  self.textField.placeholder = @"Enter your answer here";
-  self.textField.backgroundColor = [UIColor clearColor];
-  self.textField.autocorrectionType = UITextAutocorrectionTypeYes;
-  self.textField.keyboardType = UIKeyboardTypeDefault;
-  self.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-  self.textField.delegate = self;
-  [self.view addSubview:self.textField];
-}
-
-- (void)createWordArray {
-  PuzzleGame *puzzleGame = [[PuzzleGame alloc]initWithPuzzleTitle:self.title size:self.size];
-  self.nodeArray = puzzleGame.grids;
-  self.wordArray = puzzleGame.mapGrid;
-  NSArray *firstArray = [self.wordArray objectAtIndex:0];
-  self.wordArrayXMaxNumber = self.wordArray.count;
-  self.wordArrayYMaxNumber = firstArray.count;
-}
-
-- (void)createAcross {
-  [self createWordArray];
-  [self initHorProblem];
-  [self initVerProblem];
-  [self initNodeArray];
-  [self createAnswerLabel];
-  [self fillWithInput];
-}
-
-- (void)createAnswerLabel {
-  self.labelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-  self.labelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-  self.labelNode.position = CGPointMake(160, self.size.height * 11 / 16);
-  self.labelNode.fontSize = 15;
-  self.labelNode.fontColor = [UIColor whiteColor];
-  [self.labelNode setName:@"answerLabel"];
-  [self.labelNode setUserInteractionEnabled:NO];
-  [self addChild:self.labelNode];
-}
-
-- (void)initNodeArray {
-  for (int i = 0; i < self.nodeArray.count; i ++) {
-    NSArray *nodeArray = [self.nodeArray objectAtIndex:i];
-    for (int j = 0; j < nodeArray.count; j ++) {
-      SKSpriteNode *currentSprite = [nodeArray objectAtIndex:j];
-      [self addChild:currentSprite];
-    }
-  }
-}
+#pragma mark - self method
 
 -(id)initWithSize:(CGSize)size {
   self.currentProblemNumber = 0;
@@ -115,19 +21,17 @@
     backGround.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     backGround.name = @"BACKGROUND";
     [self addChild:backGround];
-    [self createlabelTexture];
-    [self createButtonTexture];
   }
   return self;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   for (UITouch *touch in touches) {
-    [self.textField resignFirstResponder];
+    [self TextfiledResignFirstResponder];
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     NSLog(@"%@",node.name);
-    if ([node.name isEqual:self.labelNode.name] || [node.name isEqual:@"BACKGROUND"]) {
+    if ([node.name isEqual:self.labelNode.name] || [node.name isEqual:@"BACKGROUND"] || [node.name isEqual:@"puzzle"]) {
       continue;
     }
     if ([node.name isEqual:@"text"]) {
@@ -149,11 +53,11 @@
           self.currentProblemNumber = [self findProblemInVerProblemWithCGPoint:mytouch];
         }
         [self resetLabelColor];
-        [self.label setText:[self getProblemText]];
+        [self updateLabelText:[self getProblemText]];
       }
     }
     if (self.currentProblemNumber > 0) {
-      [self.textField setText:[self getStringFromCrossWordWithStringBefore:@""]];
+      [self setTextFieldText:[self getStringFromCrossWordWithStringBefore:@""]];
     }
   }
 }
@@ -162,8 +66,52 @@
   /* Called before each frame is rendered */
 }
 
-- (void)resetLabelColor {
-  self.label.textColor = ([[self getInputText] isEqual: [self getCorrectAnswerText]]) ? [UIColor greenColor] : [UIColor blackColor];
+
+#pragma mark - Public Method
+- (void)createAcross {
+  [self createWordArray];
+  [self initHorProblem];
+  [self initVerProblem];
+  [self initNodeArray];
+  [self createAnswerLabel];
+  [self fillWithInput];
+}
+
+- (void)textfieldReturened:(NSString *)text {
+  if (self.currentProblemNumber > 0) {
+    [self setAnswerStringToCrossWithString:text];
+    [self saveInput:text];
+  }
+}
+
+- (NSString *)textFieldWillBeginEditWithText {
+  return (self.currentProblemNumber > 0) ? [self getStringFromCrossWordWithStringBefore:@""] : @"";
+}
+
+#pragma - mark Private Method
+
+- (void)createWordArray {
+  PuzzleGame *puzzleGame = [[PuzzleGame alloc]initWithPuzzleTitle:self.title size:self.size];
+  self.puzzle = puzzleGame.puzzleNode;
+  self.wordArray = puzzleGame.mapGrid;
+  NSArray *firstArray = [self.wordArray objectAtIndex:0];
+  self.wordArrayXMaxNumber = self.wordArray.count;
+  self.wordArrayYMaxNumber = firstArray.count;
+}
+
+- (void)createAnswerLabel {
+  self.labelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+  self.labelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+  self.labelNode.position = CGPointMake(160, self.size.height * 11 / 16);
+  self.labelNode.fontSize = 15;
+  self.labelNode.fontColor = [UIColor whiteColor];
+  [self.labelNode setName:@"answerLabel"];
+  [self.labelNode setUserInteractionEnabled:NO];
+  [self addChild:self.labelNode];
+}
+
+- (void)initNodeArray {
+  [self addChild:self.puzzle];
 }
 
 - (NSString *)getInputText {
@@ -192,47 +140,20 @@
     for (int j = 0; j < currentArray.count; j++) {
       NSString *currentValue = [currentArray objectAtIndex:j];
       if ([currentValue isEqualToString:@"1"]) {
-        SKSpriteNode * currentnode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]];
+        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]];
         currentnode.texture = [SKTexture textureWithImageNamed:@"empty.png"];
       } else {
-        SKSpriteNode * currentnode = (SKSpriteNode*)[self childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]];
+        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]];
         currentnode.texture = [SKTexture textureWithImageNamed:@"block.png"];
       }
     }
   }
 }
 
-- (CGFloat)screenWidth {
-  return [[UIScreen mainScreen] bounds].size.width;
-}
+#pragma mark - SaveMethod
 
-- (CGFloat)screenHeight {
-  return [[UIScreen mainScreen] bounds].size.height;
-}
-
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-  return  YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-  if (self.currentProblemNumber > 0) {
-    [self.textField setText:[self getStringFromCrossWordWithStringBefore:@""]];
-  }
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  if (self.currentProblemNumber > 0) {
-    [self setAnswerStringToCrossWithString:self.textField.text];
-    [self saveInput];
-  }
-  [self.textField resignFirstResponder];
-  return  YES;
-}
-
-- (void)saveInput {
-  [Item saveInputbyDirection:(self.hor?@(0):@(1)) andOrder:@(self.currentProblemNumber - 1) andPuzzleId:self.puzzleId andInputString:self.textField.text completion:^(BOOL success, NSError *error) {
+- (void)saveInput:(NSString *)text {
+  [Item saveInputbyDirection:(self.hor?@(0):@(1)) andOrder:@(self.currentProblemNumber - 1) andPuzzleId:self.puzzleId andInputString:text completion:^(BOOL success, NSError *error) {
     [self resetLabelColor];
   }];
   CGPoint point = self.hor ? ([[self.horProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue]) : ([[self.verProblemArray objectAtIndex:(self.currentProblemNumber - 1)] CGPointValue]);
@@ -263,5 +184,41 @@
   
 }
 
+#pragma mark - delegate sender
+
+
+- (void)TextfiledResignFirstResponder {
+  if ([self.delegate respondsToSelector:@selector(MySceneTextfiledResignFirstResponder)]) {
+    [self.delegate MySceneTextfiledResignFirstResponder];
+  }
+}
+
+- (void)setTextFieldText:(NSString *)text {
+  if ([self.delegate respondsToSelector:@selector(MySceneUpdateTextFieldText:)]) {
+    [self.delegate MySceneUpdateTextFieldText:text];
+  }
+}
+
+- (void)resetLabelColor {
+  if ([self.delegate respondsToSelector:@selector(MySceneUpdateLabelColor:)]) {
+    [self.delegate MySceneUpdateLabelColor:([[self getInputText] isEqual: [self getCorrectAnswerText]]) ? [UIColor greenColor] : [UIColor blackColor]];
+  }
+}
+
+- (void)updateLabelText:(NSString *)text {
+  if ([self.delegate respondsToSelector:@selector(MySceneSetLabelText:)]) {
+    [self.delegate MySceneSetLabelText:text];
+  }
+}
+
+#pragma mark - UIScreen Tool
+
+- (CGFloat)screenWidth {
+  return [[UIScreen mainScreen] bounds].size.width;
+}
+
+- (CGFloat)screenHeight {
+  return [[UIScreen mainScreen] bounds].size.height;
+}
 
 @end

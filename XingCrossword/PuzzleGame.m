@@ -29,14 +29,18 @@
     CGFloat cellWidth = size.width / self.rowsCount;
     CGFloat cellHeight = size.height / self.columnsCount;
     self.cellSize = cellWidth < cellHeight ? CGSizeMake(cellWidth, cellWidth) : CGSizeMake(cellHeight, cellHeight);
-    
+    self.puzzleNode = [SKSpriteNode spriteNodeWithColor:[UIColor clearColor] size:CGSizeMake(self.cellSize.width * self.columnsCount, self.cellSize.height * self.rowsCount)];
+    self.puzzleNode.position = CGPointMake((size.width - self.puzzleNode.size.width) / 2, (size.height - self.puzzleNode.size.height) / 2);
+    self.puzzleNode.name = @"puzzle";
     NSMutableArray *grids = [NSMutableArray array];
     for (NSUInteger rowIndex = 0; rowIndex < self.rowsCount; rowIndex++) {
       NSMutableArray *row = [NSMutableArray array];
       [grids addObject:row];
       for (NSUInteger columnIndex = 0; columnIndex < self.columnsCount; columnIndex++) {
         BOOL isEntry = [@"1" isEqualToString:self.mapGrid[rowIndex][columnIndex]];
-        [row addObject:[self createCellAtRow:rowIndex column:columnIndex isEntry:isEntry]];
+        SKSpriteNode *currentNode = [self createCellAtRow:rowIndex column:columnIndex isEntry:isEntry];
+        [row addObject:currentNode];
+        [self.puzzleNode addChild:currentNode];
       }
     }
     self.grids = grids;
@@ -61,7 +65,7 @@
 //                        
 //  spriteNodeWithColor:(isEntry ? [theme entryCellColor] : [theme blockCellColor]) size:self.cellSize];
   [node setName:[NSString stringWithFormat:@"%d,%d", columnIndex, rowIndex]];
-  node.position = CGPointMake(self.cellSize.width * (columnIndex + 0.5), [self screenHeight] - 160 - self.cellSize.height * (rowIndex + 0.5));
+  node.position = CGPointMake(self.cellSize.width * (columnIndex + 0.5), self.cellSize.height * (self.rowsCount - (rowIndex + 0.5)));
   SKLabelNode *currentLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
   currentLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
   currentLabelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;

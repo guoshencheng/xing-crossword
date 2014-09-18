@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "MyScene.h"
 
-@interface ViewController : UIViewController <MySceneDelegate>
+@interface ViewController : UIViewController <MySceneDelegate, UITextFieldDelegate, UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet SKView *skView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *backButtonImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *textFieldImageView;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UILabel *problemLabel;
 
+@property (strong, nonatomic) MyScene *scene;
 @property NSString *title;
 @property NSString *puzzleId;
 

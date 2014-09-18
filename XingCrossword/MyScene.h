@@ -15,20 +15,24 @@
 @property NSInteger wordArrayYMaxNumber;
 @property NSMutableArray *horProblemArray;
 @property NSMutableArray *verProblemArray;
-@property UITextField *textField;
-@property UILabel *label;
-@property UIButton *backButton;
 @property SKLabelNode *labelNode;
+@property SKSpriteNode *puzzle;
 @property int currentProblemNumber;
 
 @property (weak, nonatomic) id<MySceneDelegate> delegate;
 
 - (void)createAcross;
+- (void)textfieldReturened:(NSString *)text;
+- (NSString *)textFieldWillBeginEditWithText;
 
 @end
 
 @protocol MySceneDelegate <NSObject>
 
-- (void)mySceneWillPop:(MyScene *)myscene;
+- (void)MySceneSetLabelText:(NSString *)label;
+- (void)MySceneUpdateLabelColor:(UIColor *)color;
+- (void)MySceneTextfiledBecomeFirstResponse;
+- (void)MySceneTextfiledResignFirstResponder;
+- (void)MySceneUpdateTextFieldText:(NSString *)text;
 
 @end

@@ -276,6 +276,13 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		9210A41219CAC71D0036397E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		924B929219C0384E00097884 /* no use */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,17 +323,10 @@
 		927CD9F4198F3583007DAA10 /* MainGameViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1611C150196D50AE0060A5BA /* MyScene.h */,
-				1611C151196D50AE0060A5BA /* MyScene.m */,
+				92B321F819C2EB78001200F3 /* MyScene */,
 				1611C152196D50AE0060A5BA /* ViewController.h */,
 				1611C153196D50AE0060A5BA /* ViewController.m */,
 				927CD9F6198F378A007DAA10 /* MainViewController.xib */,
-				9270F4D219B965E200934ED3 /* MyScene+PostionHandler.h */,
-				9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */,
-				924B928F19C034DA00097884 /* MyScene+ProblemArray.h */,
-				924B929019C034DA00097884 /* MyScene+ProblemArray.m */,
-				9270F4D519B96F6300934ED3 /* MyScene+fill.h */,
-				9270F4D619B96F6300934ED3 /* MyScene+fill.m */,
 			);
 			name = MainGameViewController;
 			sourceTree = "<group>";
@@ -336,8 +336,8 @@
 			children = (
 				924B929219C0384E00097884 /* no use */,
 				924B929C19C04F4B00097884 /* StartGameViewController+Configuration.h */,
-				924B929D19C04F4B00097884 /* StartGameViewController+Configuration.m */,
 				927CD9F8198F3BB9007DAA10 /* StartGameViewController.h */,
+				924B929D19C04F4B00097884 /* StartGameViewController+Configuration.m */,
 				927CD9F9198F3BB9007DAA10 /* StartGameViewController.m */,
 				927CD9FA198F3BB9007DAA10 /* StartGameViewController.xib */,
 				924B929819C042FE00097884 /* startGameCollectionViewCell */,
@@ -415,6 +415,7 @@
 		9298424F195E9BD900136AB0 /* XingCrossword */ = {
 			isa = PBXGroup;
 			children = (
+				9210A41219CAC71D0036397E /* View */,
 				9288A25919B081810035C828 /* DTO */,
 				9288A25519B05CC60035C828 /* webService */,
 				927CD9F5198F35A8007DAA10 /* StartGameViewController */,
@@ -461,6 +462,21 @@
 				1611C159196D50EE0060A5BA /* XingCrosswordTests-Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		92B321F819C2EB78001200F3 /* MyScene */ = {
+			isa = PBXGroup;
+			children = (
+				9270F4D219B965E200934ED3 /* MyScene+PostionHandler.h */,
+				9270F4D319B965E200934ED3 /* MyScene+PostionHandler.m */,
+				924B928F19C034DA00097884 /* MyScene+ProblemArray.h */,
+				924B929019C034DA00097884 /* MyScene+ProblemArray.m */,
+				9270F4D519B96F6300934ED3 /* MyScene+fill.h */,
+				9270F4D619B96F6300934ED3 /* MyScene+fill.m */,
+				1611C150196D50AE0060A5BA /* MyScene.h */,
+				1611C151196D50AE0060A5BA /* MyScene.m */,
+			);
+			name = MyScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

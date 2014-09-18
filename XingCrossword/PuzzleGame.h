@@ -15,6 +15,7 @@
 @property (nonatomic, assign) NSUInteger columnsCount;
 
 @property (nonatomic, assign) CGSize cellSize;
+@property (nonatomic, strong) SKSpriteNode *puzzleNode;
 @property (nonatomic, strong) NSArray *grids;
 @property (nonatomic, strong) NSArray *mapGrid;
 @property (nonatomic, strong) NSArray *downItems;
