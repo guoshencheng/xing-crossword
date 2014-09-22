@@ -31,6 +31,10 @@
 		16427F3B196FDE4400C9153E /* Crossword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16427F39196FDE4400C9153E /* Crossword.xcdatamodeld */; };
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
+		924B0A1A19CC0B3C003C25BB /* ProblemListViewPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 924B0A1919CC0B3C003C25BB /* ProblemListViewPanel.m */; };
+		924B0A1C19CC0B4C003C25BB /* ProblemListViewPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 924B0A1B19CC0B4C003C25BB /* ProblemListViewPanel.xib */; };
+		924B0A2119CC1007003C25BB /* ProblemListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 924B0A1F19CC1007003C25BB /* ProblemListViewCell.m */; };
+		924B0A2219CC1007003C25BB /* ProblemListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 924B0A2019CC1007003C25BB /* ProblemListViewCell.xib */; };
 		924B929119C034DA00097884 /* MyScene+ProblemArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 924B929019C034DA00097884 /* MyScene+ProblemArray.m */; };
 		924B929519C038A800097884 /* startGameCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 924B929419C038A800097884 /* startGameCollectionViewCell.m */; };
 		924B929719C038B900097884 /* startGameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 924B929619C038B900097884 /* startGameCollectionViewCell.xib */; };
@@ -113,6 +117,12 @@
 		64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.xcconfig"; path = "Pods/Pods-XingCrosswordTests.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		924B0A1819CC0B3C003C25BB /* ProblemListViewPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProblemListViewPanel.h; path = XingCrossword/ProblemListViewPanel.h; sourceTree = "<group>"; };
+		924B0A1919CC0B3C003C25BB /* ProblemListViewPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProblemListViewPanel.m; path = XingCrossword/ProblemListViewPanel.m; sourceTree = "<group>"; };
+		924B0A1B19CC0B4C003C25BB /* ProblemListViewPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProblemListViewPanel.xib; sourceTree = "<group>"; };
+		924B0A1E19CC1007003C25BB /* ProblemListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProblemListViewCell.h; path = XingCrossword/ProblemListViewCell.h; sourceTree = "<group>"; };
+		924B0A1F19CC1007003C25BB /* ProblemListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProblemListViewCell.m; path = XingCrossword/ProblemListViewCell.m; sourceTree = "<group>"; };
+		924B0A2019CC1007003C25BB /* ProblemListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProblemListViewCell.xib; path = XingCrossword/ProblemListViewCell.xib; sourceTree = "<group>"; };
 		924B928F19C034DA00097884 /* MyScene+ProblemArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyScene+ProblemArray.h"; path = "XingCrossword/MyScene+ProblemArray.h"; sourceTree = "<group>"; };
 		924B929019C034DA00097884 /* MyScene+ProblemArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MyScene+ProblemArray.m"; path = "XingCrossword/MyScene+ProblemArray.m"; sourceTree = "<group>"; };
 		924B929319C038A800097884 /* startGameCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = startGameCollectionViewCell.h; path = XingCrossword/startGameCollectionViewCell.h; sourceTree = "<group>"; };
@@ -279,8 +289,22 @@
 		9210A41219CAC71D0036397E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				924B0A1D19CC0CE6003C25BB /* ProblemListViewCell */,
+				924B0A1819CC0B3C003C25BB /* ProblemListViewPanel.h */,
+				924B0A1919CC0B3C003C25BB /* ProblemListViewPanel.m */,
+				924B0A1B19CC0B4C003C25BB /* ProblemListViewPanel.xib */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		924B0A1D19CC0CE6003C25BB /* ProblemListViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				924B0A1E19CC1007003C25BB /* ProblemListViewCell.h */,
+				924B0A1F19CC1007003C25BB /* ProblemListViewCell.m */,
+				924B0A2019CC1007003C25BB /* ProblemListViewCell.xib */,
+			);
+			name = ProblemListViewCell;
 			sourceTree = "<group>";
 		};
 		924B929219C0384E00097884 /* no use */ = {
@@ -336,8 +360,8 @@
 			children = (
 				924B929219C0384E00097884 /* no use */,
 				924B929C19C04F4B00097884 /* StartGameViewController+Configuration.h */,
-				927CD9F8198F3BB9007DAA10 /* StartGameViewController.h */,
 				924B929D19C04F4B00097884 /* StartGameViewController+Configuration.m */,
+				927CD9F8198F3BB9007DAA10 /* StartGameViewController.h */,
 				927CD9F9198F3BB9007DAA10 /* StartGameViewController.m */,
 				927CD9FA198F3BB9007DAA10 /* StartGameViewController.xib */,
 				924B929819C042FE00097884 /* startGameCollectionViewCell */,
@@ -567,12 +591,14 @@
 				924B929719C038B900097884 /* startGameCollectionViewCell.xib in Resources */,
 				92B321F319C2DEFE001200F3 /* textfield@2x.png in Resources */,
 				92B321F619C2E605001200F3 /* button.png in Resources */,
+				924B0A2219CC1007003C25BB /* ProblemListViewCell.xib in Resources */,
 				92B321EF19C2D448001200F3 /* fill.png in Resources */,
 				1611C148196D50590060A5BA /* XingCrossword-Info.plist in Resources */,
 				1611C14D196D50A00060A5BA /* Images.xcassets in Resources */,
 				927CD9F7198F378A007DAA10 /* MainViewController.xib in Resources */,
 				92B321F219C2DEFE001200F3 /* textfield.png in Resources */,
 				9273FA0319C2A57E0061FC14 /* background@2x.png in Resources */,
+				924B0A1C19CC0B4C003C25BB /* ProblemListViewPanel.xib in Resources */,
 				9273FA0519C2A58C0061FC14 /* background.png in Resources */,
 				1611C15A196D50EE0060A5BA /* XingCrosswordTests-Info.plist in Resources */,
 				92B321F719C2E605001200F3 /* button@2x.png in Resources */,
@@ -660,6 +686,7 @@
 				924B929119C034DA00097884 /* MyScene+ProblemArray.m in Sources */,
 				92B4E58219A592EA005F9B0E /* StartGameViewScene.m in Sources */,
 				16427F3B196FDE4400C9153E /* Crossword.xcdatamodeld in Sources */,
+				924B0A1A19CC0B3C003C25BB /* ProblemListViewPanel.m in Sources */,
 				9286C069196E4D3200DE70FA /* Puzzle+DataManager.m in Sources */,
 				1611C154196D50AE0060A5BA /* AppDelegate.m in Sources */,
 				161CCDD8196E43CF00C8BF34 /* Puzzle+Utility.m in Sources */,
@@ -677,6 +704,7 @@
 				1611C14B196D50950060A5BA /* main.m in Sources */,
 				9270F4D719B96F6300934ED3 /* MyScene+fill.m in Sources */,
 				9286C066196E4CC500DE70FA /* Item+DataManager.m in Sources */,
+				924B0A2119CC1007003C25BB /* ProblemListViewCell.m in Sources */,
 				1611C13D196D502C0060A5BA /* PuzzleGame.m in Sources */,
 				924B929519C038A800097884 /* startGameCollectionViewCell.m in Sources */,
 				9288A25F19B081F00035C828 /* PuzzleTool.m in Sources */,
