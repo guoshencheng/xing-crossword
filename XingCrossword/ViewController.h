@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *textFieldImageView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UILabel *problemLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
 
 @property (strong, nonatomic) MyScene *scene;
 @property (strong, nonatomic) ProblemListViewPanel *problemListViewPanel;

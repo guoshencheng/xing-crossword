@@ -13,6 +13,7 @@
                 <outlet property="skView" destination="UPn-yx-JOm" id="1yY-Aj-cmy"/>
                 <outlet property="textField" destination="Orz-s2-tSp" id="N25-B0-Ve2"/>
                 <outlet property="textFieldImageView" destination="fKR-vt-C3a" id="JKy-H5-cq0"/>
+                <outlet property="topViewHeightConstraint" destination="vld-8g-lvA" id="sWX-dp-SP8"/>
                 <outlet property="view" destination="Fad-x9-YaE" id="6CB-gC-fSZ"/>
             </connections>
         </placeholder>

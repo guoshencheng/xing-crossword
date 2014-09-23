@@ -30,6 +30,7 @@
 
 @protocol MySceneDelegate <NSObject>
 
+- (void)MySceneInitFinish:(MyScene *)myscene;
 - (void)MySceneSetLabelText:(NSString *)label;
 - (void)MySceneUpdateLabelColor:(UIColor *)color;
 - (void)MySceneTextfiledBecomeFirstResponse;

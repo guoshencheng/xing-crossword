@@ -45,6 +45,8 @@
   self.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
   self.textField.delegate = self;
   
+  self.topViewHeightConstraint.constant = [self screenHeight];
+  
   self.problemListViewPanel = [ProblemListViewPanel create];
   self.problemListViewPanel.delegate = self;
   [self.view addSubview:self.problemListViewPanel];
@@ -63,6 +65,29 @@
 
 - (IBAction)backButtonClickAction:(id)sender {
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - animation 
+
+- (void)animateShowButtomView {
+  
+  [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:1 options:UIViewAnimationOptionCurveLinear  animations:^{
+    self.topViewHeightConstraint.constant = 180;
+    [self.view layoutIfNeeded];
+  } completion:nil];
+}
+
+- (void)animateHideButtomView {
+  [UIView animateWithDuration:0.2 animations:^{
+    self.topViewHeightConstraint.constant = [self screenHeight];
+    [self.view layoutIfNeeded];
+  }];
+}
+
+#pragma mark - MySceneDelegate
+
+- (void)MySceneInitFinish:(MyScene *)myscene {
+  [self animateShowButtomView];
 }
 
 - (void)MySceneSetLabelText:(NSString *)label {

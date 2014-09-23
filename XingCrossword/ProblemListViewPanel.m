@@ -25,16 +25,21 @@
   [UIView animateWithDuration:0.2 animations:^{
     self.frame = CGRectMake(-320, 0, 320, 568);
   } completion:^(BOOL finished) {
-    
+    self.hidden = YES;
   }];
 }
 
 - (void)animateToShow {
-  [UIView animateWithDuration:0.2 animations:^{
-    self.frame = CGRectMake(0, 0, 320, 568);
+  self.hidden = NO;
+  [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:1 options:UIViewAnimationOptionCurveLinear  animations:^{
+     self.frame = CGRectMake(0, 0, 320, 568);
   } completion:^(BOOL finished) {
     
   }];
+//  
+//  [UIView animateWithDuration:0.2 animations:^{
+//    self.frame = CGRectMake(0, 0, 320, 568);
+//  }];
 }
 
 - (IBAction)horProblemButtonClickAction:(id)sender {

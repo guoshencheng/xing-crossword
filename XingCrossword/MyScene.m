@@ -75,6 +75,9 @@
   [self initNodeArray];
   [self createAnswerLabel];
   [self fillWithInput];
+  if ([self.delegate respondsToSelector:@selector(MySceneInitFinish:)]) {
+    [self.delegate MySceneInitFinish:self];
+  }
 }
 
 - (void)selectProblemWithIndex:(NSInteger)index andDirection:(NSNumber *)direction {
