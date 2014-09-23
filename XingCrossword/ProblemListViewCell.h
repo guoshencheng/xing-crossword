@@ -12,4 +12,8 @@
 
 @interface ProblemListViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *prblemText;
+
+- (void)updateWithProblemString:(NSString *)problemString;
+
 @end

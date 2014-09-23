@@ -22,6 +22,7 @@
 @property (weak, nonatomic) id<MySceneDelegate> delegate;
 
 - (void)createAcross;
+- (void)selectProblemWithIndex:(NSInteger)index andDirection:(NSNumber *)direction;
 - (void)textfieldReturened:(NSString *)text;
 - (NSString *)textFieldWillBeginEditWithText;
 

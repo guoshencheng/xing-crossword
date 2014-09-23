@@ -26,6 +26,17 @@
   return item.input;
 }
 
++ (NSDictionary *)findAllItemInPuzzleWithPuzzleId:(NSString *)puzzleId andDirection:(NSNumber *)direction {
+  Puzzle *puzzle = [Puzzle findByPuzzleid:puzzleId];
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"puzzle == %@ && direction == %@", puzzle, direction];
+  NSArray* itemArray = [Item MR_findAllWithPredicate:predicate];
+  NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+  for (Item *item in itemArray) {
+    [dictionary setObject:item.hint forKey:item.order];
+  }
+  return dictionary;
+}
+
 + (NSArray *)findAllItemInPuzzleWithPuzzleId:(NSString *)puzzleId {
   Puzzle *puzzle = [Puzzle findByPuzzleid:puzzleId];
   NSPredicate *predicate = [NSPredicate predicateWithFormat:@"puzzle == %@", puzzle];

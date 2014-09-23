@@ -10,17 +10,62 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yr6-3F-6Yy">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLr-bW-ptf">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yr6-3F-6Yy">
+                    <rect key="frame" x="0.0" y="80" width="320" height="488"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KR1-xI-MBq">
+                    <rect key="frame" x="20" y="20" width="70" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="PqQ-of-ine"/>
+                        <constraint firstAttribute="height" constant="30" id="hVR-ci-AdL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="横向问题">
+                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="horProblemButtonClickAction:" destination="zj3-Du-qXP" eventType="touchUpInside" id="azv-oG-g9O"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clc-ao-tzT">
+                    <rect key="frame" x="230" y="20" width="70" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="7PX-3r-v96"/>
+                        <constraint firstAttribute="width" constant="70" id="PFY-PC-ubV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="纵向问题">
+                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="verProblemButtonClickAction:" destination="zj3-Du-qXP" eventType="touchUpInside" id="0o5-7g-ESe"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="yr6-3F-6Yy" firstAttribute="top" secondItem="zj3-Du-qXP" secondAttribute="top" id="4Q3-Ql-kjL"/>
+                <constraint firstItem="yr6-3F-6Yy" firstAttribute="top" secondItem="zj3-Du-qXP" secondAttribute="top" constant="80" id="4Q3-Ql-kjL"/>
+                <constraint firstItem="qLr-bW-ptf" firstAttribute="top" secondItem="zj3-Du-qXP" secondAttribute="top" id="4ZX-8u-P9K"/>
+                <constraint firstItem="KR1-xI-MBq" firstAttribute="leading" secondItem="zj3-Du-qXP" secondAttribute="leading" constant="20" id="9pM-I3-Elj"/>
+                <constraint firstItem="clc-ao-tzT" firstAttribute="top" secondItem="zj3-Du-qXP" secondAttribute="top" constant="20" id="Dgm-6h-0Qc"/>
+                <constraint firstItem="qLr-bW-ptf" firstAttribute="leading" secondItem="zj3-Du-qXP" secondAttribute="leading" id="Mdj-cI-LcN"/>
+                <constraint firstAttribute="bottom" secondItem="qLr-bW-ptf" secondAttribute="bottom" id="Qfn-kW-Vs3"/>
+                <constraint firstItem="KR1-xI-MBq" firstAttribute="top" secondItem="zj3-Du-qXP" secondAttribute="top" constant="20" id="XAf-G1-VLC"/>
+                <constraint firstAttribute="trailing" secondItem="qLr-bW-ptf" secondAttribute="trailing" id="c6U-Iq-f49"/>
                 <constraint firstAttribute="bottom" secondItem="yr6-3F-6Yy" secondAttribute="bottom" id="ePi-Q6-s2R"/>
                 <constraint firstAttribute="trailing" secondItem="yr6-3F-6Yy" secondAttribute="trailing" id="kjM-zV-VeY"/>
+                <constraint firstAttribute="trailing" secondItem="clc-ao-tzT" secondAttribute="trailing" constant="20" id="nkl-68-YBA"/>
                 <constraint firstItem="yr6-3F-6Yy" firstAttribute="leading" secondItem="zj3-Du-qXP" secondAttribute="leading" id="tTN-m8-63s"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

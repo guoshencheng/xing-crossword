@@ -6,29 +6,64 @@
 //  Copyright (c) 2014年 apple. All rights reserved.
 //
 
+#import "Item.h"
 #import "ProblemListViewPanel.h"
 
 @implementation ProblemListViewPanel
 
 + (id)create {
-  return [[NSBundle mainBundle] loadNibNamed:@"ProblemListViewPanel" owner:nil options:nil];
+  return [[[NSBundle mainBundle] loadNibNamed:@"ProblemListViewPanel" owner:nil options:nil] lastObject];
 }
 
-- (void)awakeFromNibs {
+- (void)awakeFromNib {
+  self.tableView.dataSource = self;
   self.tableView.delegate = self;
-  [self.tableView registerNib:[UINib nibWithNibName:@"ProblemListViewPanel" bundle:nil] forCellReuseIdentifier:CELL];
+  [self.tableView registerNib:[UINib nibWithNibName:@"ProblemListViewCell" bundle:nil] forCellReuseIdentifier:CELL];
+}
+
+- (void)animateToHide {
+  [UIView animateWithDuration:0.2 animations:^{
+    self.frame = CGRectMake(-320, 0, 320, 568);
+  } completion:^(BOOL finished) {
+    
+  }];
+}
+
+- (void)animateToShow {
+  [UIView animateWithDuration:0.2 animations:^{
+    self.frame = CGRectMake(0, 0, 320, 568);
+  } completion:^(BOOL finished) {
+    
+  }];
+}
+
+- (IBAction)horProblemButtonClickAction:(id)sender {
+  self.isHor = YES;
+  [self.tableView reloadData];
+}
+
+- (IBAction)verProblemButtonClickAction:(id)sender {
+  self.isHor = NO;
+  [self.tableView reloadData];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  
+  if ([self.delegate respondsToSelector:@selector(problemListViewPanel:DidClickWithIndex:andDirection:)]) {
+    [self.delegate problemListViewPanel:self DidClickWithIndex:indexPath.row andDirection:(self.isHor ? @(0) : @(1))];
+  }
+  [self animateToHide];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return [self.tableView dequeueReusableCellWithIdentifier:CELL forIndexPath:indexPath];
+  ProblemListViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CELL forIndexPath:indexPath];
+  NSDictionary *currentDictionary = self.isHor ? self.horPorblemArray : self.verProblemArray;
+  NSString *hint = [currentDictionary objectForKey:@(indexPath.row)];
+  [cell updateWithProblemString:hint];
+  return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 1;
+  return self.isHor ? self.horPorblemArray.count : self.verProblemArray.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

@@ -77,6 +77,26 @@
   [self fillWithInput];
 }
 
+- (void)selectProblemWithIndex:(NSInteger)index andDirection:(NSNumber *)direction {
+  [self resetColor];
+  if ([direction isEqual:@(0)]) {
+    CGPoint mytouch = [[self.horProblemArray objectAtIndex:index] CGPointValue];
+    [self fillingLeft:mytouch];
+    [self fillingRight:mytouch];
+    self.currentProblemNumber = index + 1;
+  } else {
+    CGPoint mytouch = [[self.verProblemArray objectAtIndex:index] CGPointValue];
+    [self fillDown:mytouch];
+    [self fillUp:mytouch];
+    self.currentProblemNumber = index + 1;
+  }
+  [self resetLabelColor];
+  [self updateLabelText:[self getProblemText]];
+  if (self.currentProblemNumber > 0) {
+    [self setTextFieldText:[self getStringFromCrossWordWithStringBefore:@""]];
+  }
+}
+
 - (void)textfieldReturened:(NSString *)text {
   if (self.currentProblemNumber > 0) {
     [self setAnswerStringToCrossWithString:text];

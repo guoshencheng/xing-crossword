@@ -14,13 +14,18 @@
 
 @property (weak, nonatomic) id<ProblemListViewPanelDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSDictionary *horPorblemArray;
+@property (strong, nonatomic) NSDictionary *verProblemArray;
+@property (assign, nonatomic) BOOL isHor;
 
 + (id)create;
+- (void)animateToShow;
+- (void)animateToHide;
 
 @end
 
 @protocol ProblemListViewPanelDelegate <NSObject>
 
-- (void)problemListViewPanel:(ProblemListViewPanel *)problemListView DidClickWithIndex:(NSInteger)index;
+- (void)problemListViewPanel:(ProblemListViewPanel *)problemListView DidClickWithIndex:(NSInteger)index andDirection:(NSNumber *)direction;
 
 @end

@@ -18,6 +18,8 @@
 
 + (NSArray *)findAllItemInPuzzleWithPuzzleId:(NSString *)puzzleId;
 
++ (NSDictionary *)findAllItemInPuzzleWithPuzzleId:(NSString *)puzzleId andDirection:(NSNumber *)direction;
+
 + (NSString *)findHintByDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId;
 + (NSString *)findWordByDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId;
 + (NSString *)findInputByDirection:(NSNumber *)direction andOrder:(NSNumber *)order andPuzzleId:(NSString *)puzzleId;

@@ -1,5 +1,6 @@
 
 #import "ViewController.h"
+#import "Item+DataManager.h"
 #import "MyScene.h"
 
 @implementation ViewController
@@ -43,6 +44,21 @@
   self.textField.keyboardType = UIKeyboardTypeDefault;
   self.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
   self.textField.delegate = self;
+  
+  self.problemListViewPanel = [ProblemListViewPanel create];
+  self.problemListViewPanel.delegate = self;
+  [self.view addSubview:self.problemListViewPanel];
+  self.problemListViewPanel.frame = CGRectMake(-[self screenWidth], 0, [self screenWidth], [self screenHeight]);
+  NSDictionary *horProblem = [Item findAllItemInPuzzleWithPuzzleId:self.puzzleId andDirection:@(0)];
+  NSDictionary *verProblem = [Item findAllItemInPuzzleWithPuzzleId:self.puzzleId andDirection:@(1)];
+  self.problemListViewPanel.horPorblemArray = horProblem;
+  self.problemListViewPanel.verProblemArray = verProblem;
+  self.problemListViewPanel.isHor = YES;
+  [self.problemListViewPanel.tableView reloadData];
+}
+
+- (IBAction)problemButton:(id)sender {
+  [self.problemListViewPanel animateToShow];
 }
 
 - (IBAction)backButtonClickAction:(id)sender {
@@ -67,6 +83,10 @@
 
 - (void)MySceneUpdateTextFieldText:(NSString *)text {
   self.textField.text = text;
+}
+
+- (void)problemListViewPanel:(ProblemListViewPanel *)problemListView DidClickWithIndex:(NSInteger)index andDirection:(NSNumber *)direction{
+  [self.scene selectProblemWithIndex:index andDirection:direction];
 }
 
 #pragma mark - UIScrollViewDelegate
