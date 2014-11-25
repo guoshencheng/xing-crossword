@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSArray *acrossItems;
 
 - (instancetype)initWithPuzzleTitle:(NSString *)title size:(CGSize)size;
+- (instancetype)initBlankPuzzleWithsize:(CGSize)size;
 
 - (NSUInteger)rowsCount;
 - (NSUInteger)columnsCount;

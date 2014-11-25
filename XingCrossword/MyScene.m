@@ -20,6 +20,7 @@
     SKSpriteNode *backGround = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
     backGround.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     backGround.name = @"BACKGROUND";
+    self.backgroundColor = [SKColor clearColor];
     [self addChild:backGround];
   }
   return self;
@@ -75,9 +76,6 @@
   [self initNodeArray];
   [self createAnswerLabel];
   [self fillWithInput];
-  if ([self.delegate respondsToSelector:@selector(MySceneInitFinish:)]) {
-    [self.delegate MySceneInitFinish:self];
-  }
 }
 
 - (void)selectProblemWithIndex:(NSInteger)index andDirection:(NSNumber *)direction {

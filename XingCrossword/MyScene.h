@@ -17,7 +17,7 @@
 @property NSMutableArray *verProblemArray;
 @property SKLabelNode *labelNode;
 @property SKSpriteNode *puzzle;
-@property int currentProblemNumber;
+@property NSInteger currentProblemNumber;
 
 @property (weak, nonatomic) id<MySceneDelegate> delegate;
 

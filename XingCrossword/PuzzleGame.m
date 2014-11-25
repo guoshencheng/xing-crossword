@@ -48,6 +48,33 @@
   return self;
 }
 
+- (instancetype)initBlankPuzzleWithsize:(CGSize)size {
+  if (self = [super init]) {
+    self.mapGrid = [self configureBlankGrid:19 andColumn:13];
+    self.rowsCount = [self.mapGrid count];
+    self.columnsCount = [self.mapGrid[0] count];
+    CGFloat cellWidth = size.width / self.rowsCount;
+    CGFloat cellHeight = size.height / self.columnsCount;
+    self.cellSize = cellWidth < cellHeight ? CGSizeMake(cellWidth, cellWidth) : CGSizeMake(cellHeight, cellHeight);
+    self.puzzleNode = [SKSpriteNode spriteNodeWithColor:[UIColor clearColor] size:CGSizeMake(self.cellSize.width * self.columnsCount, self.cellSize.height * self.rowsCount)];
+    self.puzzleNode.position = CGPointMake((size.width - self.puzzleNode.size.width) / 2, (size.height - self.puzzleNode.size.height) / 2);
+    self.puzzleNode.name = @"puzzle";
+    NSMutableArray *grids = [NSMutableArray array];
+    for (NSUInteger rowIndex = 0; rowIndex < self.rowsCount; rowIndex++) {
+      NSMutableArray *row = [NSMutableArray array];
+      [grids addObject:row];
+      for (NSUInteger columnIndex = 0; columnIndex < self.columnsCount; columnIndex++) {
+        BOOL isEntry = [@"1" isEqualToString:self.mapGrid[rowIndex][columnIndex]];
+        SKSpriteNode *currentNode = [self createCellAtRow:rowIndex column:columnIndex isEntry:isEntry];
+        [row addObject:currentNode];
+        [self.puzzleNode addChild:currentNode];
+      }
+    }
+    self.grids = grids;
+  }
+  return self;
+}
+
 #pragma mark - Public Methods
 
 - (SKSpriteNode *)cellAtRow:(NSUInteger)rowIndex column:(NSUInteger)columnIndex {
@@ -58,8 +85,21 @@
 
 #pragma mark - Private Methods
 
+//row for 行, column for 列
+- (NSArray *)configureBlankGrid:(NSInteger)rowIndex andColumn:(NSInteger)columnIndex {
+  NSMutableArray *gridArray = [[NSMutableArray alloc] init];
+  for (int i = 0; i < rowIndex; i ++ ) {
+    NSMutableArray *rowArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < columnIndex; i ++ ) {
+      [rowArray addObject:@"0"];
+    }
+    [gridArray addObject:rowArray];
+  }
+  return gridArray;
+}
+
 - (SKSpriteNode *)createCellAtRow:(NSUInteger)rowIndex column:(NSUInteger)columnIndex isEntry:(BOOL)isEntry {
-  id<ColorTheme> theme = [ColorThemeFactory defaultTheme];
+ // id<ColorTheme> theme = [ColorThemeFactory defaultTheme];
   SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:(isEntry? @"empty.png" : @"block.png")];
   node.size = self.cellSize;
 //                        

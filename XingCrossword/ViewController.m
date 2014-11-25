@@ -17,7 +17,6 @@
 //  skView.showsNodeCount = YES;
   self.scene = [MyScene sceneWithSize:skView.bounds.size];
   self.scene.scaleMode = SKSceneScaleModeAspectFill;
-  
   self.scene.delegate = self;
   self.scene.title = self.title;
   self.scene.puzzleId = self.puzzleId;
@@ -58,6 +57,7 @@
   self.problemListViewPanel.verProblemArray = verProblem;
   self.problemListViewPanel.isHor = YES;
   [self.problemListViewPanel.tableView reloadData];
+  [self.problemListViewPanel animateToShow];
 }
 
 - (IBAction)problemButton:(id)sender {
@@ -113,6 +113,9 @@
 
 - (void)problemListViewPanel:(ProblemListViewPanel *)problemListView DidClickWithIndex:(NSInteger)index andDirection:(NSNumber *)direction{
   [self.scene selectProblemWithIndex:index andDirection:direction];
+  if (!(self.topViewHeightConstraint.constant == 180)) {
+    [self animateShowButtomView];
+  }
 }
 
 #pragma mark - UIScrollViewDelegate
