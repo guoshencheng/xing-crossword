@@ -16,7 +16,7 @@
   return [Puzzle MR_findAll];
 }
 
-+ (void)createPuzzleWithResponse:(NSDictionary*)response completion:(void(^)(BOOL success, NSError *error))completion{
++ (void)createPuzzleWithResponse:(NSDictionary*)response completion:(void(^)(BOOL success, NSError *error))completion {
   NSString *puzzleId = [response objectForKey:@"id"];
   [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
     Puzzle *puzzle = [self findOrCreateWithPuzzleid:puzzleId inContext:localContext];
@@ -24,6 +24,41 @@
     NSString *title = [response objectForKey:@"title"];
     puzzle.title = title;
     puzzle.map = map;
+  } completion:completion];
+}
+
++ (void)createPuzzleWithGrid:(NSArray *)grid completion:(void(^)(BOOL success, NSError *error))completion {
+  [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+    Puzzle *puzzle = [self findOrCreateWithPuzzleid:@"myPuzzle" inContext:localContext];
+    puzzle.map = [self changeToStringFromArray:grid];
+  } completion:completion];
+}
+
++ (void)createPuzzleWithCrossHint:(NSArray *)hintArray CrossWord:(NSArray *)wordArray completion:(void(^)(BOOL success, NSError *error))completion {
+  [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+    Puzzle *puzzle = [self findOrCreateWithPuzzleid:@"myPuzzle" inContext:localContext];
+    for (int i = 0; i < wordArray.count; i ++) {
+      Item *item = [Item findOrCreateWithDirection:@(0) andOrder:@(i) andPuzzleId:@"myPuzzle" inContext:localContext];
+      item.hint = [hintArray objectAtIndex:i];
+      item.word = [wordArray objectAtIndex:i];
+      item.direction = @(0);
+      item.order = @(i);
+      item.puzzle = puzzle;
+    }
+  } completion:completion];
+}
+
++ (void)createPuzzleWithDownHint:(NSArray *)hintArray DownWord:(NSArray *)wordArray completion:(void(^)(BOOL success, NSError *error))completion {
+  [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+    Puzzle *puzzle = [self findOrCreateWithPuzzleid:@"myPuzzle" inContext:localContext];
+    for (int i = 0; i < wordArray.count; i ++) {
+      Item *item = [Item findOrCreateWithDirection:@(1) andOrder:@(i) andPuzzleId:@"myPuzzle" inContext:localContext];
+      item.hint = [hintArray objectAtIndex:i];
+      item.word = [wordArray objectAtIndex:i];
+      item.direction = @(1);
+      item.order = @(i);
+      item.puzzle = puzzle;
+    }
   } completion:completion];
 }
 
@@ -78,6 +113,18 @@
 
 + (id)getPuzzleWithPuzzleid:(NSString*)puzzleId inContext:(NSManagedObjectContext *)context {
   return [Puzzle MR_findFirstByAttribute:@"puzzleId" withValue:puzzleId inContext:context];
+}
+
++ (NSString*)changeToStringFromArray:(NSArray *)stringArray {
+  NSString *gridString = @"";
+  for (NSArray *array  in stringArray) {
+    NSString *rowString = @"";
+    for (int i = 0; i < array.count; i ++) {
+      rowString = [NSString stringWithFormat:@"%@%@",rowString,array[i]];
+    }
+    gridString = [NSString stringWithFormat:@"%@,%@",gridString,rowString];
+  }
+  return gridString;
 }
 
 @end

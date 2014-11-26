@@ -18,5 +18,8 @@
 + (Puzzle*)findByPuzzleid:(NSString*)puzzleId inContext:(NSManagedObjectContext *)context;
 + (Puzzle *)findByPuzzletitle:(NSString *)title;
 + (id)getPuzzleWithPuzzleid:(NSString*)puzzleId inContext:(NSManagedObjectContext *)context;
++ (void)createPuzzleWithGrid:(NSArray *)grid completion:(void(^)(BOOL success, NSError *error))completion;
++ (void)createPuzzleWithCrossHint:(NSArray *)hintArray CrossWord:(NSArray *)wordArray completion:(void(^)(BOOL success, NSError *error))completion;
++ (void)createPuzzleWithDownHint:(NSArray *)hintArray DownWord:(NSArray *)wordArray completion:(void(^)(BOOL success, NSError *error))completion;
 
 @end
