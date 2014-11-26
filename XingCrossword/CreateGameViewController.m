@@ -51,6 +51,13 @@
   [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)checkButtonClickAction:(id)sender {
+  if ([self.createGameScene isACorrectMap]) {
+    self.createGameScene.isCreateMap = NO;
+  }
+}
+
+
 
 #pragma mark - UIScreen Tool
 

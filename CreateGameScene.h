@@ -21,4 +21,6 @@
 @property (assign, nonatomic) NSInteger wordArrayXMaxNumber;
 @property (assign, nonatomic) NSInteger wordArrayYMaxNumber;
 
+- (BOOL)isACorrectMap;
+
 @end

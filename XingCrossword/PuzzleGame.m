@@ -50,7 +50,8 @@
 
 - (instancetype)initBlankPuzzleWithsize:(CGSize)size {
   if (self = [super init]) {
-    self.mapGrid = [self configureBlankGrid:19 andColumn:13];
+    //first is hang and secend is lie
+    self.mapGrid = [self configureBlankGrid:14 andColumn:14];
     self.rowsCount = [self.mapGrid count];
     self.columnsCount = [self.mapGrid[0] count];
     CGFloat cellWidth = size.width / self.rowsCount;
