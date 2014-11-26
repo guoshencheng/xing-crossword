@@ -10,6 +10,11 @@
 
 @interface CreateGameScene : SKScene
 
+@property (strong, nonatomic) NSString *puzzleId;
+@property (strong, nonatomic) NSMutableArray *horProblemArray;
+@property (strong, nonatomic) NSMutableArray *verProblemArray;
+@property (assign,nonatomic) NSInteger currentProblemNumber;
+@property (assign,nonatomic) BOOL hor;
 @property (assign, nonatomic) BOOL isCreateMap;
 @property (strong, nonatomic) SKSpriteNode *puzzle;
 @property (strong, nonatomic) NSArray *wordArray;

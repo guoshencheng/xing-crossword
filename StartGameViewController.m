@@ -8,6 +8,7 @@
 
 #import "StartGameViewController+Configuration.h"
 #import "startGameCollectionViewCell.h"
+#import "CreateGameViewController.h"
 #import "StartGameViewController.h"
 #import "Puzzle+DataManager.h"
 #import "StartGameViewScene.h"
@@ -36,7 +37,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-  return self.puzzleArray.count;
+  return self.puzzleArray.count + 1;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -44,10 +45,22 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-  startGameCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:START_GAME_COLLECTIONVIEW_CELL forIndexPath:indexPath];
-  cell.delegate = self;
-  [cell updateWithPuzzle:[self.puzzleArray objectAtIndex:indexPath.item]];
-  return  cell;
+  if (indexPath.item == self.puzzleArray.count) {
+    startGameCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:START_GAME_COLLECTIONVIEW_CELL forIndexPath:indexPath];
+    return cell;
+  } else {
+    startGameCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:START_GAME_COLLECTIONVIEW_CELL forIndexPath:indexPath];
+    cell.delegate = self;
+    [cell updateWithPuzzle:[self.puzzleArray objectAtIndex:indexPath.item]];
+    return  cell;
+  }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.item == self.puzzleArray.count) {
+    CreateGameViewController *createGameViewController = [CreateGameViewController craete];
+    [self.navigationController pushViewController:createGameViewController animated:YES];
+  }
 }
 
 - (void)webServiceDidGetAllPuzzleResponse:(WebService *)webService {

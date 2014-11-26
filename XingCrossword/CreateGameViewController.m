@@ -29,6 +29,7 @@
   //  skView.showsNodeCount = YES;
   self.createGameScene = [CreateGameScene sceneWithSize:skView.bounds.size];
   self.createGameScene.scaleMode = SKSceneScaleModeAspectFill;
+  [skView presentScene:self.createGameScene];
   [self configureScrollView];
 }
 

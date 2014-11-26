@@ -16,4 +16,6 @@
 
 @property (strong, nonatomic) CreateGameScene *createGameScene;
 
++ (id)craete;
+
 @end

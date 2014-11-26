@@ -31,6 +31,9 @@
 		16427F3B196FDE4400C9153E /* Crossword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16427F39196FDE4400C9153E /* Crossword.xcdatamodeld */; };
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
+		9210514D1A2587EC00FE5695 /* CreateGameScene+fill.m in Sources */ = {isa = PBXBuildFile; fileRef = 9210514C1A2587EC00FE5695 /* CreateGameScene+fill.m */; };
+		921051501A25888200FE5695 /* CreateGameScene+PostionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9210514F1A25888200FE5695 /* CreateGameScene+PostionHandler.m */; };
+		921051531A258E3D00FE5695 /* CreateGameScene+ProblemArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 921051521A258E3D00FE5695 /* CreateGameScene+ProblemArray.m */; };
 		924B0A1A19CC0B3C003C25BB /* ProblemListViewPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 924B0A1919CC0B3C003C25BB /* ProblemListViewPanel.m */; };
 		924B0A1C19CC0B4C003C25BB /* ProblemListViewPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 924B0A1B19CC0B4C003C25BB /* ProblemListViewPanel.xib */; };
 		924B0A2119CC1007003C25BB /* ProblemListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 924B0A1F19CC1007003C25BB /* ProblemListViewCell.m */; };
@@ -120,6 +123,12 @@
 		64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.xcconfig"; path = "Pods/Pods-XingCrosswordTests.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9210514B1A2587EC00FE5695 /* CreateGameScene+fill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CreateGameScene+fill.h"; path = "XingCrossword/CreateGameScene+fill.h"; sourceTree = "<group>"; };
+		9210514C1A2587EC00FE5695 /* CreateGameScene+fill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CreateGameScene+fill.m"; path = "XingCrossword/CreateGameScene+fill.m"; sourceTree = "<group>"; };
+		9210514E1A25888200FE5695 /* CreateGameScene+PostionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CreateGameScene+PostionHandler.h"; path = "XingCrossword/CreateGameScene+PostionHandler.h"; sourceTree = "<group>"; };
+		9210514F1A25888200FE5695 /* CreateGameScene+PostionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CreateGameScene+PostionHandler.m"; path = "XingCrossword/CreateGameScene+PostionHandler.m"; sourceTree = "<group>"; };
+		921051511A258E3D00FE5695 /* CreateGameScene+ProblemArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CreateGameScene+ProblemArray.h"; path = "XingCrossword/CreateGameScene+ProblemArray.h"; sourceTree = "<group>"; };
+		921051521A258E3D00FE5695 /* CreateGameScene+ProblemArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CreateGameScene+ProblemArray.m"; path = "XingCrossword/CreateGameScene+ProblemArray.m"; sourceTree = "<group>"; };
 		924B0A1819CC0B3C003C25BB /* ProblemListViewPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProblemListViewPanel.h; path = XingCrossword/ProblemListViewPanel.h; sourceTree = "<group>"; };
 		924B0A1919CC0B3C003C25BB /* ProblemListViewPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProblemListViewPanel.m; path = XingCrossword/ProblemListViewPanel.m; sourceTree = "<group>"; };
 		924B0A1B19CC0B4C003C25BB /* ProblemListViewPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProblemListViewPanel.xib; sourceTree = "<group>"; };
@@ -294,6 +303,13 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		9210514A1A25877600FE5695 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = utility;
+			sourceTree = "<group>";
+		};
 		9210A41219CAC71D0036397E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +474,7 @@
 		9298424F195E9BD900136AB0 /* XingCrossword */ = {
 			isa = PBXGroup;
 			children = (
+				9210514A1A25877600FE5695 /* utility */,
 				9210A41219CAC71D0036397E /* View */,
 				9288A25919B081810035C828 /* DTO */,
 				9288A25519B05CC60035C828 /* webService */,
@@ -528,6 +545,12 @@
 			children = (
 				92E5944D19D7F4B9002FB91A /* CreateGameScene.h */,
 				92E5944E19D7F4B9002FB91A /* CreateGameScene.m */,
+				9210514B1A2587EC00FE5695 /* CreateGameScene+fill.h */,
+				9210514C1A2587EC00FE5695 /* CreateGameScene+fill.m */,
+				9210514E1A25888200FE5695 /* CreateGameScene+PostionHandler.h */,
+				9210514F1A25888200FE5695 /* CreateGameScene+PostionHandler.m */,
+				921051511A258E3D00FE5695 /* CreateGameScene+ProblemArray.h */,
+				921051521A258E3D00FE5695 /* CreateGameScene+ProblemArray.m */,
 			);
 			name = CreateGameScene;
 			sourceTree = "<group>";
@@ -719,6 +742,7 @@
 				924B0A1A19CC0B3C003C25BB /* ProblemListViewPanel.m in Sources */,
 				9286C069196E4D3200DE70FA /* Puzzle+DataManager.m in Sources */,
 				1611C154196D50AE0060A5BA /* AppDelegate.m in Sources */,
+				921051501A25888200FE5695 /* CreateGameScene+PostionHandler.m in Sources */,
 				161CCDD8196E43CF00C8BF34 /* Puzzle+Utility.m in Sources */,
 				161CCDE3196E8FB000C8BF34 /* NSString+Utility.m in Sources */,
 				161CCDD4196E3AE800C8BF34 /* Item+Utility.m in Sources */,
@@ -728,6 +752,7 @@
 				9288A25C19B081DB0035C828 /* ItemTool.m in Sources */,
 				1611C155196D50AE0060A5BA /* MyScene.m in Sources */,
 				9270F4D419B965E200934ED3 /* MyScene+PostionHandler.m in Sources */,
+				921051531A258E3D00FE5695 /* CreateGameScene+ProblemArray.m in Sources */,
 				927CD9FB198F3BB9007DAA10 /* StartGameViewController.m in Sources */,
 				1611C145196D50480060A5BA /* Item.m in Sources */,
 				924B929B19C0437000097884 /* startGameCollectionViewCell+Configuration.m in Sources */,
@@ -740,6 +765,7 @@
 				924B929519C038A800097884 /* startGameCollectionViewCell.m in Sources */,
 				9288A25F19B081F00035C828 /* PuzzleTool.m in Sources */,
 				924B929E19C04F4B00097884 /* StartGameViewController+Configuration.m in Sources */,
+				9210514D1A2587EC00FE5695 /* CreateGameScene+fill.m in Sources */,
 				92960D3019D567A300C457B6 /* CreateGameViewController.m in Sources */,
 				16427F2F196FCB1F00C9153E /* ColorTheme.m in Sources */,
 			);
