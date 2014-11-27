@@ -6,8 +6,9 @@
 //  Copyright (c) 2014年 apple. All rights reserved.
 //
 #import "CreateGameScene.h"
+#import "ProblemListViewPanel.h"
 
-@interface CreateGameViewController : UIViewController <UIScrollViewDelegate>
+@interface CreateGameViewController : UIViewController <UIScrollViewDelegate,CreateGameSceneDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -15,6 +16,7 @@
 
 
 @property (strong, nonatomic) CreateGameScene *createGameScene;
+@property (strong, nonatomic) ProblemListViewPanel *problemListViewPanel;
 
 + (id)craete;
 

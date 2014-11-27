@@ -11,7 +11,15 @@
 @implementation ProblemListViewCell
 
 - (void)updateWithProblemString:(NSString *)problemString {
-  self.prblemText.text = problemString;
+  self.problemText.text = problemString;
+  self.textField.hidden = YES;
+  self.problemText.hidden = NO;
+}
+
+- (void)updateWithProblemWordsCount:(NSInteger)count {
+  self.textField.placeholder = [NSString stringWithFormat:@"%@ %d %@",@"please enter",count,@"words"];
+  self.textField.hidden = NO;
+  self.problemText.hidden = YES;
 }
 
 @end

@@ -371,7 +371,6 @@
 		927CD9F4198F3583007DAA10 /* MainGameViewController */ = {
 			isa = PBXGroup;
 			children = (
-				92B321F819C2EB78001200F3 /* MyScene */,
 				1611C152196D50AE0060A5BA /* ViewController.h */,
 				1611C153196D50AE0060A5BA /* ViewController.m */,
 				927CD9F6198F378A007DAA10 /* MainViewController.xib */,
@@ -427,7 +426,6 @@
 		92960D2C19D566D100C457B6 /* CreateGameViewController */ = {
 			isa = PBXGroup;
 			children = (
-				92E5944C19D7F46E002FB91A /* CreateGameScene */,
 				92960D2D19D567A300C457B6 /* CreateGameViewController.h */,
 				92960D2E19D567A300C457B6 /* CreateGameViewController.m */,
 				92960D2F19D567A300C457B6 /* CreateGameViewController.xib */,
@@ -479,8 +477,10 @@
 				9288A25919B081810035C828 /* DTO */,
 				9288A25519B05CC60035C828 /* webService */,
 				92960D2C19D566D100C457B6 /* CreateGameViewController */,
+				92E5944C19D7F46E002FB91A /* CreateGameScene */,
 				927CD9F5198F35A8007DAA10 /* StartGameViewController */,
 				927CD9F4198F3583007DAA10 /* MainGameViewController */,
+				92B321F819C2EB78001200F3 /* MyScene */,
 				1611C14E196D50AE0060A5BA /* AppDelegate.h */,
 				1611C14F196D50AE0060A5BA /* AppDelegate.m */,
 				1611C14C196D50A00060A5BA /* Images.xcassets */,

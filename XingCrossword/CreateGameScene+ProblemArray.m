@@ -13,7 +13,7 @@
 
 //init all Hor Problem and Add Them To the Array With Its First Node Postion
 - (void)initHorProblem {
-  for (int i = 0; i < self.wordArray.count; i++) {
+  for (int i = 0; i < self.wordArrayYMaxNumber; i++) {
     NSArray *currentArray = [self.wordArray objectAtIndex:i];
     for (int j = 0; j < currentArray.count; j++) {
       if ([self isTextFieldCellWithPostion:CGPointMake(j, i)] && [self haveRightTextFieldCellWithPostion:CGPointMake(j, i)] && ![self haveLeftTextFieldCellWithPostion:CGPointMake(j, i)]) {
@@ -31,6 +31,43 @@
         [self.verProblemArray addObject:[NSValue valueWithCGPoint:CGPointMake(j, i)]];
       }
     }
+  }
+}
+
+- (void)initHorProblemNumber {
+  for (int j = 0; j < self.wordArrayYMaxNumber; j++) {
+    for (int i = 0; i < self.wordArray.count; i ++) {
+      if ([self isTextFieldCellWithPostion:CGPointMake(j, i)] && [self haveRightTextFieldCellWithPostion:CGPointMake(j, i)] && ![self haveLeftTextFieldCellWithPostion:CGPointMake(j, i)]) {
+        [self.horProblemNumberArray addObject:@([self checkLengthOfHorProblemWithPostion:CGPointMake(j, i) andCurrnetLength:1])];
+      }
+    }
+  }
+}
+
+- (void)initVerProblemNumber {
+  for (int j = 0; j < self.wordArrayYMaxNumber; j++) {
+    for (int i = 0; i < self.wordArray.count; i ++) {
+      if ([self isTextFieldCellWithPostion:CGPointMake(j, i)] && ![self isHaveUpTextFieldCellWithPostion:CGPointMake(j, i)] && [self isHaveDownTextFieldCellWithPostion:CGPointMake(j, i)]) {
+        [self.verProblemNumberArray addObject:@([self checkLengthOfVerProblemWithPostion:CGPointMake(j, i) andCurrnetLength:1])];
+        
+      }
+    }
+  }
+}
+
+- (NSInteger)checkLengthOfHorProblemWithPostion:(CGPoint)postion andCurrnetLength:(NSInteger)length{
+  if ([self haveRightTextFieldCellWithPostion:postion]) {
+    return [self checkLengthOfHorProblemWithPostion:CGPointMake(postion.x+1, postion.y) andCurrnetLength:length+1];
+  } else {
+    return length;
+  }
+}
+
+- (NSInteger)checkLengthOfVerProblemWithPostion:(CGPoint)postion andCurrnetLength:(NSInteger)length{
+  if ([self haveRightTextFieldCellWithPostion:postion]) {
+    return [self checkLengthOfHorProblemWithPostion:CGPointMake(postion.x, postion.y+1) andCurrnetLength:length+1];
+  } else {
+    return length;
   }
 }
 

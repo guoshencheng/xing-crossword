@@ -29,6 +29,7 @@
   //  skView.showsNodeCount = YES;
   self.createGameScene = [CreateGameScene sceneWithSize:skView.bounds.size];
   self.createGameScene.scaleMode = SKSceneScaleModeAspectFill;
+  self.createGameScene.delegate = self;
   [skView presentScene:self.createGameScene];
   [self configureScrollView];
 }
@@ -54,6 +55,7 @@
 - (IBAction)checkButtonClickAction:(id)sender {
   if ([self.createGameScene isACorrectMap]) {
     self.createGameScene.isCreateMap = NO;
+    [self.createGameScene handleIfMapIsCorrect];
   }
 }
 
@@ -67,6 +69,20 @@
 
 - (CGFloat)screenHeight {
   return [[UIScreen mainScreen] bounds].size.height;
+}
+
+
+- (void)createGameSceneGridHasFinishCreateWithNumberArrayOfHorAnswerWords:(NSArray *)horAnswer andVerAnswerWords:(NSArray *)verAnswer {
+  self.problemListViewPanel  = [ProblemListViewPanel create];
+  self.problemListViewPanel.problemListViewMode = ProblemListViewInputMode;
+  self.problemListViewPanel.hidden = YES;
+  [self.view addSubview:self.problemListViewPanel];
+  self.problemListViewPanel.frame = CGRectMake(-[self screenWidth], 0, [self screenWidth], [self screenHeight]);
+  self.problemListViewPanel.isHor = YES;
+  self.problemListViewPanel.horProblemNumebrArray = horAnswer;
+  self.problemListViewPanel.verProblemNumberArray = verAnswer;
+  [self.problemListViewPanel.tableView reloadData];
+  [self.problemListViewPanel animateToShow];
 }
 
 

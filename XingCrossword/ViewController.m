@@ -49,6 +49,7 @@
   self.problemListViewPanel = [ProblemListViewPanel create];
   self.problemListViewPanel.delegate = self;
   self.problemListViewPanel.hidden = YES;
+  self.problemListViewPanel.problemListViewMode = ProblemListViewShowProblemMode;
   [self.view addSubview:self.problemListViewPanel];
   self.problemListViewPanel.frame = CGRectMake(-[self screenWidth], 0, [self screenWidth], [self screenHeight]);
   NSDictionary *horProblem = [Item findAllItemInPuzzleWithPuzzleId:self.puzzleId andDirection:@(0)];

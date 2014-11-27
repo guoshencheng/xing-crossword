@@ -18,6 +18,10 @@
   self.puzzleId = @"myPuzzle";
   self.isCreateMap = YES;
   if (self = [super initWithSize:size]) {
+    self.horProblemArray = [[NSMutableArray alloc] init];
+    self.verProblemArray = [[NSMutableArray alloc] init];
+    self.horProblemNumberArray = [[NSMutableArray alloc] init];
+    self.verProblemNumberArray = [[NSMutableArray alloc] init];
     SKSpriteNode *backGround = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
     backGround.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     backGround.name = @"BACKGROUND";
@@ -77,7 +81,7 @@
   if ([node.name isEqual:@"text"]) {
     node = [node parent];
   }
-  if ([node.name isEqual:@"BACKGROUND"] || [node.name isEqual:@"puzzle"]) {
+  if (![node.name isEqual:@"BACKGROUND"] && ![node.name isEqual:@"puzzle"]) {
     CGPoint mytouch = [self getCellPostionWithNodeName:node.name];
     if ([self isInGridWithPostion:mytouch]) {
       if ([self isTextFieldCellWithPostion:mytouch]) {
@@ -93,6 +97,7 @@
           self.currentProblemNumber = [self findProblemInVerProblemWithCGPoint:mytouch];
         }
       }
+      self.hor = !self.hor;
     }
   }
 }
@@ -119,6 +124,13 @@
   return isACorrectMap;
 }
 
+- (void)handleIfMapIsCorrect {
+  [self initHorProblemNumber];
+  [self initVerProblemNumber];
+  if ([self.delegate respondsToSelector:@selector(createGameSceneGridHasFinishCreateWithNumberArrayOfHorAnswerWords:andVerAnswerWords:)]) {
+    [self. delegate createGameSceneGridHasFinishCreateWithNumberArrayOfHorAnswerWords:self.horProblemNumberArray andVerAnswerWords:self.verProblemNumberArray];
+  }
+}
 
 - (CGPoint) getCellPostionWithNodeName:(NSString*)nodeName {
   NSArray *strings = [nodeName componentsSeparatedByString:@","];

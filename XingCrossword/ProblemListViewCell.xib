@@ -24,14 +24,27 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="afP-mF-ETH" userLabel="textField">
+                        <rect key="frame" x="20" y="15" width="280" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="280" id="Q8E-Q8-Zd3"/>
+                            <constraint firstAttribute="height" constant="30" id="kjF-eA-Tdr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ZWO-VR-s1y" firstAttribute="leading" secondItem="aCC-vc-pNu" secondAttribute="leading" constant="20" id="Ki4-yf-ZQg"/>
                     <constraint firstAttribute="centerY" secondItem="ZWO-VR-s1y" secondAttribute="centerY" id="Z3t-u6-PYj"/>
+                    <constraint firstItem="afP-mF-ETH" firstAttribute="leading" secondItem="aCC-vc-pNu" secondAttribute="leading" constant="20" id="jb5-hQ-KcA"/>
+                    <constraint firstAttribute="centerY" secondItem="afP-mF-ETH" secondAttribute="centerY" id="x3K-LK-Lh3"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="prblemText" destination="ZWO-VR-s1y" id="AJn-0u-FSj"/>
+                <outlet property="problemText" destination="ZWO-VR-s1y" id="zt4-ES-ID9"/>
+                <outlet property="textField" destination="afP-mF-ETH" id="Qgx-pU-R0Y"/>
             </connections>
         </tableViewCell>
     </objects>

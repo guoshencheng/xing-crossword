@@ -61,14 +61,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   ProblemListViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CELL forIndexPath:indexPath];
-  NSDictionary *currentDictionary = self.isHor ? self.horPorblemArray : self.verProblemArray;
-  NSString *hint = [currentDictionary objectForKey:@(indexPath.row)];
-  [cell updateWithProblemString:hint];
+  if (self.problemListViewMode == ProblemListViewInputMode) {
+    NSArray *currentArray = self.isHor ? self.horProblemNumebrArray : self.verProblemNumberArray;
+    int problemLength = [[currentArray objectAtIndex:indexPath.row] integerValue];
+    [cell updateWithProblemWordsCount:problemLength];
+  } else {
+    NSDictionary *currentDictionary = self.isHor ? self.horPorblemArray : self.verProblemArray;
+    NSString *hint = [currentDictionary objectForKey:@(indexPath.row)];
+    [cell updateWithProblemString:hint];
+  }
   return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return self.isHor ? self.horPorblemArray.count : self.verProblemArray.count;
+  if (self.problemListViewMode == ProblemListViewInputMode) {
+    return self.isHor ? self.horProblemNumebrArray.count : self.verProblemNumberArray.count;
+  } else {
+    return self.isHor ? self.horPorblemArray.count : self.verProblemArray.count;
+  }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

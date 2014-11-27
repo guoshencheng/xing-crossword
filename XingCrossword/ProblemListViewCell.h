@@ -12,8 +12,10 @@
 
 @interface ProblemListViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *prblemText;
+@property (weak, nonatomic) IBOutlet UILabel *problemText;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 
 - (void)updateWithProblemString:(NSString *)problemString;
+- (void)updateWithProblemWordsCount:(NSInteger)count;
 
 @end

@@ -15,6 +15,8 @@
 
 - (void)initVerProblem;
 - (void)initHorProblem;
+- (void)initHorProblemNumber;
+- (void)initVerProblemNumber;
 
 
 @end
