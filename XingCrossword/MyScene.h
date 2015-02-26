@@ -18,7 +18,6 @@
 @property SKLabelNode *labelNode;
 @property SKSpriteNode *puzzle;
 @property NSInteger currentProblemNumber;
-@property NSInteger lastProblemNumber;
 
 @property (weak, nonatomic) id<MySceneDelegate> delegate;
 

@@ -12,7 +12,6 @@
 
 -(id)initWithSize:(CGSize)size {
   self.currentProblemNumber = 0;
-  self.lastProblemNumber = 0;
   self.hor = YES;
   self.touchPoint = CGPointMake(-1, -1);
   self.horProblemArray = [[NSMutableArray alloc] init];
@@ -85,13 +84,11 @@
     CGPoint mytouch = [[self.horProblemArray objectAtIndex:index] CGPointValue];
     [self fillingLeft:mytouch];
     [self fillingRight:mytouch];
-      self.lastProblemNumber = self.currentProblemNumber;
     self.currentProblemNumber = index + 1;
   } else {
     CGPoint mytouch = [[self.verProblemArray objectAtIndex:index] CGPointValue];
     [self fillDown:mytouch];
     [self fillUp:mytouch];
-      self.lastProblemNumber = self.currentProblemNumber;
     self.currentProblemNumber = index + 1;
   }
   [self resetLabelColor];
