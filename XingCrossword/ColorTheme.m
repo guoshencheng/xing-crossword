@@ -14,12 +14,37 @@
 
 @implementation NormalColorTheme
 
-- (SKColor *)entryCellColor {
-  return [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+- (UIColor *)entryCellColor {
+    return [UIColor greenColor];
 }
 
-- (SKColor *)blockCellColor {
-  return [SKColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:1.0];
+- (UIColor *)blockCellColor {
+    return [UIColor yellowColor];
+}
+
+- (UIColor *)fillCellColor {
+    return [UIColor whiteColor];
+}
+
+@end
+
+
+@interface NormalTextureTheme : NSObject<ColorTheme>
+
+@end
+
+@implementation NormalTextureTheme
+
+- (SKTexture *)entryCellTexture {
+    return [SKTexture textureWithImageNamed:@"empty.png"];
+}
+
+- (SKTexture *)blockCellTexture {
+    return [SKTexture textureWithImageNamed:@"block.png"];
+}
+
+- (SKTexture *)fillCellTexture {
+    return [SKTexture textureWithImageNamed:@"fill.png"];
 }
 
 @end
@@ -27,7 +52,7 @@
 @implementation ColorThemeFactory
 
 + (id<ColorTheme>)defaultTheme {
-  return [NormalColorTheme new];
+    return [NormalColorTheme new];
 }
 
 @end

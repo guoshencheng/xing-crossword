@@ -10,9 +10,14 @@
 
 @protocol ColorTheme <NSObject>
 
-@required
-- (SKColor *)entryCellColor;
-- (SKColor *)blockCellColor;
+@optional
+- (UIColor *)entryCellColor;
+- (UIColor *)blockCellColor;
+- (UIColor *)fillCellColor;
+
+- (SKTexture *)entryCellTexture;
+- (SKTexture *)blockCellTexture;
+- (SKTexture *)fillCellTexture;
 
 @end
 

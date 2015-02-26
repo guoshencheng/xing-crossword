@@ -8,6 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "Puzzle.h"
+#import "ColorTheme.h"
 
 @interface PuzzleGame : NSObject
 
@@ -20,8 +21,9 @@
 @property (nonatomic, strong) NSArray *mapGrid;
 @property (nonatomic, strong) NSArray *downItems;
 @property (nonatomic, strong) NSArray *acrossItems;
+@property (nonatomic, strong) id<ColorTheme> theme;
 
-- (instancetype)initWithPuzzleTitle:(NSString *)title size:(CGSize)size;
+- (instancetype)initWithPuzzleTitle:(NSString *)title size:(CGSize)size andTheme:(id<ColorTheme>)theme;
 - (instancetype)initBlankPuzzleWithsize:(CGSize)size;
 
 - (NSUInteger)rowsCount;

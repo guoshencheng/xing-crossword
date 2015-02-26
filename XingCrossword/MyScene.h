@@ -1,5 +1,5 @@
 
-#import <SpriteKit/SpriteKit.h>
+#import "PuzzleGame.h"
 
 @protocol MySceneDelegate;
 
@@ -10,13 +10,12 @@
 @property Boolean hor;
 @property CGPoint touchPoint;
 @property NSArray *nodeArray;
-@property NSArray *wordArray;
 @property NSInteger wordArrayXMaxNumber;
 @property NSInteger wordArrayYMaxNumber;
 @property NSMutableArray *horProblemArray;
 @property NSMutableArray *verProblemArray;
 @property SKLabelNode *labelNode;
-@property SKSpriteNode *puzzle;
+@property PuzzleGame *puzzleGame;
 @property NSInteger currentProblemNumber;
 
 @property (weak, nonatomic) id<MySceneDelegate> delegate;

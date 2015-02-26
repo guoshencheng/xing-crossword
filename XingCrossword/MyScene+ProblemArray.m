@@ -13,8 +13,8 @@
 
 //init all Hor Problem and Add Them To the Array With Its First Node Postion
 - (void)initHorProblem {
-  for (int i = 0; i < self.wordArray.count; i++) {
-    NSArray *currentArray = [self.wordArray objectAtIndex:i];
+  for (int i = 0; i < self.puzzleGame.mapGrid.count; i++) {
+    NSArray *currentArray = [self.puzzleGame.mapGrid objectAtIndex:i];
     for (int j = 0; j < currentArray.count; j++) {
       if ([self isTextFieldCellWithPostion:CGPointMake(j, i)] && [self haveRightTextFieldCellWithPostion:CGPointMake(j, i)] && ![self haveLeftTextFieldCellWithPostion:CGPointMake(j, i)]) {
         [self.horProblemArray addObject:[NSValue valueWithCGPoint:CGPointMake(j, i)]];
@@ -26,7 +26,7 @@
 //init all Ver Problem and Add Them To the Array With Its First Node Postion
 - (void)initVerProblem {
   for (int j = 0; j < self.wordArrayYMaxNumber; j++) {
-    for (int i = 0; i < self.wordArray.count; i ++) {
+    for (int i = 0; i < self.puzzleGame.mapGrid.count; i ++) {
       if ([self isTextFieldCellWithPostion:CGPointMake(j, i)] && ![self isHaveUpTextFieldCellWithPostion:CGPointMake(j, i)] && [self isHaveDownTextFieldCellWithPostion:CGPointMake(j, i)]) {
         [self.verProblemArray addObject:[NSValue valueWithCGPoint:CGPointMake(j, i)]];
       }

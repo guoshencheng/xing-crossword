@@ -26,7 +26,7 @@
 - (BOOL)haveLeftTextFieldCellWithPostion:(CGPoint)point {
   BOOL haveTextField = false;
   if (point.x > 0){
-    NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:(point.x-1)];
+    NSString *currentLeftString= [[self.puzzleGame.mapGrid objectAtIndex:point.y] objectAtIndex:(point.x-1)];
     if ([currentLeftString isEqualToString:@"1"]) {
       haveTextField = true;
     }
@@ -37,7 +37,7 @@
 - (BOOL)haveRightTextFieldCellWithPostion:(CGPoint)point {
   BOOL haveTextField = false;
   if (point.x < self.wordArrayXMaxNumber - 1) {
-    NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:(point.x+1)];
+    NSString *currentLeftString= [[self.puzzleGame.mapGrid objectAtIndex:point.y] objectAtIndex:(point.x+1)];
     if ([currentLeftString isEqualToString:@"1"]) {
       haveTextField = true;
     }
@@ -48,7 +48,7 @@
 - (BOOL)isHaveDownTextFieldCellWithPostion:(CGPoint)point {
   BOOL haveTextField = false;
   if (point.y < self.wordArrayYMaxNumber - 1) {
-    NSString *currentLeftString= [[self.wordArray objectAtIndex:(point.y+1)] objectAtIndex:point.x];
+    NSString *currentLeftString= [[self.puzzleGame.mapGrid objectAtIndex:(point.y+1)] objectAtIndex:point.x];
     if ([currentLeftString isEqualToString:@"1"]) {
       haveTextField = true;
     }
@@ -59,7 +59,7 @@
 - (BOOL)isHaveUpTextFieldCellWithPostion:(CGPoint)point {
   BOOL haveTextField = false;
   if (point.y > 0) {
-    NSString *currentLeftString= [[self.wordArray objectAtIndex:(point.y-1)] objectAtIndex:point.x];
+    NSString *currentLeftString= [[self.puzzleGame.mapGrid objectAtIndex:(point.y-1)] objectAtIndex:point.x];
     if ([currentLeftString isEqualToString:@"1"]) {
       haveTextField = true;
     }
@@ -68,7 +68,7 @@
 }
 
 - (SKSpriteNode*)getNodeWithPoint:(CGPoint)point {
-  return (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+  return (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
 }
 
 - (NSString*)getStringFromVerCrossWordWithPoint:(CGPoint)point andStringBefore:(NSString*)string {
@@ -97,9 +97,9 @@
 
 - (BOOL)isTextFieldCellWithPostion:(CGPoint)point {
   BOOL isTextField = false;
-  NSArray *firstArray = [self.wordArray objectAtIndex:0];
-  if (point.y < self.wordArray.count && point.x < firstArray.count) {
-    NSString *currentLeftString= [[self.wordArray objectAtIndex:point.y] objectAtIndex:point.x];
+  NSArray *firstArray = [self.puzzleGame.mapGrid objectAtIndex:0];
+  if (point.y < self.puzzleGame.mapGrid.count && point.x < firstArray.count) {
+    NSString *currentLeftString= [[self.puzzleGame.mapGrid objectAtIndex:point.y] objectAtIndex:point.x];
     if ([currentLeftString isEqualToString:@"1"]) {
       isTextField = true;
     }
