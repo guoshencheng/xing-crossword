@@ -148,10 +148,10 @@
       NSString *currentValue = [currentArray objectAtIndex:j];
       if ([currentValue isEqualToString:@"1"]) {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]];
-        currentnode.texture = [SKTexture textureWithImageNamed:@"empty.png"];
+//        currentnode.texture = [SKTexture textureWithImageNamed:@"empty.png"];
       } else {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]];
-        currentnode.texture = [SKTexture textureWithImageNamed:@"block.png"];
+//        currentnode.texture = [SKTexture textureWithImageNamed:@"block.png"];
       }
     }
   }

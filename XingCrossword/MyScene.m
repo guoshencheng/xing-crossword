@@ -12,6 +12,7 @@
 
 -(id)initWithSize:(CGSize)size {
   self.currentProblemNumber = 0;
+  self.lastProblemNumber = 0;
   self.hor = YES;
   self.touchPoint = CGPointMake(-1, -1);
   self.horProblemArray = [[NSMutableArray alloc] init];
@@ -41,14 +42,13 @@
     CGPoint mytouch = [self getCellPostionWithNodeName:node.name];
     if ([self isInGridWithPostion:mytouch]) {
       if ([self isTextFieldCellWithPostion:mytouch] ) {
+        [self resetColor];
         [self changeDirectionByTouch:mytouch];
         if (self.hor) {
-          [self resetColor];
           [self fillingLeft:mytouch];
           [self fillingRight:mytouch];
           self.currentProblemNumber = [self findProblemInHorProblemWithCGPoint:mytouch];
         }else {
-          [self resetColor];
           [self fillDown:mytouch];
           [self fillUp:mytouch];
           self.currentProblemNumber = [self findProblemInVerProblemWithCGPoint:mytouch];
@@ -79,16 +79,19 @@
 }
 
 - (void)selectProblemWithIndex:(NSInteger)index andDirection:(NSNumber *)direction {
+    self.hor = [direction isEqual:@(0)] ? YES : NO;
   [self resetColor];
   if ([direction isEqual:@(0)]) {
     CGPoint mytouch = [[self.horProblemArray objectAtIndex:index] CGPointValue];
     [self fillingLeft:mytouch];
     [self fillingRight:mytouch];
+      self.lastProblemNumber = self.currentProblemNumber;
     self.currentProblemNumber = index + 1;
   } else {
     CGPoint mytouch = [[self.verProblemArray objectAtIndex:index] CGPointValue];
     [self fillDown:mytouch];
     [self fillUp:mytouch];
+      self.lastProblemNumber = self.currentProblemNumber;
     self.currentProblemNumber = index + 1;
   }
   [self resetLabelColor];
@@ -154,21 +157,19 @@
   return CGPointMake(xValue, yValue);
 }
 
-//reset all Node's Color
+//reset all Node's Color or texture
 - (void)resetColor {
-  for (int i = 0; i < self.wordArray.count; i++) {
-    NSArray *currentArray = [self.wordArray objectAtIndex:i];
-    for (int j = 0; j < currentArray.count; j++) {
-      NSString *currentValue = [currentArray objectAtIndex:j];
-      if ([currentValue isEqualToString:@"1"]) {
-        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]];
-        currentnode.texture = [SKTexture textureWithImageNamed:@"empty.png"];
-      } else {
-        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]];
-        currentnode.texture = [SKTexture textureWithImageNamed:@"block.png"];
-      }
+    if (self.currentProblemNumber > 0) {
+        if (self.hor) {
+            CGPoint mytouch = [[self.horProblemArray objectAtIndex:self.currentProblemNumber - 1] CGPointValue];
+            [self unFillingLeft:mytouch];
+            [self unFillingRight:mytouch];
+        } else {
+            CGPoint mytouch = [[self.verProblemArray objectAtIndex:self.currentProblemNumber - 1] CGPointValue];
+            [self unFillDown:mytouch];
+            [self unFillUp:mytouch];
+        }
     }
-  }
 }
 
 #pragma mark - SaveMethod

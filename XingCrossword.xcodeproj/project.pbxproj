@@ -120,7 +120,8 @@
 		16427F2D196FCB1F00C9153E /* ColorTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorTheme.h; path = XingCrossword/ColorTheme.h; sourceTree = SOURCE_ROOT; };
 		16427F2E196FCB1F00C9153E /* ColorTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorTheme.m; path = XingCrossword/ColorTheme.m; sourceTree = SOURCE_ROOT; };
 		16427F3A196FDE4400C9153E /* Crossword.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Crossword.xcdatamodel; sourceTree = "<group>"; };
-		64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.xcconfig"; path = "Pods/Pods-XingCrosswordTests.xcconfig"; sourceTree = "<group>"; };
+		52CD7A48DC98A7FC63D38B1C /* Pods-XingCrosswordTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XingCrosswordTests/Pods-XingCrosswordTests.release.xcconfig"; sourceTree = "<group>"; };
+		6EE144A57C815693FD32E75B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8915C0FDAE0F4A5097E3B4F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9210514B1A2587EC00FE5695 /* CreateGameScene+fill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CreateGameScene+fill.h"; path = "XingCrossword/CreateGameScene+fill.h"; sourceTree = "<group>"; };
@@ -186,7 +187,8 @@
 		92B4E58119A592EA005F9B0E /* StartGameViewScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartGameViewScene.m; path = XingCrossword/StartGameViewScene.m; sourceTree = "<group>"; };
 		92E5944D19D7F4B9002FB91A /* CreateGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateGameScene.h; sourceTree = "<group>"; };
 		92E5944E19D7F4B9002FB91A /* CreateGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGameScene.m; sourceTree = "<group>"; };
-		CC5E68F9A46A401BA6B5A828 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		95E72B77986EF87FEBD98489 /* Pods-XingCrosswordTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XingCrosswordTests/Pods-XingCrosswordTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D6F4DB11952808E754D5C073 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -441,8 +443,7 @@
 				92984273195E9BD900136AB0 /* XingCrosswordTests */,
 				92984246195E9BD900136AB0 /* Frameworks */,
 				92984245195E9BD900136AB0 /* Products */,
-				CC5E68F9A46A401BA6B5A828 /* Pods.xcconfig */,
-				64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */,
+				ACF930998DAD3D3EA95261B0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -555,6 +556,17 @@
 			name = CreateGameScene;
 			sourceTree = "<group>";
 		};
+		ACF930998DAD3D3EA95261B0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6EE144A57C815693FD32E75B /* Pods.debug.xcconfig */,
+				D6F4DB11952808E754D5C073 /* Pods.release.xcconfig */,
+				95E72B77986EF87FEBD98489 /* Pods-XingCrosswordTests.debug.xcconfig */,
+				52CD7A48DC98A7FC63D38B1C /* Pods-XingCrosswordTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -606,6 +618,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = apple;
 				TargetAttributes = {
+					92984243195E9BD900136AB0 = {
+						DevelopmentTeam = 53H2AVD649;
+					};
 					9298426B195E9BD900136AB0 = {
 						TestTargetID = 92984243195E9BD900136AB0;
 					};
@@ -696,7 +711,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		39CD7F41F22B45C9BD63FD96 /* Check Pods Manifest.lock */ = {
@@ -726,7 +741,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-XingCrosswordTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XingCrosswordTests/Pods-XingCrosswordTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -829,6 +844,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shencheng Guo (ZR6LAF48H5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -867,6 +883,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shencheng Guo (ZR6LAF48H5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -885,15 +902,18 @@
 		};
 		9298427E195E9BD900136AB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC5E68F9A46A401BA6B5A828 /* Pods.xcconfig */;
+			baseConfigurationReference = 6EE144A57C815693FD32E75B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XingCrossword/XingCrossword-Prefix.pch";
 				INFOPLIST_FILE = "XingCrossword/XingCrossword-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -901,15 +921,18 @@
 		};
 		9298427F195E9BD900136AB0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC5E68F9A46A401BA6B5A828 /* Pods.xcconfig */;
+			baseConfigurationReference = D6F4DB11952808E754D5C073 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XingCrossword/XingCrossword-Prefix.pch";
 				INFOPLIST_FILE = "XingCrossword/XingCrossword-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -917,7 +940,7 @@
 		};
 		92984281195E9BD900136AB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */;
+			baseConfigurationReference = 95E72B77986EF87FEBD98489 /* Pods-XingCrosswordTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XingCrossword.app/XingCrossword";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -940,7 +963,7 @@
 		};
 		92984282195E9BD900136AB0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64F360FD56CC48A9B4F5523B /* Pods-XingCrosswordTests.xcconfig */;
+			baseConfigurationReference = 52CD7A48DC98A7FC63D38B1C /* Pods-XingCrosswordTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XingCrossword.app/XingCrossword";
 				FRAMEWORK_SEARCH_PATHS = (

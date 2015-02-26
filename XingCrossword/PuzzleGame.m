@@ -101,7 +101,8 @@
 
 - (SKSpriteNode *)createCellAtRow:(NSUInteger)rowIndex column:(NSUInteger)columnIndex isEntry:(BOOL)isEntry {
  // id<ColorTheme> theme = [ColorThemeFactory defaultTheme];
-  SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:(isEntry? @"empty.png" : @"block.png")];
+//  SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:(isEntry? @"empty.png" : @"block.png")];
+    SKSpriteNode *node = [SKSpriteNode spriteNodeWithColor:isEntry ? [UIColor greenColor] : [UIColor yellowColor] size:self.cellSize];
   node.size = self.cellSize;
 //                        
 //  spriteNodeWithColor:(isEntry ? [theme entryCellColor] : [theme blockCellColor]) size:self.cellSize];

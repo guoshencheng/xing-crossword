@@ -21,9 +21,9 @@
 }
 
 - (void)viewDidLoad {
-//  WebService *webservice = [[WebService alloc] init];
-//  webservice.delegate = self;
-//  [webservice getAllPuzzleResponse];
+  WebService *webservice = [[WebService alloc] init];
+  webservice.delegate = self;
+  [webservice getAllPuzzleResponse];
   [self configureView];
   self.puzzleArray = [Puzzle findAllPuzzle];
   [self.collectionView reloadData];

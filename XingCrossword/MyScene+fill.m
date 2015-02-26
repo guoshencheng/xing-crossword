@@ -15,48 +15,96 @@
 - (void)fillDown:(CGPoint)point {
   if ([self isHaveDownTextFieldCellWithPostion:point]) {
     SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
+    currentnode.color = [UIColor whiteColor];
     
     [self fillDown:CGPointMake(point.x, point.y + 1)];
   } else {
     SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
+    currentnode.color = [UIColor whiteColor];
   }
+}
+
+- (void)unFillDown:(CGPoint)point {
+    if ([self isHaveDownTextFieldCellWithPostion:point]) {
+        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+        currentnode.color = [UIColor greenColor];
+        
+        [self unFillDown:CGPointMake(point.x, point.y + 1)];
+    } else {
+        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+        currentnode.color = [UIColor greenColor];
+    }
 }
 
 - (void)fillUp:(CGPoint)point {
   if ([self isHaveUpTextFieldCellWithPostion:point]) {
     SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
+      currentnode.color = [UIColor whiteColor];
     
     [self fillUp:CGPointMake(point.x, point.y - 1)];
   } else {
     SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
+    currentnode.color = [UIColor whiteColor];
   }
 }
+
+- (void)unFillUp:(CGPoint)point {
+    if ([self isHaveUpTextFieldCellWithPostion:point]) {
+        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+        currentnode.color = [UIColor greenColor];
+        
+        [self unFillUp:CGPointMake(point.x, point.y - 1)];
+    } else {
+        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+        currentnode.color = [UIColor greenColor];
+    }
+}
+
 
 - (void)fillingLeft:(CGPoint)point {
   if ([self haveLeftTextFieldCellWithPostion:point]) {
     SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
+    currentnode.color = [UIColor whiteColor];
     [self fillingLeft:CGPointMake(point.x - 1, point.y)];
   } else {
     SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
+    currentnode.color = [UIColor whiteColor];
   }
+}
+
+- (void)unFillingLeft:(CGPoint)point {
+    if ([self haveLeftTextFieldCellWithPostion:point]) {
+        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+        currentnode.color = [UIColor greenColor];
+        [self unFillingLeft:CGPointMake(point.x - 1, point.y)];
+    } else {
+        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+        currentnode.color = [UIColor greenColor];
+    }
 }
 
 - (void)fillingRight:(CGPoint)point {
   if ([self haveRightTextFieldCellWithPostion:point]) {
     SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
+    currentnode.color = [UIColor whiteColor];
     
     [self fillingRight:CGPointMake(point.x + 1, point.y)];
   } else {
     SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-    currentnode.texture = [SKTexture textureWithImageNamed:@"fill.png"];
+    currentnode.color = [UIColor whiteColor];
   }
+}
+
+- (void)unFillingRight:(CGPoint)point {
+    if ([self haveRightTextFieldCellWithPostion:point]) {
+        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+        currentnode.color = [UIColor greenColor];
+        
+        [self unFillingRight:CGPointMake(point.x + 1, point.y)];
+    } else {
+        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+        currentnode.color = [UIColor greenColor];
+    }
 }
 
 - (void)fillingDownWithEmpty:(CGPoint)point {
