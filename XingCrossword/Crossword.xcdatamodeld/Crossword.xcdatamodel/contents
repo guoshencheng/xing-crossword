@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C1510" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Item" representedClassName="Item" syncable="YES">
         <attribute name="direction" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="hint" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,7 +15,7 @@
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Item" inverseName="puzzle" inverseEntity="Item" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Puzzle" positionX="-63" positionY="-18" width="128" height="103"/>
         <element name="Item" positionX="-36" positionY="36" width="128" height="133"/>
+        <element name="Puzzle" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>

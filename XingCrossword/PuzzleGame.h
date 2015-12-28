@@ -24,7 +24,7 @@
 @property (nonatomic, strong) id<ColorTheme> theme;
 
 - (instancetype)initWithPuzzleTitle:(NSString *)title size:(CGSize)size andTheme:(id<ColorTheme>)theme;
-- (instancetype)initBlankPuzzleWithsize:(CGSize)size;
+- (instancetype)initBlankPuzzleWithsize:(CGSize)size andTheme:(id<ColorTheme>)theme;
 
 - (NSUInteger)rowsCount;
 - (NSUInteger)columnsCount;

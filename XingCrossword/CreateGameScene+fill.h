@@ -11,10 +11,14 @@
 @interface CreateGameScene (fill)
 
 - (void)fillDown:(CGPoint)point;
+- (void)unFillDown:(CGPoint)point;
 - (void)fillUp:(CGPoint)point;
+- (void)unFillUp:(CGPoint)point;
 
 - (void)fillingLeft:(CGPoint)point;
+- (void)unFillingLeft:(CGPoint)point;
 - (void)fillingRight:(CGPoint)point;
+- (void)unFillingRight:(CGPoint)point;
 
 - (void)fillingRightWithEmpty:(CGPoint)point;
 - (void)fillingDownWithEmpty:(CGPoint)point;

@@ -24,5 +24,6 @@
 @interface ColorThemeFactory : NSObject
 
 + (id<ColorTheme>)defaultTheme;
++ (id<ColorTheme>)defaultThemeTexture;
 
 @end

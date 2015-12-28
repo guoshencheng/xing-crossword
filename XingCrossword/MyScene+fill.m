@@ -15,48 +15,48 @@
 - (void)fillDown:(CGPoint)point {
     if ([self isHaveDownTextFieldCellWithPostion:point]) {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme fillCellColor];
+        currentnode.texture = [self.puzzleGame.theme fillCellTexture];
         
         [self fillDown:CGPointMake(point.x, point.y + 1)];
     } else {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme fillCellColor];
+        currentnode.texture = [self.puzzleGame.theme fillCellTexture];
     }
 }
 
 - (void)unFillDown:(CGPoint)point {
     if ([self isHaveDownTextFieldCellWithPostion:point]) {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme entryCellColor];
+        currentnode.texture = [self.puzzleGame.theme entryCellTexture];
         
         [self unFillDown:CGPointMake(point.x, point.y + 1)];
     } else {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme entryCellColor];
+        currentnode.texture = [self.puzzleGame.theme entryCellTexture];;
     }
 }
 
 - (void)fillUp:(CGPoint)point {
     if ([self isHaveUpTextFieldCellWithPostion:point]) {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme fillCellColor];
+        currentnode.texture = [self.puzzleGame.theme fillCellTexture];
         
         [self fillUp:CGPointMake(point.x, point.y - 1)];
     } else {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme fillCellColor];
+        currentnode.texture = [self.puzzleGame.theme fillCellTexture];
     }
 }
 
 - (void)unFillUp:(CGPoint)point {
     if ([self isHaveUpTextFieldCellWithPostion:point]) {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme entryCellColor];
+        currentnode.texture = [self.puzzleGame.theme entryCellTexture];;
         
         [self unFillUp:CGPointMake(point.x, point.y - 1)];
     } else {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme entryCellColor];
+        currentnode.texture = [self.puzzleGame.theme entryCellTexture];;
     }
 }
 
@@ -64,46 +64,46 @@
 - (void)fillingLeft:(CGPoint)point {
     if ([self haveLeftTextFieldCellWithPostion:point]) {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme fillCellColor];
+        currentnode.texture = [self.puzzleGame.theme fillCellTexture];
         [self fillingLeft:CGPointMake(point.x - 1, point.y)];
     } else {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme fillCellColor];
+        currentnode.texture = [self.puzzleGame.theme fillCellTexture];
     }
 }
 
 - (void)unFillingLeft:(CGPoint)point {
     if ([self haveLeftTextFieldCellWithPostion:point]) {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme entryCellColor];
+        currentnode.texture = [self.puzzleGame.theme entryCellTexture];;
         [self unFillingLeft:CGPointMake(point.x - 1, point.y)];
     } else {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme entryCellColor];
+        currentnode.texture = [self.puzzleGame.theme entryCellTexture];;
     }
 }
 
 - (void)fillingRight:(CGPoint)point {
     if ([self haveRightTextFieldCellWithPostion:point]) {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme fillCellColor];
+        currentnode.texture = [self.puzzleGame.theme fillCellTexture];
         
         [self fillingRight:CGPointMake(point.x + 1, point.y)];
     } else {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme fillCellColor];
+        currentnode.texture = [self.puzzleGame.theme fillCellTexture];
     }
 }
 
 - (void)unFillingRight:(CGPoint)point {
     if ([self haveRightTextFieldCellWithPostion:point]) {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme entryCellColor];
+        currentnode.texture = [self.puzzleGame.theme entryCellTexture];;
         
         [self unFillingRight:CGPointMake(point.x + 1, point.y)];
     } else {
         SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
-        currentnode.color = [self.puzzleGame.theme entryCellColor];
+        currentnode.texture = [self.puzzleGame.theme entryCellTexture];;
     }
 }
 

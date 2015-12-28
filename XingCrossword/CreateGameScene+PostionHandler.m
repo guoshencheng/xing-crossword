@@ -68,7 +68,7 @@
 }
 
 - (SKSpriteNode*)getNodeWithPoint:(CGPoint)point {
-  return (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
+  return (SKSpriteNode*)[self.puzzleGame.puzzleNode childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)point.x,(int)point.y]];
 }
 
 - (NSString*)getStringFromVerCrossWordWithPoint:(CGPoint)point andStringBefore:(NSString*)string {

@@ -16,13 +16,8 @@
   [self configureView];
 }
 
-- (IBAction)cellDidClickedAction:(id)sender {
-  if ([self.delegate respondsToSelector:@selector(startGameCollectionViewCellShouldPushMainGameView:WithPuzzle:)]) {
-    [self.delegate startGameCollectionViewCellShouldPushMainGameView:self WithPuzzle:self.puzzle];
-  }
-}
-
 - (void)updateWithPuzzle:(Puzzle *)puzzle {
+    self.addNewGameMask.hidden = YES;
   self.puzzle = puzzle;
   self.puzzleNameLabel.text = self.puzzle.title;
   self.itemArray = [Item findAllItemInPuzzleWithPuzzleId:self.puzzle.puzzleId];
@@ -45,14 +40,22 @@
   }
 }
 
+- (void)updateToAddCell {
+    self.addNewGameMask.hidden = NO;
+}
+
 - (void)setAnswerView {
-  self.anwserProblemProcessLabel.text = [NSString stringWithFormat:@"%@ %d",@"Answerd:",self.answerCount * 100 / self.itemArray.count];
-  self.answerProblmProcessViewConstraint.constant = (200.0 * (int)self.answerCount) / self.itemArray.count;
+    if (self.itemArray.count != 0) {
+        self.anwserProblemProcessLabel.text = [NSString stringWithFormat:@"%@ %d",@"已经完成:",self.answerCount * 100 / self.itemArray.count];
+        self.answerProblmProcessViewConstraint.constant = (200.0 * (int)self.answerCount) / self.itemArray.count;
+    }
 }
 
 - (void)setRightAnswerView {
-  self.rightAnswerProcessLabel.text = [NSString stringWithFormat:@"%@ %d",@"Correct:",self.rightAnswerCount * 100 / self.itemArray.count];
-  self.rightAnswerProcessViewConstraint.constant = (200.0 * (int)self.rightAnswerCount ) / self.itemArray.count;
+    if (self.itemArray.count != 0) {
+        self.rightAnswerProcessLabel.text = [NSString stringWithFormat:@"%@ %d %@",@"正确率:",self.rightAnswerCount * 100 / self.itemArray.count, @"%"];
+        self.rightAnswerProcessViewConstraint.constant = (200.0 * (int)self.rightAnswerCount ) / self.itemArray.count;
+    }
 }
 
 @end

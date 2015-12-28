@@ -11,9 +11,10 @@
 @implementation startGameCollectionViewCell (Configuration)
 
 - (void)configureView {
-  self.answerProblmProcessView.layer.cornerRadius = 10;
-  self.rightAnswerProcessView.layer.cornerRadius = 10;
-  self.containerView.layer.cornerRadius = 30;
+    self.addNewGameMask.hidden = YES;
+  self.answerProblmProcessView.layer.cornerRadius = 5;
+  self.rightAnswerProcessView.layer.cornerRadius = 5;
+  self.containerView.layer.cornerRadius = 10;
 }
 
 @end

@@ -49,10 +49,11 @@
     return self;
 }
 
-- (instancetype)initBlankPuzzleWithsize:(CGSize)size {
+- (instancetype)initBlankPuzzleWithsize:(CGSize)size andTheme:(id<ColorTheme>)theme {
     if (self = [super init]) {
         //first is hang and secend is lie
-        self.mapGrid = [self configureBlankGrid:14 andColumn:14];
+        self.theme = theme;
+        self.mapGrid = [self configureBlankGrid:8 andColumn:9];
         self.rowsCount = [self.mapGrid count];
         self.columnsCount = [self.mapGrid[0] count];
         CGFloat cellWidth = size.width / self.rowsCount;
@@ -101,7 +102,8 @@
 }
 
 - (SKSpriteNode *)createCellAtRow:(NSUInteger)rowIndex column:(NSUInteger)columnIndex isEntry:(BOOL)isEntry {
-    SKSpriteNode *node = [SKSpriteNode spriteNodeWithColor:(isEntry ? [self.theme entryCellColor] : [self.theme blockCellColor]) size:self.cellSize];
+    SKSpriteNode *node = [SKSpriteNode spriteNodeWithTexture:(isEntry ? [self.theme entryCellTexture] : [self.theme blockCellTexture]) size:self.cellSize];
+    //SKSpriteNode *node = [SKSpriteNode spriteNodeWithColor:(isEntry ? [self.theme entryCellColor] : [self.theme blockCellColor]) size:self.cellSize];
     [node setName:[NSString stringWithFormat:@"%d,%d", columnIndex, rowIndex]];
     node.position = CGPointMake(self.cellSize.width * (columnIndex + 0.5), self.cellSize.height * (self.rowsCount - (rowIndex + 0.5)));
     SKLabelNode *currentLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];

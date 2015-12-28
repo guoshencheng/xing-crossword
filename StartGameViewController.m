@@ -29,13 +29,6 @@
   [self.collectionView reloadData];
 }
 
-- (void)startGameCollectionViewCellShouldPushMainGameView:(startGameCollectionViewCell *)startGameCell WithPuzzle:(Puzzle *)puzzle {
-  ViewController *viewController = [ViewController create];
-  viewController.title = puzzle.title;
-  viewController.puzzleId = puzzle.puzzleId;
-  [self.navigationController pushViewController:viewController animated:YES];
-}
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
   return self.puzzleArray.count + 1;
 }
@@ -47,10 +40,10 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.item == self.puzzleArray.count) {
     startGameCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:START_GAME_COLLECTIONVIEW_CELL forIndexPath:indexPath];
+      [cell updateToAddCell];
     return cell;
   } else {
-    startGameCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:START_GAME_COLLECTIONVIEW_CELL forIndexPath:indexPath];
-    cell.delegate = self;
+      startGameCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:START_GAME_COLLECTIONVIEW_CELL forIndexPath:indexPath];
     [cell updateWithPuzzle:[self.puzzleArray objectAtIndex:indexPath.item]];
     return  cell;
   }
@@ -58,8 +51,14 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.item == self.puzzleArray.count) {
-    CreateGameViewController *createGameViewController = [CreateGameViewController craete];
+    CreateGameViewController *createGameViewController = [CreateGameViewController create];
     [self.navigationController pushViewController:createGameViewController animated:YES];
+  } else {
+      ViewController *viewController = [ViewController create];
+      startGameCollectionViewCell *cell = (startGameCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+      viewController.title = cell.puzzle.title;
+      viewController.puzzleId = cell.puzzle.puzzleId;
+      [self.navigationController pushViewController:viewController animated:YES];
   }
 }
 

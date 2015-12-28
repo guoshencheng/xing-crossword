@@ -29,6 +29,14 @@
 		16427F2C196FCA5C00C9153E /* ColorThemeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 16427F2B196FCA5C00C9153E /* ColorThemeSpec.m */; };
 		16427F2F196FCB1F00C9153E /* ColorTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 16427F2E196FCB1F00C9153E /* ColorTheme.m */; };
 		16427F3B196FDE4400C9153E /* Crossword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16427F39196FDE4400C9153E /* Crossword.xcdatamodeld */; };
+		2E637B9E1B00FC9700F9278C /* ModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E637B9C1B00FC9700F9278C /* ModifyViewController.m */; };
+		2E637B9F1B00FC9700F9278C /* ModifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E637B9D1B00FC9700F9278C /* ModifyViewController.xib */; };
+		2E7DDD2D1AFF3095002D66C8 /* QuAndAnsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DDD2C1AFF3095002D66C8 /* QuAndAnsPanel.m */; };
+		2E7DDD2F1AFF30C9002D66C8 /* QuAndAnsPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7DDD2E1AFF30C9002D66C8 /* QuAndAnsPanel.xib */; };
+		2E7DDD351AFF32E3002D66C8 /* AutoLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DDD321AFF32E3002D66C8 /* AutoLayoutView.m */; };
+		2E7DDD361AFF32E3002D66C8 /* UIView+CommonSuperview.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DDD341AFF32E3002D66C8 /* UIView+CommonSuperview.m */; };
+		2E7DDD3B1AFF351E002D66C8 /* QuAndAnsPanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DDD391AFF351E002D66C8 /* QuAndAnsPanelCell.m */; };
+		2E7DDD3C1AFF351E002D66C8 /* QuAndAnsPanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7DDD3A1AFF351E002D66C8 /* QuAndAnsPanelCell.xib */; };
 		412CF75EA0DD472CB79C58B1 /* libPods-XingCrosswordTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */; };
 		7EDE724BC5DB4ACFB3B7A7E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915C0FDAE0F4A5097E3B4F5 /* libPods.a */; };
 		9210514D1A2587EC00FE5695 /* CreateGameScene+fill.m in Sources */ = {isa = PBXBuildFile; fileRef = 9210514C1A2587EC00FE5695 /* CreateGameScene+fill.m */; };
@@ -89,7 +97,7 @@
 /* Begin PBXFileReference section */
 		1611C127196CF0640060A5BA /* PayloadJSONs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PayloadJSONs.md; path = Docs/PayloadJSONs.md; sourceTree = "<group>"; };
 		1611C13B196D502C0060A5BA /* PuzzleGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PuzzleGame.h; path = XingCrossword/PuzzleGame.h; sourceTree = SOURCE_ROOT; };
-		1611C13C196D502C0060A5BA /* PuzzleGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PuzzleGame.m; path = XingCrossword/PuzzleGame.m; sourceTree = SOURCE_ROOT; };
+		1611C13C196D502C0060A5BA /* PuzzleGame.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 5; lastKnownFileType = sourcecode.c.objc; name = PuzzleGame.m; path = XingCrossword/PuzzleGame.m; sourceTree = SOURCE_ROOT; };
 		1611C141196D50480060A5BA /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = XingCrossword/Item.h; sourceTree = SOURCE_ROOT; };
 		1611C142196D50480060A5BA /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = XingCrossword/Item.m; sourceTree = SOURCE_ROOT; };
 		1611C143196D50480060A5BA /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Puzzle.h; path = XingCrossword/Puzzle.h; sourceTree = SOURCE_ROOT; };
@@ -120,6 +128,19 @@
 		16427F2D196FCB1F00C9153E /* ColorTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorTheme.h; path = XingCrossword/ColorTheme.h; sourceTree = SOURCE_ROOT; };
 		16427F2E196FCB1F00C9153E /* ColorTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorTheme.m; path = XingCrossword/ColorTheme.m; sourceTree = SOURCE_ROOT; };
 		16427F3A196FDE4400C9153E /* Crossword.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Crossword.xcdatamodel; sourceTree = "<group>"; };
+		2E637B9B1B00FC9700F9278C /* ModifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyViewController.h; sourceTree = "<group>"; };
+		2E637B9C1B00FC9700F9278C /* ModifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyViewController.m; sourceTree = "<group>"; };
+		2E637B9D1B00FC9700F9278C /* ModifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifyViewController.xib; sourceTree = "<group>"; };
+		2E7DDD2B1AFF3095002D66C8 /* QuAndAnsPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuAndAnsPanel.h; sourceTree = "<group>"; };
+		2E7DDD2C1AFF3095002D66C8 /* QuAndAnsPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuAndAnsPanel.m; sourceTree = "<group>"; };
+		2E7DDD2E1AFF30C9002D66C8 /* QuAndAnsPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuAndAnsPanel.xib; sourceTree = "<group>"; };
+		2E7DDD311AFF32E3002D66C8 /* AutoLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoLayoutView.h; sourceTree = "<group>"; };
+		2E7DDD321AFF32E3002D66C8 /* AutoLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoLayoutView.m; sourceTree = "<group>"; };
+		2E7DDD331AFF32E3002D66C8 /* UIView+CommonSuperview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CommonSuperview.h"; sourceTree = "<group>"; };
+		2E7DDD341AFF32E3002D66C8 /* UIView+CommonSuperview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CommonSuperview.m"; sourceTree = "<group>"; };
+		2E7DDD381AFF351E002D66C8 /* QuAndAnsPanelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuAndAnsPanelCell.h; sourceTree = "<group>"; };
+		2E7DDD391AFF351E002D66C8 /* QuAndAnsPanelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuAndAnsPanelCell.m; sourceTree = "<group>"; };
+		2E7DDD3A1AFF351E002D66C8 /* QuAndAnsPanelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuAndAnsPanelCell.xib; sourceTree = "<group>"; };
 		52CD7A48DC98A7FC63D38B1C /* Pods-XingCrosswordTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XingCrosswordTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XingCrosswordTests/Pods-XingCrosswordTests.release.xcconfig"; sourceTree = "<group>"; };
 		6EE144A57C815693FD32E75B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7A2B8CB136A644AD81AA73D4 /* libPods-XingCrosswordTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XingCrosswordTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,6 +326,37 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		2E7DDD301AFF32A8002D66C8 /* AutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				2E7DDD311AFF32E3002D66C8 /* AutoLayoutView.h */,
+				2E7DDD321AFF32E3002D66C8 /* AutoLayoutView.m */,
+				2E7DDD331AFF32E3002D66C8 /* UIView+CommonSuperview.h */,
+				2E7DDD341AFF32E3002D66C8 /* UIView+CommonSuperview.m */,
+			);
+			name = AutoLayout;
+			sourceTree = "<group>";
+		};
+		2E7DDD371AFF34CC002D66C8 /* QuAndAnsPanelCell */ = {
+			isa = PBXGroup;
+			children = (
+				2E7DDD381AFF351E002D66C8 /* QuAndAnsPanelCell.h */,
+				2E7DDD391AFF351E002D66C8 /* QuAndAnsPanelCell.m */,
+				2E7DDD3A1AFF351E002D66C8 /* QuAndAnsPanelCell.xib */,
+			);
+			name = QuAndAnsPanelCell;
+			sourceTree = "<group>";
+		};
+		2E8D24C91B00A8C200F832CE /* ModifyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2E637B9B1B00FC9700F9278C /* ModifyViewController.h */,
+				2E637B9C1B00FC9700F9278C /* ModifyViewController.m */,
+				2E637B9D1B00FC9700F9278C /* ModifyViewController.xib */,
+			);
+			name = ModifyViewController;
+			sourceTree = "<group>";
+		};
 		9210514A1A25877600FE5695 /* utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,10 +367,15 @@
 		9210A41219CAC71D0036397E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2E7DDD301AFF32A8002D66C8 /* AutoLayout */,
 				924B0A1D19CC0CE6003C25BB /* ProblemListViewCell */,
+				2E7DDD371AFF34CC002D66C8 /* QuAndAnsPanelCell */,
 				924B0A1819CC0B3C003C25BB /* ProblemListViewPanel.h */,
 				924B0A1919CC0B3C003C25BB /* ProblemListViewPanel.m */,
 				924B0A1B19CC0B4C003C25BB /* ProblemListViewPanel.xib */,
+				2E7DDD2B1AFF3095002D66C8 /* QuAndAnsPanel.h */,
+				2E7DDD2C1AFF3095002D66C8 /* QuAndAnsPanel.m */,
+				2E7DDD2E1AFF30C9002D66C8 /* QuAndAnsPanel.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -481,6 +538,7 @@
 				92E5944C19D7F46E002FB91A /* CreateGameScene */,
 				927CD9F5198F35A8007DAA10 /* StartGameViewController */,
 				927CD9F4198F3583007DAA10 /* MainGameViewController */,
+				2E8D24C91B00A8C200F832CE /* ModifyViewController */,
 				92B321F819C2EB78001200F3 /* MyScene */,
 				1611C14E196D50AE0060A5BA /* AppDelegate.h */,
 				1611C14F196D50AE0060A5BA /* AppDelegate.m */,
@@ -650,7 +708,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E637B9F1B00FC9700F9278C /* ModifyViewController.xib in Resources */,
 				161CCDD0196E33BD00C8BF34 /* InfoPlist.strings in Resources */,
+				2E7DDD2F1AFF30C9002D66C8 /* QuAndAnsPanel.xib in Resources */,
 				92B321EE19C2D448001200F3 /* empty.png in Resources */,
 				161CCDCD196E33B200C8BF34 /* InfoPlist.strings in Resources */,
 				1611C128196CF0640060A5BA /* PayloadJSONs.md in Resources */,
@@ -660,6 +720,7 @@
 				92B321F619C2E605001200F3 /* button.png in Resources */,
 				924B0A2219CC1007003C25BB /* ProblemListViewCell.xib in Resources */,
 				92B321EF19C2D448001200F3 /* fill.png in Resources */,
+				2E7DDD3C1AFF351E002D66C8 /* QuAndAnsPanelCell.xib in Resources */,
 				1611C148196D50590060A5BA /* XingCrossword-Info.plist in Resources */,
 				1611C14D196D50A00060A5BA /* Images.xcassets in Resources */,
 				927CD9F7198F378A007DAA10 /* MainViewController.xib in Resources */,
@@ -760,6 +821,7 @@
 				921051501A25888200FE5695 /* CreateGameScene+PostionHandler.m in Sources */,
 				161CCDD8196E43CF00C8BF34 /* Puzzle+Utility.m in Sources */,
 				161CCDE3196E8FB000C8BF34 /* NSString+Utility.m in Sources */,
+				2E7DDD3B1AFF351E002D66C8 /* QuAndAnsPanelCell.m in Sources */,
 				161CCDD4196E3AE800C8BF34 /* Item+Utility.m in Sources */,
 				1611C156196D50AE0060A5BA /* ViewController.m in Sources */,
 				9288A25819B05D070035C828 /* WebService.m in Sources */,
@@ -768,11 +830,15 @@
 				1611C155196D50AE0060A5BA /* MyScene.m in Sources */,
 				9270F4D419B965E200934ED3 /* MyScene+PostionHandler.m in Sources */,
 				921051531A258E3D00FE5695 /* CreateGameScene+ProblemArray.m in Sources */,
+				2E7DDD351AFF32E3002D66C8 /* AutoLayoutView.m in Sources */,
+				2E7DDD2D1AFF3095002D66C8 /* QuAndAnsPanel.m in Sources */,
 				927CD9FB198F3BB9007DAA10 /* StartGameViewController.m in Sources */,
 				1611C145196D50480060A5BA /* Item.m in Sources */,
+				2E7DDD361AFF32E3002D66C8 /* UIView+CommonSuperview.m in Sources */,
 				924B929B19C0437000097884 /* startGameCollectionViewCell+Configuration.m in Sources */,
 				1611C14B196D50950060A5BA /* main.m in Sources */,
 				9270F4D719B96F6300934ED3 /* MyScene+fill.m in Sources */,
+				2E637B9E1B00FC9700F9278C /* ModifyViewController.m in Sources */,
 				9286C066196E4CC500DE70FA /* Item+DataManager.m in Sources */,
 				924B0A2119CC1007003C25BB /* ProblemListViewCell.m in Sources */,
 				92E5944F19D7F4B9002FB91A /* CreateGameScene.m in Sources */,

@@ -111,7 +111,7 @@
 #pragma - mark Private Method
 
 - (void)createWordArray {
-    self.puzzleGame = [[PuzzleGame alloc]initWithPuzzleTitle:self.title size:self.size andTheme:[ColorThemeFactory defaultTheme]];
+    self.puzzleGame = [[PuzzleGame alloc]initWithPuzzleTitle:self.title size:self.size andTheme:[ColorThemeFactory defaultThemeTexture]];
     NSArray *firstArray = [self.puzzleGame.mapGrid objectAtIndex:0];
     self.wordArrayXMaxNumber = self.puzzleGame.mapGrid.count;
     self.wordArrayYMaxNumber = firstArray.count;

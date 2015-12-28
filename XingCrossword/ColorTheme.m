@@ -55,4 +55,8 @@
     return [NormalColorTheme new];
 }
 
++ (id<ColorTheme>)defaultThemeTexture {
+    return [NormalTextureTheme new];
+}
+
 @end

@@ -9,9 +9,9 @@
   return [[ViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-  [super viewDidAppear:animated];
+  [super viewWillAppear:animated];
   SKView * skView = (SKView *)self.skView;
 //  skView.showsFPS = YES;
 //  skView.showsNodeCount = YES;

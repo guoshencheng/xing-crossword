@@ -35,8 +35,8 @@
 }
 
 - (void)initHorProblemNumber {
-  for (int j = 0; j < self.wordArrayYMaxNumber; j++) {
-    for (int i = 0; i < self.wordArray.count; i ++) {
+  for (int i = 0; i < self.wordArray.count; i++) {
+    for (int  j= 0; j < self.wordArrayYMaxNumber; j ++) {
       if ([self isTextFieldCellWithPostion:CGPointMake(j, i)] && [self haveRightTextFieldCellWithPostion:CGPointMake(j, i)] && ![self haveLeftTextFieldCellWithPostion:CGPointMake(j, i)]) {
         [self.horProblemNumberArray addObject:@([self checkLengthOfHorProblemWithPostion:CGPointMake(j, i) andCurrnetLength:1])];
       }
@@ -64,8 +64,8 @@
 }
 
 - (NSInteger)checkLengthOfVerProblemWithPostion:(CGPoint)postion andCurrnetLength:(NSInteger)length{
-  if ([self haveRightTextFieldCellWithPostion:postion]) {
-    return [self checkLengthOfHorProblemWithPostion:CGPointMake(postion.x, postion.y+1) andCurrnetLength:length+1];
+  if ([self isHaveDownTextFieldCellWithPostion:postion]) {
+    return [self checkLengthOfVerProblemWithPostion:CGPointMake(postion.x, postion.y+1) andCurrnetLength:length+1];
   } else {
     return length;
   }

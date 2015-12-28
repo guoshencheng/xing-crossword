@@ -13,7 +13,10 @@
 #import "Item+DataManager.h"
 #import "AFHTTPRequestOperationManager.h"
 
-#define DATA_JASON_URL_STRING @"http://crossword.sinaapp.com/api/puzzles.json"
+#define GETJSON 1
+
+//#define DATA_JASON_URL_STRING @"http://crossword.sinaapp.com/api/puzzles.json"
+#define DATA_JASON_URL_STRING @"http://localhost/xingcrossword/xingcrossword/1/getAllPuzzles.php"
 @implementation WebService
 
 - (void)getAllPuzzleResponse {
@@ -24,7 +27,20 @@
       [self.delegate webServiceDidGetAllPuzzleResponse:self];
     }
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+      
   }];
+}
+
++ (void)saveNewPuzzleWithParameters:(NSDictionary *)parameters {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager POST:@"http://localhost/xingcrossword/xingcrossword/1/savePuzzle.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *result = responseObject;
+        NSLog(@"%@", result);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 - (void)savaAllPuzzleResponseWithCompletion:(void (^)(BOOL success, NSError *error))completion {
@@ -59,27 +75,71 @@
 }
 
 - (NSArray *)getPuzzleAcrossHintWithPuzzleDictionary:(NSDictionary *)puzzle {
-  NSDictionary *hint = [puzzle objectForKey:@"hints"];
-  NSArray *accross = [hint objectForKey:@"across"];
-  return accross;
+    if (GETJSON == 0) {
+        NSDictionary *hint = [puzzle objectForKey:@"hints"];
+        NSArray *accross = [hint objectForKey:@"across"];
+        return accross;
+    } else {
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        NSArray *directionArray = [puzzle objectForKey:@"acrossArray"];
+        for (int i = 0; i < directionArray.count; i ++) {
+            NSDictionary *item = [directionArray objectAtIndex:i];
+            [array addObject:[item objectForKey:@"hint"]];
+        }
+        return array;
+    }
+
 }
 
 - (NSArray *)getPuzzleDownHintWithPuzzleDictionary:(NSDictionary *)puzzle {
-  NSDictionary *hint = [puzzle objectForKey:@"hints"];
-  NSArray *down = [hint objectForKey:@"down"];
-  return down;
+    if (GETJSON == 0) {
+        NSDictionary *hint = [puzzle objectForKey:@"hints"];
+        NSArray *down = [hint objectForKey:@"down"];
+        return down;
+    } else {
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        NSArray *directionArray = [puzzle objectForKey:@"downArray"];
+        for (int i = 0; i < directionArray.count; i ++) {
+            NSDictionary *item = [directionArray objectAtIndex:i];
+            [array addObject:[item objectForKey:@"hint"]];
+        }
+        return array;
+
+    }
 }
 
 - (NSArray *)getPuzzleAcrossWordWithPuzzleDictionary:(NSDictionary *)puzzle {
-  NSDictionary *word = [puzzle objectForKey:@"words"];
-  NSArray *across = [word objectForKey:@"across"];
-  return across;
+    if (GETJSON == 0) {
+        NSDictionary *word = [puzzle objectForKey:@"words"];
+        NSArray *across = [word objectForKey:@"across"];
+        return across;
+    } else {
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        NSArray *directionArray = [puzzle objectForKey:@"acrossArray"];
+        for (int i = 0; i < directionArray.count; i ++) {
+            NSDictionary *item = [directionArray objectAtIndex:i];
+            [array addObject:[item objectForKey:@"word"]];
+        }
+        return array;
+
+    }
 }
 
 - (NSArray *)getPuzzleDownWordWithPuzzleDictionary:(NSDictionary *)puzzle {
-  NSDictionary *word = [puzzle objectForKey:@"words"];
-  NSArray *down = [word objectForKey:@"down"];
-  return down;
+    if (GETJSON == 0) {
+        NSDictionary *word = [puzzle objectForKey:@"words"];
+        NSArray *down = [word objectForKey:@"down"];
+        return down;
+    } else {
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        NSArray *directionArray = [puzzle objectForKey:@"downArray"];
+        for (int i = 0; i < directionArray.count; i ++) {
+            NSDictionary *item = [directionArray objectAtIndex:i];
+            [array addObject:[item objectForKey:@"word"]];
+        }
+        return array;
+
+    }
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "PuzzleGame.h"
 
 @protocol CreateGameSceneDelegate;
 
@@ -20,7 +21,7 @@
 @property (assign, nonatomic) NSInteger currentProblemNumber;
 @property (assign, nonatomic) BOOL hor;
 @property (assign, nonatomic) BOOL isCreateMap;
-@property (strong, nonatomic) SKSpriteNode *puzzle;
+@property (strong, nonatomic) PuzzleGame *puzzleGame;
 @property (strong, nonatomic) NSArray *wordArray;
 @property (assign, nonatomic) NSInteger wordArrayXMaxNumber;
 @property (assign, nonatomic) NSInteger wordArrayYMaxNumber;

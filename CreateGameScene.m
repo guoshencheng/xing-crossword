@@ -33,16 +33,16 @@
 }
 
 - (void)createWordArray {
-  PuzzleGame *puzzleGame = [[PuzzleGame alloc] initBlankPuzzleWithsize:self.size];
-  self.puzzle = puzzleGame.puzzleNode;
+  PuzzleGame *puzzleGame = [[PuzzleGame alloc] initBlankPuzzleWithsize:self.size andTheme:[ColorThemeFactory defaultThemeTexture]];
+  self.puzzleGame = puzzleGame;
   self.wordArray = puzzleGame.mapGrid;
   NSArray *firstArray = [self.wordArray objectAtIndex:0];
-  self.wordArrayXMaxNumber = self.wordArray.count;
-  self.wordArrayYMaxNumber = firstArray.count;
+  self.wordArrayXMaxNumber = firstArray.count;
+  self.wordArrayYMaxNumber = self.wordArray.count;
 }
 
 - (void)initNodeArray {
-  [self addChild:self.puzzle];
+  [self addChild:self.puzzleGame.puzzleNode];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -55,22 +55,27 @@
   }
 }
 
-
 - (void)handleTouchForCreateMapWithTouch:(UITouch *)touch {
   CGPoint location = [touch locationInNode:self];
-  SKNode *node = [self nodeAtPoint:location];
+  SKSpriteNode *node = (SKSpriteNode *)[self nodeAtPoint:location];
   NSLog(@"%@",node.name);
   if ([node.name isEqual:@"text"]) {
-    node = [node parent];
+      node = (SKSpriteNode *)[node parent];
   }
+    
   CGPoint mytouch = [self getCellPostionWithNodeName:node.name];
   if ([self isInGridWithPostion:mytouch]) {
+      NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.wordArray];
+      NSMutableArray *subArray = [[NSMutableArray alloc] initWithArray:[array objectAtIndex:mytouch.y]];
     if ([self isTextFieldCellWithPostion:mytouch]) {
-      self.wordArray[(int)mytouch.y][(int)mytouch.x] = @"0";
+        [subArray replaceObjectAtIndex:mytouch.x withObject:@"0"];
+      node.texture = [self.puzzleGame.theme blockCellTexture];
     } else {
-      self.wordArray[(int)mytouch.y][(int)mytouch.x] = @"1";
+        [subArray replaceObjectAtIndex:mytouch.x withObject:@"1"];
+        node.texture = [self.puzzleGame.theme fillCellTexture];
     }
-    [self resetColor];
+      [array replaceObjectAtIndex:mytouch.y withObject:subArray];
+      self.wordArray = array;
   }
 }
 
@@ -102,34 +107,36 @@
   }
 }
 
-- (BOOL)isACorrectMap {
-  BOOL isACorrectMap = YES;
-  BOOL shouldBreak = NO;
-  for (int i = 0; i < self.wordArrayYMaxNumber; i ++ ) {
-    if (shouldBreak) {
-      break;
-    }
-    for (int j = 0; j < self.wordArrayXMaxNumber; j++) {
-      if (shouldBreak) {
-        break;
-      }
-      CGPoint postion = CGPointMake(i, j);
-      CGPoint postionDown = CGPointMake(i, j + 1);
-      if ([self isInGridWithPostion:postion]&[self isTextFieldCellWithPostion:postion]&&[self haveRightTextFieldCellWithPostion:postion]&&[self isHaveDownTextFieldCellWithPostion:postion]&&[self haveRightTextFieldCellWithPostion:postionDown]) {
-        isACorrectMap = NO;
-        shouldBreak = YES;
-      }
-    }
-  }
-  return isACorrectMap;
-}
-
 - (void)handleIfMapIsCorrect {
   [self initHorProblemNumber];
   [self initVerProblemNumber];
   if ([self.delegate respondsToSelector:@selector(createGameSceneGridHasFinishCreateWithNumberArrayOfHorAnswerWords:andVerAnswerWords:)]) {
-    [self. delegate createGameSceneGridHasFinishCreateWithNumberArrayOfHorAnswerWords:self.horProblemNumberArray andVerAnswerWords:self.verProblemNumberArray];
+    [self. delegate createGameSceneGridHasFinishCreateWithNumberArrayOfHorAnswerWords:[self createHorProblemAndQuestionArray] andVerAnswerWords:[self createVerProblemAndQuestionArray]];
   }
+}
+
+- (NSArray *)createHorProblemAndQuestionArray {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i = 0; i < self.horProblemNumberArray.count; i ++) {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setValue:@"" forKey:@"question"];
+        [dic setValue:@"" forKey:@"answer"];
+        [dic setValue:[self.horProblemNumberArray objectAtIndex:i] forKey:@"count"];
+        [array addObject:dic];
+    }
+    return array;
+}
+
+- (NSArray *)createVerProblemAndQuestionArray {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i = 0; i < self.verProblemNumberArray.count; i ++) {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setValue:@"" forKey:@"question"];
+        [dic setValue:@"" forKey:@"answer"];
+        [dic setValue:[self.verProblemNumberArray objectAtIndex:i] forKey:@"count"];
+        [array addObject:dic];
+    }
+    return array;
 }
 
 - (CGPoint) getCellPostionWithNodeName:(NSString*)nodeName {
@@ -145,16 +152,42 @@
   for (int i = 0; i < self.wordArray.count; i++) {
     NSArray *currentArray = [self.wordArray objectAtIndex:i];
     for (int j = 0; j < currentArray.count; j++) {
-      NSString *currentValue = [currentArray objectAtIndex:j];
-      if ([currentValue isEqualToString:@"1"]) {
-        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]];
-//        currentnode.texture = [SKTexture textureWithImageNamed:@"empty.png"];
-      } else {
-        SKSpriteNode * currentnode = (SKSpriteNode*)[self.puzzle childNodeWithName:[NSString stringWithFormat:@"%d,%d",(int)j,(int)i]];
-//        currentnode.texture = [SKTexture textureWithImageNamed:@"block.png"];
-      }
+        if (self.currentProblemNumber > 0) {
+            if (self.hor) {
+                CGPoint mytouch = [[self.horProblemArray objectAtIndex:self.currentProblemNumber - 1] CGPointValue];
+                [self unFillingLeft:mytouch];
+                [self unFillingRight:mytouch];
+            } else {
+                CGPoint mytouch = [[self.verProblemArray objectAtIndex:self.currentProblemNumber - 1] CGPointValue];
+                [self unFillDown:mytouch];
+                [self unFillUp:mytouch];
+            }
+        }
     }
   }
+}
+
+
+- (BOOL)isACorrectMap {
+    BOOL isACorrectMap = YES;
+    BOOL shouldBreak = NO;
+    for (int i = 0; i < self.wordArrayYMaxNumber; i ++ ) {
+        if (shouldBreak) {
+            break;
+        }
+        for (int j = 0; j < self.wordArrayXMaxNumber; j++) {
+            if (shouldBreak) {
+                break;
+            }
+            CGPoint postion = CGPointMake(i, j);
+            CGPoint postionDown = CGPointMake(i, j + 1);
+            if ([self isInGridWithPostion:postion]&[self isTextFieldCellWithPostion:postion]&&[self haveRightTextFieldCellWithPostion:postion]&&[self isHaveDownTextFieldCellWithPostion:postion]&&[self haveRightTextFieldCellWithPostion:postionDown]) {
+                isACorrectMap = NO;
+                shouldBreak = YES;
+            }
+        }
+    }
+    return isACorrectMap;
 }
 
 @end

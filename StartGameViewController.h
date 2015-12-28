@@ -10,7 +10,7 @@
 #import "startGameCollectionViewCell.h"
 #import "WebService.h"
 
-@interface StartGameViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, WebServiceDelegate, startGameCollectionViewCellDelegate>
+@interface StartGameViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, WebServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
